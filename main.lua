@@ -1,6 +1,6 @@
 json = require "lib/json"
 
-BLOCK_SIZE = 1000 / 16.0
+BLOCK_SIZE = 1000 / 15.0
 
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
@@ -18,11 +18,25 @@ function love.load(a)
   songFile:close()
 
   keyMap = generateKeyMap(json.decode(songData))
-  print(json.encode(keyMap))
+  frame = 0
 end
 
 function love.draw()
+  pos = math.floor(frame / 4) + 1
+  char = keyMap[pos]
+
+  if char and char.char then
+    print(char.char..char.health)
+  else
+    print(" ")
+  end
+
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
+  love.graphics.print("Position: "..tostring(pos), 10, 40)
+end
+
+function love.update()
+  frame = frame + 1
 end
 
 function list_iter (t)
