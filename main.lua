@@ -1,4 +1,5 @@
 json = require "lib/json"
+fun = require "lib/fun"
 
 BLOCK_SIZE = 1000 / 15.0
 
@@ -18,28 +19,35 @@ function love.load(a)
   songFile:close()
 
   keyMap = generateKeyMap(json.decode(songData))
+  presses = {}
   frame = 0
 end
 
 function love.draw()
   pos = math.floor(frame / 4) + 1
-  char = keyMap[pos]
-
-  if char and char.char then
-    print(char.char..char.health)
-  else
-    print(" ")
-  end
 
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
   love.graphics.print("Position: "..tostring(pos), 10, 40)
+  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, presses)), 10, 70)
 end
 
 function love.update()
   frame = frame + 1
 end
 
-function list_iter (t)
+function love.keypressed(key, sc, ...)
+  pos = math.floor(frame / 4) + 1
+  char = keyMap[pos]
+
+  if char and char.char then
+    if key == char.char then
+      table.insert(presses, char)
+    end
+  end
+
+end
+
+function list_iter(t)
   local i = 0
   local n = table.getn(t)
   return function ()
