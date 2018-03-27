@@ -8,10 +8,10 @@ function love.load(a)
   love.graphics.setColor(0, 0, 0)
 
   sounds = {
-    song = love.audio.newSource("assets/sounds/mh_ritual.mp3")
+    song = love.audio.newSource("assets/sounds/mh_ritual.ogg", "static")
   }
 
-  sounds.song:setLooping(true)
+  sounds.song:setLooping(false)
   love.audio.play(sounds.song)
 
   local songFile = io.open("data/songs/mh_ritual.json", "r")
@@ -66,7 +66,7 @@ function generateKeyMap(data)
     local frameBlock = {char=nil, health=nil}
     local timeDiff = math.abs(nextKey.offset - pos)
 
-    if timeDiff <= BLOCK_SIZE * 2 then
+    if timeDiff <= BLOCK_SIZE * 3 then
       frameBlock.char = nextKey.char
 
       if pos >= nextKey.offset then
