@@ -2,6 +2,7 @@ json = require "lib/json"
 fun = require "lib/fun"
 
 BLOCK_SIZE = 1000 / 15.0
+SPEED = 60
 
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
@@ -20,8 +21,8 @@ function love.load(a)
 
   keyMap = generateKeyMap(json.decode(songData))
   presses = {}
+  visible = {}
   frame = 0
-  lastId = nil
 end
 
 function love.draw()
@@ -34,19 +35,35 @@ end
 
 function love.update()
   frame = frame + 1
+
+  pos = math.floor(frame / 4) + 1
+  char = keyMap[pos]
+
+  if char and char.char and char.health == 1.0 then
+    table.insert(visible, {x=30, y=-30, id=char.id})
+  end
+
+  for i=#visible, 1, -1 do
+    v = visible[i]
+    h = love.graphics.getHeight()
+    v.y = v.y + h / SPEED
+
+    if v.y > h then
+      table.remove(visible, i)
+    end
+  end
 end
 
 function love.keypressed(key, sc, ...)
   pos = math.floor(frame / 4) + 1
   char = keyMap[pos]
+  lastId = (#presses > 0 and presses[#presses].id or nil)
 
   if char and char.char then
     if key == char.char and lastId ~= char.id then
       table.insert(presses, char)
-      lastId = char.id
     end
   end
-
 end
 
 function list_iter(t)
