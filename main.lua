@@ -21,6 +21,7 @@ function love.load(a)
   keyMap = generateKeyMap(json.decode(songData))
   presses = {}
   frame = 0
+  lastId = nil
 end
 
 function love.draw()
@@ -40,8 +41,9 @@ function love.keypressed(key, sc, ...)
   char = keyMap[pos]
 
   if char and char.char then
-    if key == char.char then
+    if key == char.char and lastId ~= char.id then
       table.insert(presses, char)
+      lastId = char.id
     end
   end
 
@@ -52,7 +54,9 @@ function list_iter(t)
   local n = table.getn(t)
   return function ()
            i = i + 1
-           if i <= n then return t[i] end
+           if i <= n then
+             return unpack({t[i], i})
+           end
          end
 end
 
@@ -60,18 +64,19 @@ function generateKeyMap(data)
   local pos = 0
   local songData = list_iter(data)
   local keyMap = {}
-  local nextKey = songData()
+  local nextKey, i = songData()
 
   while true do
-    local frameBlock = {char=nil, health=nil}
+    local frameBlock = {id=nil, char=nil, health=nil}
     local timeDiff = math.abs(nextKey.offset - pos)
 
     if timeDiff <= BLOCK_SIZE * 3 then
       frameBlock.char = nextKey.char
+      frameBlock.id = i
 
       if pos >= nextKey.offset then
         frameBlock.health = 0.5
-        nextKey = songData()
+        nextKey, i = songData()
       elseif timeDiff > BLOCK_SIZE then
         frameBlock.health = 0.5
       else
@@ -84,7 +89,6 @@ function generateKeyMap(data)
 
     if nextKey == nil then break end
   end
-  print(keyMap)
 
   return keyMap
 end

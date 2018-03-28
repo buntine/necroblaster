@@ -1,5 +1,4 @@
-- Ignore press after it's been registered.
--- Each note has an ID that is stored. If next tap registers, cehck that it's ID is not the same as the last successful one.
+*- Ignore press after it's been registered.
 - Show GUI of upcoming taps
 -- Have second framecounter that runs an frame+N
 -- If N=30 then the tap icons move down 1/30th of the screen height each frame until off screen.
