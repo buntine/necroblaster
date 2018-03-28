@@ -50,7 +50,7 @@ function love.update()
   lastId = (#visible > 0 and visible[#visible].id or nil)
 
   if char and char.char and char.id ~= lastId then
-    table.insert(visible, {x=75, y=-75, id=char.id})
+    table.insert(visible, {x=x_for_char(char.char), y=-75, id=char.id})
   end
 
   for i=#visible, 1, -1 do
@@ -58,7 +58,7 @@ function love.update()
     h = love.graphics.getHeight()
     v.y = v.y + (h / SPEED)
 
-    if v.y > h then
+    if v.y > h + 50 then
       table.remove(visible, i)
     end
   end
@@ -74,6 +74,11 @@ function love.keypressed(key, sc, ...)
       table.insert(presses, char)
     end
   end
+end
+
+function x_for_char(c)
+  xs = {a=75, b=250, c=425, d=600}
+  return xs[c]
 end
 
 function list_iter(t)

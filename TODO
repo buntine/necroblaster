@@ -1,9 +1,15 @@
 *- Ignore press after it's been registered.
 *- Show GUI of upcoming taps
+- Finish data for Ritual
+-- Fix first set of A, B, C after intro
 - Work out how to implement double-kick
 -- Perhaps add types into json files
 --- start: 10000, end: 35000
 --- Expands to constant taps
-- Refactor into OO style
+--- But how to represent on GUI?
+---- Record type in keyMap.
+----- type=doublekick then draw as rectangle
+----- {"kind": "doublestart", "offset": 24569, "char": "a"},
 - Determine relative score
 -- Where you could be (perfect) vs. where you are
+- Refactor into OO style
