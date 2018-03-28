@@ -13,6 +13,7 @@
   {"kind": "tap", "offset": 23825, "char": "a"},
   {"kind": "tap", "offset": 24115, "char": "a"},
   {"kind": "tap", "offset": 24430, "char": "a"},
+  {"kind": "doublestart", "offset": 24569, "char": "d"},
   {"kind": "tap", "offset": 25765, "char": "a"},
   {"kind": "tap", "offset": 26096, "char": "b"},
   {"kind": "tap", "offset": 26444, "char": "c"},
@@ -37,4 +38,10 @@
   {"kind": "tap", "offset": 35020, "char": "a"},
   {"kind": "tap", "offset": 35320, "char": "b"},
   {"kind": "tap", "offset": 35620, "char": "c"},
+  {"kind": "tap", "offset": 36320, "char": "a"},
+  {"kind": "tap", "offset": 36820, "char": "b"},
+  {"kind": "tap", "offset": 37320, "char": "c"},
+  {"kind": "tap", "offset": 37870, "char": "a"},
+  {"kind": "tap", "offset": 38170, "char": "b"},
+  {"kind": "tap", "offset": 38470, "char": "c"},
 ]

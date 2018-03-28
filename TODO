@@ -13,3 +13,5 @@
 - Determine relative score
 -- Where you could be (perfect) vs. where you are
 - Refactor into OO style
+-- Key map generation should start by initializing empty array of keys and then each expected press
+   will update the array by setting the appropriate indexeS
