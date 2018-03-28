@@ -2,11 +2,12 @@ json = require "lib/json"
 fun = require "lib/fun"
 
 BLOCK_SIZE = 1000 / 15.0
-SPEED = 60
+SPEED = 120
 
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
-  love.graphics.setColor(0, 0, 0)
+  love.graphics.setColor(80, 80, 180)
+  love.graphics.setLineWidth(3)
 
   sounds = {
     song = love.audio.newSource("assets/sounds/mh_ritual.ogg", "static")
@@ -27,26 +28,35 @@ end
 
 function love.draw()
   pos = math.floor(frame / 4) + 1
+  h = love.graphics.getHeight()
+  w = love.graphics.getWidth()
 
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
   love.graphics.print("Position: "..tostring(pos), 10, 40)
   love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, presses)), 10, 70)
+
+  love.graphics.line(20, h - 30, w - 20, h - 30)
+
+  for _, v in ipairs(visible) do
+    love.graphics.circle("fill", v.x, v.y, 50)
+  end
 end
 
 function love.update()
   frame = frame + 1
 
-  pos = math.floor(frame / 4) + 1
+  pos = math.floor((frame + SPEED) / 4) + 1
   char = keyMap[pos]
+  lastId = (#visible > 0 and visible[#visible].id or nil)
 
-  if char and char.char and char.health == 1.0 then
-    table.insert(visible, {x=30, y=-30, id=char.id})
+  if char and char.char and char.id ~= lastId then
+    table.insert(visible, {x=75, y=-75, id=char.id})
   end
 
   for i=#visible, 1, -1 do
     v = visible[i]
     h = love.graphics.getHeight()
-    v.y = v.y + h / SPEED
+    v.y = v.y + (h / SPEED)
 
     if v.y > h then
       table.remove(visible, i)
