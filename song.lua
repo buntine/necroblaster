@@ -1,12 +1,12 @@
 SONG_PATH = "assets/sounds"
 
 Song = {
-  file = nil
+  stream = nil
 }
 
 function Song:new(path) {
-  sound = love.audio.newSource(SONG_PATH .. "/" .. path, "static")
-  o = {file=sound}
+  local sound = love.audio.newSource(SONG_PATH .. "/" .. path .. ".ogg", "static")
+  local o = {stream=sound}
 
   setmetatable(o, self)
   self.__index = self
@@ -15,7 +15,7 @@ function Song:new(path) {
 }
 
 function Song:play() {
-  self.file:setLooping(false)
+  self.stream:setLooping(false)
 
-  love.audio.play(self.file)
+  love.audio.play(self.stream)
 }
