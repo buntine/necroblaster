@@ -86,6 +86,4 @@ function TapMap:generate()
 
     if nextKey == nil then break end
   end
-
-  print(json.encode(self.keys))
 end

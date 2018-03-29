@@ -19,12 +19,12 @@ function love.load(a)
 end
 
 function love.draw()
-  pos = tapMap:currentFrame()
-  h = love.graphics.getHeight()
-  w = love.graphics.getWidth()
+  local frame = tapMap:currentFrame()
+  local h = love.graphics.getHeight()
+  local w = love.graphics.getWidth()
 
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
-  love.graphics.print("Frame: "..tostring(pos), 10, 40)
+  love.graphics.print("Frame: "..tostring(frame), 10, 40)
   love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
 
   love.graphics.line(20, h - 30, w - 20, h - 30)
@@ -37,9 +37,9 @@ end
 function love.update()
   tapMap:progress()
 
-  tap = tapMap:futureTap()
+  local tap = tapMap:futureTap()
 
-  if tap and tap.char and not visibleTapSet:seen(tap.id) then
+  if tap and not visibleTapSet:seen(tap.id) then
     visibleTapSet:add(tap)
   end
 
@@ -47,11 +47,9 @@ function love.update()
 end
 
 function love.keypressed(key, sc, ...)
-  tap = tapMap:currentTap()
+  local tap = tapMap:currentTap()
 
-  if tap and tap.char then
-    if key == tap.char and not tapSet:seen(tap.id) then
-      tapSet:add(tap)
-    end
+  if tap and key == tap.char and not tapSet:seen(tap.id) then
+    tapSet:add(tap)
   end
 end

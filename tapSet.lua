@@ -3,7 +3,7 @@ TapSet = {
 }
 
 function TapSet:new()
-  o = {taps = {}}
+  local o = {taps = {}}
 
   setmetatable(o, self)
   self.__index = self
@@ -16,5 +16,5 @@ function TapSet:add(tap)
 end
 
 function TapSet:seen(tapID)
-  return (#self.taps > 0 and self.taps[#self.taps].id == tapID or false)
+  return (not tapID) or (#self.taps > 0 and self.taps[#self.taps].id == tapID or false)
 end

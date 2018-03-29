@@ -4,10 +4,10 @@ VisibleTapSet = TapSet:new()
 
 function VisibleTapSet:updateY(height, speed)
   for i=#self.taps, 1, -1 do
-    v = self.taps[i]
+    local v = self.taps[i]
     v.y = v.y + (height / speed)
 
-    if v.y > h + 50 then
+    if v.y > height + 50 then
       table.remove(self.taps, i)
     end
   end
@@ -18,6 +18,6 @@ function VisibleTapSet:add(tap)
 end
 
 function x_for_char(c)
-  xs = {a=75, b=250, c=425, d=600}
+  local xs = {a=75, b=250, c=425, d=600}
   return xs[c]
 end
