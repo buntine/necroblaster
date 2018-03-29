@@ -7,8 +7,8 @@ DATA_PATH = "data/songs"
 TapMap = {
   data = {},
   keys = {},
-  framePointer = 1,
-  position = 1,
+  framePointer = 0,
+  position = 0,
   speed = DEFAULT_SPEED
 }
 
@@ -19,12 +19,26 @@ function TapMap:new(path, speed)
   self.__index = self
 
   local file = io.open(DATA_PATH .. "/" .. path .. ".json", "r")
-  local data = songFile:read("*a")
+  local data = file:read("*a")
   file:close()
 
   o.data = json.decode(data)
 
   return o
+end
+
+function TapMap:progress()
+  self.framePointer = self.framePointer + 1
+end
+
+function TapMap:currentFrame()
+  return math.floor(self.framePointer / 4) + 1
+end
+
+function TapMap:currentTap()
+  local frame = self:currentFrame()
+
+  return self.data[frame]
 end
 
 function list_iter(t)

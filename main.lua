@@ -1,4 +1,7 @@
 fun = require "lib/fun"
+require "song"
+require "tapSet"
+require "tapMap"
 
 BLOCK_SIZE = 1000 / 15.0
 SPEED = 120
@@ -10,23 +13,22 @@ function love.load(a)
 
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
+  tapSet = TapSet:new()
 
   song:play()
   tapMap:generate()
 
-  presses = {}
   visible = {}
-  frame = 0
 end
 
 function love.draw()
-  pos = math.floor(frame / 4) + 1
+  pos = tapMap:currentFrame()
   h = love.graphics.getHeight()
   w = love.graphics.getWidth()
 
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
   love.graphics.print("Position: "..tostring(pos), 10, 40)
-  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, presses)), 10, 70)
+  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
 
   love.graphics.line(20, h - 30, w - 20, h - 30)
 
@@ -36,14 +38,13 @@ function love.draw()
 end
 
 function love.update()
-  frame = frame + 1
+  tapMap:progress()
 
-  pos = math.floor((frame + SPEED) / 4) + 1
-  char = keyMap[pos]
+  tap = tapMap:currentTap()
   lastId = (#visible > 0 and visible[#visible].id or nil)
 
-  if char and char.char and char.id ~= lastId then
-    table.insert(visible, {x=x_for_char(char.char), y=-75, id=char.id})
+  if tap and tap.char and tap.id ~= lastId then
+    table.insert(visible, {x=x_for_char(tap.char), y=-75, id=tap.id})
   end
 
   for i=#visible, 1, -1 do
@@ -58,13 +59,12 @@ function love.update()
 end
 
 function love.keypressed(key, sc, ...)
-  pos = math.floor(frame / 4) + 1
-  char = keyMap[pos]
+  tap = tapMap:currentTap()
   lastId = (#presses > 0 and presses[#presses].id or nil)
 
-  if char and char.char then
-    if key == char.char and lastId ~= char.id then
-      table.insert(presses, char)
+  if tap and tap.char then
+    if key == tap.char and lastId ~= tap.id then
+      tapSet:add(tap)
     end
   end
 end
@@ -73,4 +73,3 @@ function x_for_char(c)
   xs = {a=75, b=250, c=425, d=600}
   return xs[c]
 end
-

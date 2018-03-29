@@ -4,7 +4,7 @@ Song = {
   stream = nil
 }
 
-function Song:new(path) {
+function Song:new(path)
   local sound = love.audio.newSource(SONG_PATH .. "/" .. path .. ".ogg", "static")
   local o = {stream=sound}
 
@@ -12,10 +12,10 @@ function Song:new(path) {
   self.__index = self
 
   return o
-}
+end
 
-function Song:play() {
+function Song:play()
   self.stream:setLooping(false)
 
   love.audio.play(self.stream)
-}
+end
