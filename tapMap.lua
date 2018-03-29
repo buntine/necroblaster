@@ -12,8 +12,8 @@ TapMap = {
   speed = DEFAULT_SPEED
 }
 
-function TapMap:new(path, speed)
-  local o = o or {}
+function TapMap:new(path)
+  local o = {}
 
   setmetatable(o, self)
   self.__index = self

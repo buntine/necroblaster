@@ -1,9 +1,9 @@
 TapSet = {
-  taps={}
+  taps = {}
 }
 
 function TapSet:new()
-  local o = {}
+  o = {taps = {}}
 
   setmetatable(o, self)
   self.__index = self
@@ -15,6 +15,6 @@ function TapSet:add(tap)
   table.insert(self.taps, tap)
 end
 
-function TapSet:lastTapID()
-  return (#self.taps > 0 and self.taps[#self.taps].id or nil)
+function TapSet:seen(tapID)
+  return (#self.taps > 0 and self.taps[#self.taps].id == tapID or false)
 end
