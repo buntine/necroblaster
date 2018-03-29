@@ -3,9 +3,6 @@ require "song"
 require "tapSet"
 require "tapMap"
 
-BLOCK_SIZE = 1000 / 15.0
-SPEED = 120
-
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
   love.graphics.setColor(80, 80, 180)
@@ -40,7 +37,7 @@ end
 function love.update()
   tapMap:progress()
 
-  tap = tapMap:currentTap()
+  tap = tapMap:futureTap()
   lastId = (#visible > 0 and visible[#visible].id or nil)
 
   if tap and tap.char and tap.id ~= lastId then
@@ -50,7 +47,7 @@ function love.update()
   for i=#visible, 1, -1 do
     v = visible[i]
     h = love.graphics.getHeight()
-    v.y = v.y + (h / SPEED)
+    v.y = v.y + (h / tapMap.speed)
 
     if v.y > h + 50 then
       table.remove(visible, i)
@@ -60,7 +57,7 @@ end
 
 function love.keypressed(key, sc, ...)
   tap = tapMap:currentTap()
-  lastId = (#presses > 0 and presses[#presses].id or nil)
+  lastId = tapSet:lastTapID()
 
   if tap and tap.char then
     if key == tap.char and lastId ~= tap.id then

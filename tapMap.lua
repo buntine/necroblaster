@@ -1,6 +1,6 @@
 json = require "lib/json"
 
-DEFAULT_SPEED = 90
+DEFAULT_SPEED = 120
 TIME_SCALE = 1000 / 15
 DATA_PATH = "data/songs"
 
@@ -38,7 +38,13 @@ end
 function TapMap:currentTap()
   local frame = self:currentFrame()
 
-  return self.data[frame]
+  return self.keys[frame]
+end
+
+function TapMap:futureTap()
+  local frame = math.floor((self.framePointer + self.speed) / 4) + 1
+
+  return self.keys[frame]
 end
 
 function list_iter(t)
@@ -61,14 +67,14 @@ function TapMap:generate()
     local frameBlock = {id=nil, char=nil, health=nil}
     local timeDiff = math.abs(nextKey.offset - pos)
 
-    if timeDiff <= BLOCK_SIZE * 3 then
+    if timeDiff <= TIME_SCALE * 3 then
       frameBlock.char = nextKey.char
       frameBlock.id = i
 
       if pos >= nextKey.offset then
         frameBlock.health = 0.5
         nextKey, i = dataIter()
-      elseif timeDiff > BLOCK_SIZE then
+      elseif timeDiff > TIME_SCALE then
         frameBlock.health = 0.5
       else
         frameBlock.health = 1.0
@@ -76,8 +82,10 @@ function TapMap:generate()
     end
 
     table.insert(self.keys, frameBlock)
-    pos = pos + BLOCK_SIZE
+    pos = pos + TIME_SCALE
 
     if nextKey == nil then break end
   end
+
+  print(json.encode(self.keys))
 end

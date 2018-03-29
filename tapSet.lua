@@ -14,3 +14,7 @@ end
 function TapSet:add(tap)
   table.insert(self.taps, tap)
 end
+
+function TapSet:lastTapID()
+  return (#self.taps > 0 and self.taps[#self.taps].id or nil)
+end
