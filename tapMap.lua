@@ -1,7 +1,10 @@
 json = require "lib/json"
+fun = require "lib/fun"
 
 DEFAULT_SPEED = 120
 TIME_SCALE = 1000 / 15
+FRAME_DELTA = 4
+DAMPENING = 2
 DATA_PATH = "data/songs"
 
 TapMap = {
@@ -31,8 +34,8 @@ function TapMap:progress()
   self.framePointer = self.framePointer + 1
 end
 
-function TapMap:currentFrame()
-  return math.floor(self.framePointer / 4) + 1
+function TapMap:currentFrame(offset)
+  return math.floor((self.framePointer + (offset or 0)) / FRAME_DELTA) + 1
 end
 
 function TapMap:currentTap()
@@ -42,48 +45,21 @@ function TapMap:currentTap()
 end
 
 function TapMap:futureTap()
-  local frame = math.floor((self.framePointer + self.speed) / 4) + 1
+  local frame = self:currentFrame(self.speed)
 
   return self.keys[frame]
 end
 
-function list_iter(t)
-  local i = 0
-  local n = table.getn(t)
-  return function ()
-           i = i + 1
-           if i <= n then
-             return unpack({t[i], i})
-           end
-         end
-end
-
 function TapMap:generate()
-  local pos = 0
-  local dataIter = list_iter(self.data)
-  local nextKey, i = dataIter()
+  local size = math.floor(self.data[#self.data].offset / TIME_SCALE) + DAMPENING
+  self.keys = fun.totable(fun.take(size, fun.tabulate(function(x) return {} end)))
 
-  while true do
-    local frameBlock = {id=nil, char=nil, health=nil}
-    local timeDiff = math.abs(nextKey.offset - pos)
-
-    if timeDiff <= TIME_SCALE * 3 then
-      frameBlock.char = nextKey.char
-      frameBlock.id = i
-
-      if pos >= nextKey.offset then
-        frameBlock.health = 0.5
-        nextKey, i = dataIter()
-      elseif timeDiff > TIME_SCALE then
-        frameBlock.health = 0.5
-      else
-        frameBlock.health = 1.0
-      end
+  for _it, d in fun.iter(self.data) do
+    local index = math.floor(d.offset / TIME_SCALE)
+    
+    for _it, i in fun.range(index - DAMPENING, index + DAMPENING) do
+      local diff = math.abs(index - i) + 1
+      self.keys[i] = {id = index, char = d.char, health = 1 / diff}
     end
-
-    table.insert(self.keys, frameBlock)
-    pos = pos + TIME_SCALE
-
-    if nextKey == nil then break end
   end
 end

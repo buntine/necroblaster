@@ -13,7 +13,7 @@
   {"kind": "tap", "offset": 23825, "char": "a"},
   {"kind": "tap", "offset": 24115, "char": "a"},
   {"kind": "tap", "offset": 24430, "char": "a"},
-  {"kind": "doublestart", "offset": 24569, "char": "d"},
+  {"kind": "doublekick", "offset": 24569, "finish": 35000, "char": "d"},
   {"kind": "tap", "offset": 25765, "char": "a"},
   {"kind": "tap", "offset": 26096, "char": "b"},
   {"kind": "tap", "offset": 26444, "char": "c"},
