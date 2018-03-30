@@ -3,15 +3,10 @@
 *- Refactor into OO style
 *- Refactor key map
 *- Proper GUI (remove x_for_char shit)
+*- Work out how to implement double-kick
+- Allow for multiple keys per segment
+- Show kind=doublekick as rectangle
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro
-- Work out how to implement double-kick
--- Perhaps add types into json files
---- start: 10000, end: 35000
---- Expands to constant taps
---- But how to represent on GUI?
----- Record type in keyMap.
------ type=doublekick then draw as rectangle
------ {"kind": "doublestart", "offset": 24569, "char": "a"},
 - Determine relative score
 -- Where you could be (perfect) vs. where you are
