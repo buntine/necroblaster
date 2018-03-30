@@ -14,7 +14,7 @@ function VisibleTapSet:updateY(height, speed)
 end
 
 function VisibleTapSet:add(tap)
-  table.insert(self.taps, {x=x_for_char(tap.char), y=-75, id=tap.id})
+  table.insert(self.taps, {x=x_for_char(tap.char), y=-75, id=tap.id, kind=tap.kind})
 end
 
 function x_for_char(c)

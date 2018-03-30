@@ -30,26 +30,30 @@ function love.draw()
   love.graphics.line(20, h - 30, w - 20, h - 30)
 
   for _, v in ipairs(visibleTapSet.taps) do
-    love.graphics.circle("fill", v.x, v.y, 50)
+    if v.kind == "tap" then
+      love.graphics.circle("fill", v.x, v.y, 30)
+    elseif v.kind == "doublekick" then
+      love.graphics.circle("fill", (v.id % 2 == 0 and v.x - 40 or v.x + 40), v.y, 15)
+    end
   end
 end
 
 function love.update()
   tapMap:progress()
 
-  local tap = tapMap:futureTap()
-
-  if tap and not visibleTapSet:seen(tap.id) then
-    visibleTapSet:add(tap)
+  for _, tap in ipairs(tapMap:futureTaps()) do
+    if tap and not visibleTapSet:seen(tap.id) then
+      visibleTapSet:add(tap)
+    end
   end
 
   visibleTapSet:updateY(love.graphics.getHeight(), tapMap.speed)
 end
 
 function love.keypressed(key, sc, ...)
-  local tap = tapMap:currentTap()
-
-  if tap and key == tap.char and not tapSet:seen(tap.id) then
-    tapSet:add(tap)
+  for _, tap in ipairs(tapMap:currentTaps()) do
+    if tap and key == tap.char and not tapSet:seen(tap.id) then
+      tapSet:add(tap)
+    end
   end
 end

@@ -38,13 +38,13 @@ function TapMap:currentFrame(offset)
   return math.floor((self.framePointer + (offset or 0)) / FRAME_DELTA) + 1
 end
 
-function TapMap:currentTap()
+function TapMap:currentTaps()
   local frame = self:currentFrame()
 
   return self.keys[frame]
 end
 
-function TapMap:futureTap()
+function TapMap:futureTaps()
   local frame = self:currentFrame(self.speed)
 
   return self.keys[frame]
@@ -66,7 +66,7 @@ function TapMap:generate()
       local finishIndex = math.floor(d.finish / TIME_SCALE)
 
       self:populateKeys(index, finishIndex, d, function(i)
-        return {id = i, health = 1}
+        return {id = i, health = 0.5}
       end)
     end
   end
@@ -74,8 +74,10 @@ end
 
 function TapMap:populateKeys(start, stop, d, f)
   for _it, i in fun.range(start, stop) do
-    self.keys[i] = f(i)
-    self.keys[i].char = d.char
-    self.keys[i].kind = d.kind
+    local o = f(i)
+    o.char = d.char
+    o.kind = d.kind
+
+    table.insert(self.keys[i], o)
   end
 end
