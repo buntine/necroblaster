@@ -7,7 +7,6 @@ require "tapMap"
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
   love.graphics.setColor(80, 80, 180)
-  love.graphics.setLineWidth(3)
 
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
@@ -27,7 +26,10 @@ function love.draw()
   love.graphics.print("Frame: "..tostring(frame), 10, 40)
   love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
 
-  love.graphics.line(20, h - 30, w - 20, h - 30)
+  love.graphics.circle("fill", 75, h - 40, 30)
+  love.graphics.circle("fill", 250, h - 40, 30)
+  love.graphics.circle("fill", 425, h - 40, 30)
+  love.graphics.circle("fill", 600, h - 40, 30)
 
   for _, v in ipairs(visibleTapSet.taps) do
     if v.kind == "tap" then
