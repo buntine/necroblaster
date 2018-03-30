@@ -2,6 +2,7 @@
 *- Show GUI of upcoming taps
 *- Refactor into OO style
 *- Refactor key map
+*- Proper GUI (remove x_for_char shit)
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro
 - Work out how to implement double-kick

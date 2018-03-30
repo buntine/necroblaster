@@ -57,9 +57,23 @@ function TapMap:generate()
   for _it, d in fun.iter(self.data) do
     local index = math.floor(d.offset / TIME_SCALE)
     
-    for _it, i in fun.range(index - DAMPENING, index + DAMPENING) do
-      local diff = math.abs(index - i) + 1
-      self.keys[i] = {id = index, char = d.char, health = 1 / diff}
+    if d.kind == "tap" then
+      self:populateKeys(index - DAMPENING, index + DAMPENING, function(i)
+        local diff = math.abs(index - i) + 1
+        return {id = index, char = d.char, health = 1 / diff}
+      end)
+    elseif d.kind == "doublekick" then
+      local finishIndex = math.floor(d.finish / TIME_SCALE)
+
+      self:populateKeys(index, finishIndex, function(i)
+        return {id = i, char = d.char, health = 1}
+      end)
     end
+  end
+end
+
+function TapMap:populateKeys(start, stop, f)
+  for _it, i in fun.range(start, stop) do
+    self.keys[i] = f(i)
   end
 end
