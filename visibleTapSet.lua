@@ -1,3 +1,4 @@
+fun = require "lib/fun"
 require "tapSet"
 
 VisibleTapSet = TapSet:new()
@@ -20,4 +21,8 @@ end
 function x_for_char(c)
   local xs = {a=75, b=250, c=425, d=600}
   return xs[c]
+end
+
+function VisibleTapSet:seen(tapID)
+  return fun.any(function(t) return t.id == tapID end, self.taps)
 end

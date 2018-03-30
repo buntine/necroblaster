@@ -41,13 +41,13 @@ end
 function TapMap:currentTaps()
   local frame = self:currentFrame()
 
-  return self.keys[frame]
+  return self.keys[frame] or {}
 end
 
 function TapMap:futureTaps()
   local frame = self:currentFrame(self.speed)
 
-  return self.keys[frame]
+  return self.keys[frame] or {}
 end
 
 function TapMap:generate()
