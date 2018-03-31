@@ -32,3 +32,15 @@ end
 function Lane:add(tap)
   table.insert(self.taps, {y=-75, id=tap.id, kind=tap.kind})
 end
+
+function Lane:render(h)
+  love.graphics.circle("fill", self.x, h - 40, 30)
+
+  for i, t in ipairs(self.taps) do
+    if t.kind == "tap" then
+      love.graphics.circle("fill", self.x, t.y, 30)
+    elseif t.kind == "doublekick" then
+      love.graphics.circle("fill", (i % 2 == 0 and self.x - 40 or self.x + 40), t.y, 15)
+    end
+  end
+end

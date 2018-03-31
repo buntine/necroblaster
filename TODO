@@ -7,7 +7,7 @@
 *- Allow for multiple keys per segment
 *- Show kind=doublekick as rectangle (alternating smaller dots)
 *- Refactor UI into set of Lane objects
-- Move lane rendeRing into Lane
+*- Move lane rendering into Lane
 - Lanes angled for perspective (coming from the distance)
 - Design and build overall GUI
 - Finish data for Ritual

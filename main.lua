@@ -26,19 +26,8 @@ function love.draw()
   love.graphics.print("Frame: "..tostring(frame), 10, 40)
   love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
 
-  love.graphics.circle("fill", 75, h - 40, 30)
-  love.graphics.circle("fill", 250, h - 40, 30)
-  love.graphics.circle("fill", 425, h - 40, 30)
-  love.graphics.circle("fill", 600, h - 40, 30)
-
   for _, l in pairs(laneways.lanes) do
-    for i, v in ipairs(l.taps) do
-      if v.kind == "tap" then
-        love.graphics.circle("fill", l.x, v.y, 30)
-      elseif v.kind == "doublekick" then
-        love.graphics.circle("fill", (i % 2 == 0 and l.x - 40 or l.x + 40), v.y, 15)
-      end
-    end
+    l:render(h)
   end
 end
 
