@@ -6,10 +6,8 @@
 *- Work out how to implement double-kick
 *- Allow for multiple keys per segment
 *- Show kind=doublekick as rectangle (alternating smaller dots)
-- Refactor UI into set of Lane objects
--- Each draws itself.
--- Angled for perspective (coming form the distance)
--- Work out how to get alternating double kick ordering correct when segment has multiple keys (don't use ID % 2)
+*- Refactor UI into set of Lane objects
+- Lanes angled for perspective (coming from the distance)
 - Design and build overall GUI
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro

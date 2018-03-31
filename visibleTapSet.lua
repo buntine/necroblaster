@@ -1,28 +1,48 @@
 fun = require "lib/fun"
 require "tapSet"
+require "lane"
 
-VisibleTapSet = TapSet:new()
+LANE_WIDTH = 175
+LANE_OFFSET = 75
 
-function VisibleTapSet:updateY(height, speed)
-  for i=#self.taps, 1, -1 do
-    local v = self.taps[i]
-    v.y = v.y + (height / speed)
+VisibleTapSet = {
+  lanes = {}
+}
 
-    if v.y > height + 50 then
-      table.remove(self.taps, i)
-    end
-  end
+function VisibleTapSet:new()
+  local o = {
+    lanes = {
+      a = Lane:new(LANE_OFFSET),
+      b = Lane:new(LANE_OFFSET + LANE_WIDTH),
+      c = Lane:new(LANE_OFFSET + LANE_WIDTH * 2),
+      d = Lane:new(LANE_OFFSET + LANE_WIDTH * 3)
+    }
+  }
+
+  setmetatable(o, self)
+  self.__index = self
+
+  return o
+end
+
+function VisibleTapSet:progress(height, speed)
+  fun.each(function(_, l)
+    l:progress(height, speed)
+  end, self.lanes)
 end
 
 function VisibleTapSet:add(tap)
-  table.insert(self.taps, {x=x_for_char(tap.char), y=-75, id=tap.id, kind=tap.kind})
+  local lane = self:lanefor(tap.char)
+
+  lane:add(tap)
 end
 
-function x_for_char(c)
-  local xs = {a=75, b=250, c=425, d=600}
-  return xs[c]
+function VisibleTapSet:seen(tap)
+  local lane = self:lanefor(tap.char)
+
+  return lane:seen(tap.id)
 end
 
-function VisibleTapSet:seen(tapID)
-  return fun.any(function(t) return t.id == tapID end, self.taps)
+function VisibleTapSet:lanefor(c)
+  return self.lanes[c]
 end
