@@ -3,6 +3,7 @@ require "song"
 require "tapSet"
 require "laneways"
 require "tapMap"
+require "constants"
 
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)

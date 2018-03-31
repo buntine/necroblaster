@@ -1,9 +1,4 @@
-fun = require "lib/fun"
-require "tapSet"
 require "lane"
-
-LANE_WIDTH = 175
-LANE_OFFSET = 75
 
 LaneWays = {
   lanes = {}
@@ -12,10 +7,10 @@ LaneWays = {
 function LaneWays:new()
   local o = {
     lanes = {
-      a = Lane:new(LANE_OFFSET),
-      b = Lane:new(LANE_OFFSET + LANE_WIDTH),
-      c = Lane:new(LANE_OFFSET + LANE_WIDTH * 2),
-      d = Lane:new(LANE_OFFSET + LANE_WIDTH * 3)
+      a = Lane:new(0),
+      b = Lane:new(1),
+      c = Lane:new(2),
+      d = Lane:new(3)
     }
   }
 

@@ -1,11 +1,4 @@
 json = require "lib/json"
-fun = require "lib/fun"
-
-DEFAULT_SPEED = 120
-TIME_SCALE = 1000 / 15
-FRAME_DELTA = 4
-DAMPENING = 2
-DATA_PATH = "data/songs"
 
 TapMap = {
   data = {},

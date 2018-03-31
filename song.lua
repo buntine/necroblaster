@@ -1,5 +1,3 @@
-SONG_PATH = "assets/sounds"
-
 Song = {
   stream = nil
 }

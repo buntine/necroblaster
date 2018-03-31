@@ -1,13 +1,16 @@
-fun = require "lib/fun"
-
 Lane = {
   taps = {},
+  nth = 0,
   x = 0,
   total = 0
 }
 
-function Lane:new(x)
-  local o = {taps = {}, x = x}
+function Lane:new(nth)
+  local o = {
+    taps = {},
+    nth = nth,
+    x = LANE_OFFSET + (LANE_WIDTH * nth)
+  }
 
   setmetatable(o, self)
   self.__index = self
