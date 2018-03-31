@@ -5,11 +5,11 @@ require "lane"
 LANE_WIDTH = 175
 LANE_OFFSET = 75
 
-VisibleTapSet = {
+LaneWays = {
   lanes = {}
 }
 
-function VisibleTapSet:new()
+function LaneWays:new()
   local o = {
     lanes = {
       a = Lane:new(LANE_OFFSET),
@@ -25,24 +25,24 @@ function VisibleTapSet:new()
   return o
 end
 
-function VisibleTapSet:progress(height, speed)
+function LaneWays:progress(height, speed)
   fun.each(function(_, l)
     l:progress(height, speed)
   end, self.lanes)
 end
 
-function VisibleTapSet:add(tap)
+function LaneWays:add(tap)
   local lane = self:lanefor(tap.char)
 
   lane:add(tap)
 end
 
-function VisibleTapSet:seen(tap)
+function LaneWays:seen(tap)
   local lane = self:lanefor(tap.char)
 
   return lane:seen(tap.id)
 end
 
-function VisibleTapSet:lanefor(c)
+function LaneWays:lanefor(c)
   return self.lanes[c]
 end

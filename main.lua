@@ -1,7 +1,7 @@
 fun = require "lib/fun"
 require "song"
 require "tapSet"
-require "visibleTapSet"
+require "laneways"
 require "tapMap"
 
 function love.load(a)
@@ -11,7 +11,7 @@ function love.load(a)
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
   tapSet = TapSet:new()
-  visibleTapSet = VisibleTapSet:new()
+  laneways = LaneWays:new()
 
   song:play()
   tapMap:generate()
@@ -31,7 +31,7 @@ function love.draw()
   love.graphics.circle("fill", 425, h - 40, 30)
   love.graphics.circle("fill", 600, h - 40, 30)
 
-  for _, l in pairs(visibleTapSet.lanes) do
+  for _, l in pairs(laneways.lanes) do
     for i, v in ipairs(l.taps) do
       if v.kind == "tap" then
         love.graphics.circle("fill", l.x, v.y, 30)
@@ -46,12 +46,12 @@ function love.update()
   tapMap:progress()
 
   for _, tap in ipairs(tapMap:futureTaps()) do
-    if tap and not visibleTapSet:seen(tap) then
-      visibleTapSet:add(tap)
+    if tap and not laneways:seen(tap) then
+      laneways:add(tap)
     end
   end
 
-  visibleTapSet:progress(love.graphics.getHeight(), tapMap.speed)
+  laneways:progress(love.graphics.getHeight(), tapMap.speed)
 end
 
 function love.keypressed(key, sc, ...)
