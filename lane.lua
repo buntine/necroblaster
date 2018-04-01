@@ -48,8 +48,9 @@ function Lane:render(w, h)
       local a = (h - VANISHING_POINT_Y) / (self.x - xVanishingPoint)
       local b = VANISHING_POINT_Y - (a * xVanishingPoint)
       local x = (t.y - b) / a
+      local radius = TAP_RADIUS * ((t.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
 
-      love.graphics.circle("fill", x, t.y, 30)
+      love.graphics.circle("fill", x, t.y, radius)
     elseif t.kind == "doublekick" then
       love.graphics.circle("fill", (t.nth % 2 == 0 and self.x - 40 or self.x + 40), t.y, 15)
     end
