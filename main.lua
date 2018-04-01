@@ -6,8 +6,9 @@ require "laneways"
 require "tapMap"
 
 function love.load(a)
-  love.graphics.setBackgroundColor(171, 205, 236)
   love.graphics.setColor(80, 80, 180)
+
+  bg = love.graphics.newImage("assets/images/background.png")
 
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
@@ -22,6 +23,8 @@ function love.draw()
   local frame = tapMap:currentFrame()
   local h = love.graphics.getHeight()
   local w = love.graphics.getWidth()
+
+  love.graphics.draw(bg, 0, 0)
 
   love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
   love.graphics.print("Frame: "..tostring(frame), 10, 40)
