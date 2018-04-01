@@ -22,12 +22,12 @@ function Lane:seen(id)
   return fun.any(function(t) return t.id == id end, self.taps)
 end
 
-function Lane:progress(height, speed)
+function Lane:progress(h, speed)
   for i=#self.taps, 1, -1 do
     local t = self.taps[i]
-    t.y = t.y + (height / speed)
+    t.y = t.y + (h / speed)
 
-    if t.y > height + 50 then
+    if t.y > h + 50 then
       table.remove(self.taps, i)
     end
   end
@@ -42,17 +42,22 @@ function Lane:render(w, h)
   love.graphics.circle("fill", self.x, h - 40, 30)
 
   local xVanishingPoint = w / 2
+  local a = (h - VANISHING_POINT_Y) / (self.x - xVanishingPoint)
+  local b = VANISHING_POINT_Y - (a * xVanishingPoint)
 
   for _, t in ipairs(self.taps) do
+    local x = (t.y - b) / a
+    local normaliser = ((t.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
+
     if t.kind == "tap" then
-      local a = (h - VANISHING_POINT_Y) / (self.x - xVanishingPoint)
-      local b = VANISHING_POINT_Y - (a * xVanishingPoint)
-      local x = (t.y - b) / a
-      local radius = TAP_RADIUS * ((t.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
+      local radius = TAP_RADIUS * normaliser
 
       love.graphics.circle("fill", x, t.y, radius)
     elseif t.kind == "doublekick" then
-      love.graphics.circle("fill", (t.nth % 2 == 0 and self.x - 40 or self.x + 40), t.y, 15)
+      local radius = DOUBLEKICK_RADIUS * normaliser
+      local offset = DOUBLEKICK_SPACING * normaliser
+
+      love.graphics.circle("fill", (t.nth % 2 == 0 and x - offset or x + offset), t.y, radius)
     end
   end
 end

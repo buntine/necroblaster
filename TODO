@@ -9,9 +9,8 @@
 *- Refactor UI into set of Lane objects
 *- Move lane rendering into Lane
 *- Taps rendering angled for perspective (coming from the distance)
-- Taps perspective part 2
--- Scaled to imply distance
--- Speed normalised to imply distance.
+*- Taps scaled to imply distance
+-- Taps speed normalised to imply distance (slower to faster but equal to static speed)
 - Draw static background with angled lanes, etc
 - Design and build overall GUI
 - Finish data for Ritual
