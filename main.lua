@@ -1,9 +1,9 @@
 fun = require "lib/fun"
+require "constants"
 require "song"
 require "tapSet"
 require "laneways"
 require "tapMap"
-require "constants"
 
 function love.load(a)
   love.graphics.setBackgroundColor(171, 205, 236)
@@ -28,7 +28,7 @@ function love.draw()
   love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
 
   for _, l in pairs(laneways.lanes) do
-    l:render(h)
+    l:render(w, h)
   end
 end
 
