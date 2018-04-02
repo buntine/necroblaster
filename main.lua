@@ -3,17 +3,17 @@ require "constants"
 require "song"
 require "tapSet"
 require "laneways"
+require "railings"
 require "tapMap"
 
 function love.load(a)
-  love.graphics.setColor(80, 80, 180)
-
   bg = love.graphics.newImage("assets/images/background.png")
 
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
   tapSet = TapSet:new()
   laneways = LaneWays:new()
+  railings = Railings:new()
 
   song:play()
   tapMap:generate()
@@ -33,9 +33,13 @@ function love.draw()
   for _, l in pairs(laneways.lanes) do
     l:render(w, h)
   end
+
+  railings:render(w, h)
 end
 
 function love.update()
+  local h = love.graphics.getHeight()
+
   tapMap:progress()
 
   for _, tap in ipairs(tapMap:futureTaps()) do
@@ -44,7 +48,12 @@ function love.update()
     end
   end
 
-  laneways:progress(love.graphics.getHeight(), tapMap.speed)
+  laneways:progress(h, tapMap.speed)
+  railings:progress(h, tapMap.speed)
+
+  if tapMap.framePointer % RAILING_FREQUENCY == 0 then
+    railings:add()
+  end
 end
 
 function love.keypressed(key, sc, ...)

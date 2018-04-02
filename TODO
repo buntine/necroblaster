@@ -1,4 +1,4 @@
-*- Ignore press after it's been registered.
+*- Ignore press after it's been registered
 *- Show GUI of upcoming taps
 *- Refactor into OO style
 *- Refactor key map
@@ -12,13 +12,15 @@
 *- Taps scaled to imply distance
 *- Taps speed normalised to imply distance (slower to faster but equal to static speed)
 *- Draw static background with angled lanes, etc
+*- Constantly moving side railings to indicate movement when no taps approaching
+- Refactor railings and taps to be one "moveable" so that progress() and render() can be generalised
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro
 - Data for Manic Demise (intro at least)
 - Design and build overall GUI
 - Allow for multiple songs
 -- Song picker
--- Load and play after selection.
+-- Load and play after selection
 - Allow user to pick speed
 - Upgrade to Love 11.0
 - Determine relative score

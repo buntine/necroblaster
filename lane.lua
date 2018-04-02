@@ -38,7 +38,7 @@ end
 
 function Lane:add(tap)
   self.total = self.total + 1
-  table.insert(self.taps, {y=-75, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
+  table.insert(self.taps, {y=0, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
 end
 
 function Lane:render(w, h)
