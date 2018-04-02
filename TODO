@@ -10,13 +10,16 @@
 *- Move lane rendering into Lane
 *- Taps rendering angled for perspective (coming from the distance)
 *- Taps scaled to imply distance
-*-- Taps speed normalised to imply distance (slower to faster but equal to static speed)
+*- Taps speed normalised to imply distance (slower to faster but equal to static speed)
 *- Draw static background with angled lanes, etc
-- Design and build overall GUI
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro
+- Data for Manic Demise (intro at least)
+- Design and build overall GUI
 - Allow for multiple songs
 -- Song picker
 -- Load and play after selection.
+- Allow user to pick speed
+- Upgrade to Love 11.0
 - Determine relative score
 -- Where you could be (perfect) vs. where you are
