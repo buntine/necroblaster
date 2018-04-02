@@ -12,6 +12,10 @@ function Song:new(path)
   return o
 end
 
+function Song:tell()
+  return self.stream:tell()
+end
+
 function Song:play()
   self.stream:setLooping(false)
 

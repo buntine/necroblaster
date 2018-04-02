@@ -13,6 +13,7 @@
 *- Taps speed normalised to imply distance (slower to faster but equal to static speed)
 *- Draw static background with angled lanes, etc
 *- Constantly moving side railings to indicate movement when no taps approaching
+- Fix bug for when to create railing now that it's relative to song position
 - Refactor railings and taps to be one "moveable" so that progress() and render() can be generalised
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro

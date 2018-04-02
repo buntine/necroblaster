@@ -20,7 +20,7 @@ function love.load(a)
 end
 
 function love.draw()
-  local frame = tapMap:currentFrame()
+  local frame = tapMap.framePointer
   local h = love.graphics.getHeight()
   local w = love.graphics.getWidth()
 
@@ -39,21 +39,22 @@ end
 
 function love.update()
   local h = love.graphics.getHeight()
+  local pos = song:tell()
 
-  tapMap:progress()
+  tapMap:progress(pos)
 
-  for _, tap in ipairs(tapMap:futureTaps()) do
+  for _, tap in ipairs(tapMap:futureTaps(pos)) do
     if tap and not laneways:seen(tap) then
       laneways:add(tap)
     end
   end
 
-  laneways:progress(h, tapMap.speed)
-  railings:progress(h, tapMap.speed)
-
-  if tapMap.framePointer % RAILING_FREQUENCY == 0 then
+  if math.floor(pos * 1000) % 1000 == 0 then
     railings:add()
   end
+
+  laneways:progress(h, tapMap.speed)
+  railings:progress(h, tapMap.speed)
 end
 
 function love.keypressed(key, sc, ...)

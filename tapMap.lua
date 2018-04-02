@@ -23,22 +23,17 @@ function TapMap:new(path)
   return o
 end
 
-function TapMap:progress()
-  self.framePointer = self.framePointer + 1
-end
-
-function TapMap:currentFrame(offset)
-  return math.floor((self.framePointer + (offset or 0)) / FRAME_DELTA) + 1
+function TapMap:progress(pos)
+  self.framePointer = math.floor((pos * 1000) / TIME_SCALE)
 end
 
 function TapMap:currentTaps()
-  local frame = self:currentFrame()
-
-  return self.keys[frame] or {}
+  return self.keys[self.framePointer] or {}
 end
 
-function TapMap:futureTaps()
-  local frame = self:currentFrame(self.speed)
+-- Returns the taps for the frame we will be up to in exactly N=(self.speed / 60) seconds.
+function TapMap:futureTaps(pos)
+  local frame = math.floor(((pos + (self.speed / 60)) * 1000) / TIME_SCALE)
 
   return self.keys[frame] or {}
 end
