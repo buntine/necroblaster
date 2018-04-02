@@ -10,8 +10,8 @@
 *- Move lane rendering into Lane
 *- Taps rendering angled for perspective (coming from the distance)
 *- Taps scaled to imply distance
--- Taps speed normalised to imply distance (slower to faster but equal to static speed)
-- Draw static background with angled lanes, etc
+*-- Taps speed normalised to imply distance (slower to faster but equal to static speed)
+*- Draw static background with angled lanes, etc
 - Design and build overall GUI
 - Finish data for Ritual
 -- Fix first set of A, B, C after intro

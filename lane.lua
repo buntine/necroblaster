@@ -25,9 +25,12 @@ end
 function Lane:progress(h, speed)
   for i=#self.taps, 1, -1 do
     local t = self.taps[i]
-    t.y = t.y + (h / speed)
 
-    if t.y > h + 50 then
+    -- Super simple projection from Z to Y.
+    t.z = t.z - ((TAP_Z - 1) / speed)
+    t.y = (h / t.z) - (h / TAP_Z)
+
+    if t.y > h then
       table.remove(self.taps, i)
     end
   end
@@ -35,7 +38,7 @@ end
 
 function Lane:add(tap)
   self.total = self.total + 1
-  table.insert(self.taps, {y=-75, id=tap.id, kind=tap.kind, nth=self.total})
+  table.insert(self.taps, {y=-75, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
 end
 
 function Lane:render(w, h)
