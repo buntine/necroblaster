@@ -3,7 +3,7 @@ require "constants"
 require "song"
 require "tapSet"
 require "laneways"
-require "railings"
+require "railing"
 require "tapMap"
 
 function love.load(a)
@@ -13,7 +13,7 @@ function love.load(a)
   tapMap = TapMap:new("mh_ritual")
   tapSet = TapSet:new()
   laneways = LaneWays:new()
-  railings = Railings:new()
+  railing = Railing:new()
 
   song:play()
   tapMap:generate()
@@ -34,7 +34,7 @@ function love.draw()
     l:render(w, h)
   end
 
-  railings:render(w, h)
+  railing:render(w, h)
 end
 
 function love.update()
@@ -49,12 +49,12 @@ function love.update()
     end
   end
 
-  if math.floor(pos * 1000) % 1000 == 0 then
-    railings:add()
+  if math.floor(pos) % 5 == 0 then
+    railing:add()
   end
 
   laneways:progress(h, tapMap.speed)
-  railings:progress(h, tapMap.speed)
+  railing:progress(h, tapMap.speed)
 end
 
 function love.keypressed(key, sc, ...)
