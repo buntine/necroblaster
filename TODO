@@ -15,6 +15,7 @@
 *- Constantly moving side railings to indicate movement when no taps approaching
 *- Refactor railings and taps to be one "moveable" so that progress() and render() can be generalised
 *- Fix bug for when to create railing now that it's relative to song position
+*- Allow for blast beats
 - Finish data for Ritual
 - Data for Manic Demise (intro at least)
 - Upgrade to Love 11.0

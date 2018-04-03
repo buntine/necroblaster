@@ -46,22 +46,25 @@ function TapMap:generate()
     local index = math.floor(d.offset / TIME_SCALE)
     
     if d.kind == "tap" then
-      self:populateKeys(index - DAMPENING, index + DAMPENING, d, function(i)
+      self:populateKeys(index - DAMPENING, index + DAMPENING, 1, d, function(i)
         local diff = math.abs(index - i) + 1
         return {id = index, health = 1 / diff}
       end)
-    elseif d.kind == "doublekick" then
+    else
       local finishIndex = math.floor(d.finish / TIME_SCALE)
+      local step, health = unpack(
+        (d.kind == "blastbeat" and {2, 1}  or {1, 0.5})
+      )
 
-      self:populateKeys(index, finishIndex, d, function(i)
-        return {id = i, health = 0.5}
+      self:populateKeys(index, finishIndex, step, d, function(i)
+        return {id = i, health = health}
       end)
     end
   end
 end
 
-function TapMap:populateKeys(start, stop, d, f)
-  for _it, i in fun.range(start, stop) do
+function TapMap:populateKeys(start, stop, step, d, f)
+  for _it, i in fun.range(start, stop, step) do
     local o = f(i)
     o.char = d.char
     o.kind = d.kind
