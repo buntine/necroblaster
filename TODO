@@ -14,15 +14,13 @@
 *- Draw static background with angled lanes, etc
 *- Constantly moving side railings to indicate movement when no taps approaching
 *- Refactor railings and taps to be one "moveable" so that progress() and render() can be generalised
-- Fix bug for when to create railing now that it's relative to song position
+*- Fix bug for when to create railing now that it's relative to song position
 - Finish data for Ritual
--- Fix first set of A, B, C after intro
 - Data for Manic Demise (intro at least)
-- Design and build overall GUI
+- Upgrade to Love 11.0
 - Allow for multiple songs
 -- Song picker
 -- Load and play after selection
-- Allow user to pick speed
-- Upgrade to Love 11.0
-- Determine relative score
--- Where you could be (perfect) vs. where you are
+- Show score correctly (with words for streaks)
+- Allow user to set speed / difficulty
+- Design and build overall GUI

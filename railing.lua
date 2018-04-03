@@ -5,7 +5,8 @@ Railing = Approachable:new()
 
 function Railing:new()
   local o = {
-    items = {}
+    items = {},
+    lastRail = 0
   }
 
   setmetatable(o, self)
@@ -14,10 +15,12 @@ function Railing:new()
   return o
 end
 
-function Railing:add()
+function Railing:add(pos)
   for _, x in ipairs(RAILING_POSITIONS) do
     table.insert(self.items, {x=x, y=0, z=TAP_Z})
   end
+
+  self.lastRail = pos
 end
 
 function Railing:render(w, h)

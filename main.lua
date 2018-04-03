@@ -49,8 +49,8 @@ function love.update()
     end
   end
 
-  if math.floor(pos) % 5 == 0 then
-    railing:add()
+  if pos - railing.lastRail >= RAILING_FREQUENCY then
+    railing:add(pos)
   end
 
   laneways:progress(h, tapMap.speed)
