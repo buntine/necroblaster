@@ -20,5 +20,5 @@ function Song:play()
   self.stream:setLooping(false)
 
   love.audio.play(self.stream)
-  self.stream:seek(50)
+  --self.stream:seek(80)
 end
