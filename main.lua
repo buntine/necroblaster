@@ -8,6 +8,7 @@ require "tapMap"
 
 function love.load(a)
   bg = love.graphics.newImage("assets/images/background.png")
+  castle = love.graphics.newImage("assets/images/castle.png")
 
   song = Song:new("mh_ritual")
   tapMap = TapMap:new("mh_ritual")
@@ -26,15 +27,17 @@ function love.draw()
 
   love.graphics.draw(bg, 0, 0)
 
-  love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
-  love.graphics.print("Frame: "..tostring(frame), 10, 40)
-  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 70)
+  love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 270)
+  love.graphics.print("Frame: "..tostring(frame), 10, 300)
+  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 330)
 
   for _, l in pairs(laneways.lanes) do
     l:render(w, h)
   end
 
   railing:render(w, h)
+
+  love.graphics.draw(castle, 0, 0)
 end
 
 function love.update()

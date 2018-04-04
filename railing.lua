@@ -25,7 +25,7 @@ end
 
 function Railing:render(w, h)
   self:project(w, h, function(t, x, scaling)
-    withColour(159, 29, 29, 255, function ()
+    withColour(0, 0, 0, 255, function ()
       local radius = RAILING_WIDTH * scaling
 
       love.graphics.rectangle("fill", x, t.y, radius, radius)
