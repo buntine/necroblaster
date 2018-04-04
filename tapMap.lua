@@ -5,6 +5,7 @@ TapMap = {
   keys = {},
   framePointer = 0,
   position = 0,
+  bestScore = 0,
   speed = DEFAULT_SPEED
 }
 
@@ -24,7 +25,18 @@ function TapMap:new(path)
 end
 
 function TapMap:progress(pos)
+  local currentFP = self.framePointer
+
   self.framePointer = math.floor((pos * 1000) / TIME_SCALE)
+
+  -- Update the cached best possible score for this point in the song.
+  if self.framePointer > currentFP then
+    for _, t in ipairs(self:currentTaps()) do
+      if not (t.kind == "tap" and t.health < 1) then
+        self.bestScore = self.bestScore + t.health
+      end
+    end
+  end
 end
 
 function TapMap:currentTaps()

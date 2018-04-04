@@ -16,12 +16,12 @@
 *- Refactor railings and taps to be one "moveable" so that progress() and render() can be generalised
 *- Fix bug for when to create railing now that it's relative to song position
 *- Allow for blast beats
+*- Show score correctly (with words for streaks)
 - Finish data for Ritual
 - Data for Manic Demise (intro at least)
 - Upgrade to Love 11.0
 - Allow for multiple songs
 -- Song picker
 -- Load and play after selection
-- Show score correctly (with words for streaks)
 - Allow user to set speed / difficulty
 - Design and build overall GUI

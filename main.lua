@@ -2,9 +2,10 @@ fun = require "lib/fun"
 require "constants"
 require "song"
 require "tapSet"
+require "tapMap"
 require "laneways"
 require "railing"
-require "tapMap"
+require "score"
 
 function love.load(a)
   bg = love.graphics.newImage("assets/images/background.png")
@@ -15,6 +16,7 @@ function love.load(a)
   tapSet = TapSet:new()
   laneways = LaneWays:new()
   railing = Railing:new()
+  score = Score:new()
 
   song:play()
   tapMap:generate()
@@ -27,14 +29,11 @@ function love.draw()
 
   love.graphics.draw(bg, 0, 0)
 
-  love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 270)
-  love.graphics.print("Frame: "..tostring(frame), 10, 300)
-  love.graphics.print("Score: "..tostring(fun.foldl(function(acc, x) return acc + x.health end, 0, tapSet.taps)), 10, 330)
-
   for _, l in pairs(laneways.lanes) do
     l:render(w, h)
   end
 
+  score:render(tapSet.score)
   railing:render(w, h)
 
   love.graphics.draw(castle, 0, 0)
@@ -58,6 +57,7 @@ function love.update()
 
   laneways:progress(h, tapMap.speed)
   railing:progress(h, tapMap.speed)
+  score:progress(tapSet.score, tapMap.bestScore)
 end
 
 function love.keypressed(key, sc, ...)

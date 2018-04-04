@@ -1,5 +1,6 @@
 TapSet = {
-  taps = {}
+  taps = {},
+  score = 0
 }
 
 function TapSet:new()
@@ -13,6 +14,7 @@ end
 
 function TapSet:add(tap)
   table.insert(self.taps, tap)
+  self.score = self.score + tap.health
 end
 
 function TapSet:seen(tapID)
