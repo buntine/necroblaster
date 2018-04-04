@@ -21,7 +21,7 @@ function Approachable:progress(h, speed)
     o.z = o.z - ((TAP_Z - 1) / speed)
     o.y = (h / o.z) - (h / TAP_Z)
 
-    if o.y > h then
+    if o.y > h - APPROACH_MAX_OFFSET then
       table.remove(self.items, i)
     end
   end

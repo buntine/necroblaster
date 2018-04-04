@@ -8,7 +8,8 @@ function Lane:new(nth)
     nth = nth,
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
-    highlightStep = 1
+    highlightStep = 1,
+    icon = love.graphics.newImage("assets/images/lanea.png")
   }
 
   setmetatable(o, self)
@@ -49,10 +50,6 @@ end
 function Lane:render(w, h)
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
-  withColour(r, g, b, 255, function()
-    love.graphics.rectangle("fill", self.x - 20, h - 50, 40, 30)
-  end)
-
   self:project(w, h, function(t, x, scaling)
     if t.kind == "tap" then
       local radius = TAP_RADIUS * scaling
@@ -69,4 +66,10 @@ function Lane:render(w, h)
       love.graphics.circle("fill", (t.nth % 2 == 0 and x - offset or x + offset), t.y, radius)
     end
   end)
+
+  withColour(r, g, b, 255, function()
+    love.graphics.rectangle("fill", self.x - 20, h - 49, 40, 28)
+  end)
+
+  love.graphics.draw(self.icon, self.x - 70, h - 50)
 end
