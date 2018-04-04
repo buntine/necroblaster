@@ -7,7 +7,8 @@ function Lane:new(nth)
     items = {},
     nth = nth,
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
-    total = 0
+    total = 0,
+    highlightStep = 1
   }
 
   setmetatable(o, self)
@@ -20,13 +21,37 @@ function Lane:seen(id)
   return fun.any(function(t) return t.id == id end, self.items)
 end
 
+function Lane:progress(h, speed)
+  if self.highlightStep > 1 then
+    self.highlightStep = self.highlightStep + HIGHLIGHT_STEP
+  end
+
+  if self.highlightStep > #HIGHLIGHT_COLORS then
+    self.highlightStep = 1
+  end
+
+  Approachable.progress(self, h, speed)
+end
+
 function Lane:add(tap)
   self.total = self.total + 1
   table.insert(self.items, {y=0, x=self.x, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
 end
 
+function Lane:hit()
+  if self.highlightStep == 1 then
+    self.highlightStep = HIGHLIGHT_STEP + 1
+  else
+    self.highlightStep = #HIGHLIGHT_COLORS / 2
+  end
+end
+
 function Lane:render(w, h)
-  love.graphics.circle("fill", self.x, h - 40, 30)
+  local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
+
+  withColour(r, g, b, 255, function()
+    love.graphics.rectangle("fill", self.x - 20, h - 50, 40, 30)
+  end)
 
   self:project(w, h, function(t, x, scaling)
     if t.kind == "tap" then

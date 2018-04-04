@@ -64,6 +64,7 @@ function love.keypressed(key, sc, ...)
   for _, tap in ipairs(tapMap:currentTaps()) do
     if tap and key == tap.char and not tapSet:seen(tap.id) then
       tapSet:add(tap)
+      laneways.lanes[tap.char]:hit()
     end
   end
 end
