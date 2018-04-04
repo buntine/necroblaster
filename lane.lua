@@ -9,7 +9,7 @@ function Lane:new(nth)
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
     highlightStep = 1,
-    icon = love.graphics.newImage("assets/images/lanea.png")
+    icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png")
   }
 
   setmetatable(o, self)
@@ -71,5 +71,5 @@ function Lane:render(w, h)
     love.graphics.rectangle("fill", self.x - 20, h - 49, 40, 28)
   end)
 
-  love.graphics.draw(self.icon, self.x - 70, h - 50)
+  love.graphics.draw(self.icon, self.x - 76.5, h - 50)
 end
