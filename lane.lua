@@ -54,16 +54,22 @@ function Lane:render(w, h)
     if t.kind == "tap" then
       local radius = TAP_RADIUS * scaling
 
-      love.graphics.circle("fill", x, t.y, radius)
+      withColour(236, 226, 36, 255, function()
+        love.graphics.circle("fill", x, t.y, radius)
+      end)
     elseif t.kind == "blastbeat" then
       local radius = DOUBLEKICK_RADIUS * scaling
 
-      love.graphics.circle("fill", x, t.y, radius)
+      withColour(236, 226, 36, 255, function()
+        love.graphics.circle("fill", x, t.y, radius)
+      end)
     elseif t.kind == "doublekick" then
       local radius = DOUBLEKICK_RADIUS * scaling
       local offset = DOUBLEKICK_SPACING * scaling
 
-      love.graphics.circle("fill", (t.nth % 2 == 0 and x - offset or x + offset), t.y, radius)
+      withColour(236, 226, 36, 255, function()
+        love.graphics.circle("fill", (t.nth % 2 == 0 and x - offset or x + offset), t.y, radius)
+      end)
     end
   end)
 
