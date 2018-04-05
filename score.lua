@@ -2,6 +2,7 @@ require "helpers"
 
 Score = {
   x = SCORE_WIDTH / 2,
+  bg = love.graphics.newImage("assets/images/score.png")
 }
 
 function Score:new()
@@ -14,17 +15,19 @@ function Score:new()
 end
 
 function Score:render(score)
-  withColour(186, 66, 66, 255, function()
-    love.graphics.rectangle("fill", SCORE_X, SCORE_Y, SCORE_WIDTH, SCORE_HEIGHT)
-  end)
+  love.graphics.draw(self.bg, SCORE_X, SCORE_Y)
 
-  withColour(66, 66, 66, 255, function()
+  withColour(61, 62, 90, 255, function()
     local diff = SCORE_WIDTH - self.x
 
-    love.graphics.rectangle("fill", SCORE_X + self.x, SCORE_Y, diff, SCORE_HEIGHT)
+    love.graphics.rectangle("fill",
+      SCORE_X + self.x + SCORE_BORDER,
+      SCORE_Y + SCORE_BORDER,
+      diff,
+      SCORE_HEIGHT)
   end)
 
-  love.graphics.print(math.floor(score * 10) * 0.1, SCORE_X, SCORE_Y + SCORE_HEIGHT + 5)
+  love.graphics.print(math.floor(score * 10) * 0.1, SCORE_X, SCORE_Y + SCORE_HEIGHT + 10)
 end
 
 function Score:progress(score, bestScore)
