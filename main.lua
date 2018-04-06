@@ -1,4 +1,5 @@
-fun = require "lib/fun"
+fun = require "lib.fun"
+Gamestate = require "lib.hump.gamestate"
 require "constants"
 require "song"
 require "tapSet"
@@ -7,7 +8,14 @@ require "laneways"
 require "railing"
 require "score"
 
-function love.load(a)
+local play = {}
+
+function love.load()
+  Gamestate.registerEvents()
+  Gamestate.switch(play)
+end
+
+function play:enter()
   bg = love.graphics.newImage("assets/images/background.png")
   castle = love.graphics.newImage("assets/images/castle.png")
 
@@ -22,7 +30,7 @@ function love.load(a)
   tapMap:generate()
 end
 
-function love.draw()
+function play:draw()
   local frame = tapMap.framePointer
   local h = love.graphics.getHeight()
   local w = love.graphics.getWidth()
@@ -39,7 +47,7 @@ function love.draw()
   love.graphics.draw(castle, 0, 0)
 end
 
-function love.update()
+function play:update()
   local h = love.graphics.getHeight()
   local pos = song:tell()
 
@@ -60,7 +68,7 @@ function love.update()
   score:progress(tapSet.score, tapMap.bestScore)
 end
 
-function love.keypressed(key, sc, ...)
+function play:keypressed(key, sc, ...)
   for _, tap in ipairs(tapMap:currentTaps()) do
     if tap and key == tap.char and not tapSet:seen(tap.id) then
       tapSet:add(tap)

@@ -20,8 +20,8 @@
 - Finish data for Ritual
 - Data for Manic Demise (intro at least)
 - Upgrade to Love 11.0
-- Allow for multiple songs
+- Implement gamestates
 -- Song picker
--- Load and play after selection
-- Allow user to set speed / difficulty
+-- Allow user to set speed / difficulty
+-- Show overall score and rank after song
 - Design and build overall GUI
