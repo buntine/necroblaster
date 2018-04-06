@@ -9,18 +9,29 @@ require "railing"
 require "score"
 
 local play = {}
+local menu = {}
 
 function love.load()
   Gamestate.registerEvents()
-  Gamestate.switch(play)
+  Gamestate.switch(menu)
 end
 
-function play:enter()
+function menu:enter()
+  -- Grab each songid (dirs in ./data/*).
+end
+
+function menu:draw()
+  -- Logo
+  -- Songs with back/forth arrows
+  -- Start button
+end
+
+function play:enter(_, songid)
   bg = love.graphics.newImage("assets/images/background.png")
   castle = love.graphics.newImage("assets/images/castle.png")
 
-  song = Song:new("mh_ritual")
-  tapMap = TapMap:new("mh_ritual")
+  song = Song:new(songid)
+  tapMap = TapMap:new(songid)
   tapSet = TapSet:new()
   laneways = LaneWays:new()
   railing = Railing:new()

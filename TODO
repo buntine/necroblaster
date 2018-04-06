@@ -17,11 +17,10 @@
 *- Fix bug for when to create railing now that it's relative to song position
 *- Allow for blast beats
 *- Show score correctly (with words for streaks)
+*- Implement gamestates
+- Implement menu and song picker
 - Finish data for Ritual
 - Data for Manic Demise (intro at least)
 - Upgrade to Love 11.0
-- Implement gamestates
--- Song picker
--- Allow user to set speed / difficulty
--- Show overall score and rank after song
+- Show overall score and rank after song (gamestate: finish)
 - Design and build overall GUI
