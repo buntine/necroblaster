@@ -18,9 +18,10 @@
 *- Allow for blast beats
 *- Show score correctly (with words for streaks)
 *- Implement gamestates
+*- Data for Manic Demise (intro at least)
 - Implement menu and song picker
 - Finish data for Ritual
-- Data for Manic Demise (intro at least)
+- Finish data for Manic Demise
 - Upgrade to Love 11.0
 - Show overall score and rank after song (gamestate: finish)
 - Design and build overall GUI
