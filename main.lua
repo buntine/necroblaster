@@ -26,6 +26,10 @@ function menu:draw()
   -- Start button
 end
 
+function menu:keypressed(key)
+  Gamestate.switch(play, "mc_manic")
+end
+
 function play:enter(_, songid)
   bg = love.graphics.newImage("assets/images/background.png")
   castle = love.graphics.newImage("assets/images/castle.png")
