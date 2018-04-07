@@ -1,5 +1,4 @@
-SONG_PATH = "assets/sounds"
-DATA_PATH = "data/songs"
+DATA_PATH = "data"
 LANE_WIDTH = 175
 LANE_OFFSET = 50
 DEFAULT_SPEED = 180

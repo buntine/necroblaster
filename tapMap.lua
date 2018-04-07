@@ -9,13 +9,13 @@ TapMap = {
   speed = DEFAULT_SPEED
 }
 
-function TapMap:new(path)
+function TapMap:new(songid)
   local o = {}
 
   setmetatable(o, self)
   self.__index = self
 
-  local file = io.open(DATA_PATH .. "/" .. path .. ".json", "r")
+  local file = io.open(DATA_PATH .. "/" .. songid .. "/map.json", "r")
   local data = file:read("*a")
   file:close()
 

@@ -2,8 +2,8 @@ Song = {
   stream = nil
 }
 
-function Song:new(path)
-  local sound = love.audio.newSource(SONG_PATH .. "/" .. path .. ".ogg", "static")
+function Song:new(songid)
+  local sound = love.audio.newSource(DATA_PATH .. "/" .. songid .. "/audio.ogg", "static")
   local o = {stream=sound}
 
   setmetatable(o, self)
