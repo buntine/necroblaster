@@ -1,3 +1,7 @@
+BTN_A = "a"
+BTN_B = "b"
+BTN_C = "c"
+BTN_D = "d"
 DATA_PATH = "data"
 LANE_WIDTH = 175
 LANE_OFFSET = 50

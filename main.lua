@@ -7,6 +7,7 @@ require "tapMap"
 require "laneways"
 require "railing"
 require "score"
+require "selector"
 
 local title = {}
 local menu = {}
@@ -31,16 +32,29 @@ end
 
 function menu:enter()
   -- Grab each songid (dirs in ./data/*).
+  self.selector = Selector:new(songs)
 end
 
 function menu:draw()
-  -- Logo
+  self.selector:render()
   -- Songs with back/forth arrows
   -- Start button
 end
 
+function menu:update()
+  self.selector:progress()
+end
+
 function menu:keypressed(key)
-  Gamestate.switch(play, "mc_manic")
+  if key == BTN_A then
+    self.selector:previous()
+  elseif key == BTN_B then
+    self.selector:next()
+  elseif key == BTN_C then
+    -- Difficulty increment.
+  else
+    Gamestate.switch(play, self.selector.songid)
+  end
 end
 
 function play:enter(_, songid)

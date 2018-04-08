@@ -20,6 +20,7 @@
 *- Implement gamestates
 *- Data for Manic Demise (intro at least)
 - Implement menu and song picker
+-- Songs fade in and play from certain offset and then repeat.
 - Implement blood transition
 - Finish data for Ritual
 - Finish data for Manic Demise
