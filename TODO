@@ -20,6 +20,7 @@
 *- Implement gamestates
 *- Data for Manic Demise (intro at least)
 - Implement menu and song picker
+- Implement blood transition
 - Finish data for Ritual
 - Finish data for Manic Demise
 - Upgrade to Love 11.0
