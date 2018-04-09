@@ -53,7 +53,7 @@ function menu:keypressed(key)
   elseif key == BTN_C then
     -- Difficulty increment.
   elseif key == BTN_D then
-    Gamestate.switch(play, self.selector:songid())
+    Gamestate.switch(play, self.selector:song().songid)
   end
 end
 

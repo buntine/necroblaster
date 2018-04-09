@@ -5,7 +5,17 @@ Selector = {
 
 function Selector:new(songs)
   local o = {
-    songs = fun.totable(fun.map(function(s) return Song:new(s) end, songs)),
+    songs = fun.totable(fun.map(function(s)
+      local file = io.open(DATA_PATH .. "/" .. s .. "/details.json", "r")
+      local data = file:read("*a")
+      file:close()
+
+      return {
+        song = Song:new(s),
+        details = json.decode(data),
+        image = love.graphics.newImage(DATA_PATH .. "/" .. s .. "/cover.jpg")
+      }
+    end, songs)),
     index = 1
   }
 
@@ -16,19 +26,24 @@ function Selector:new(songs)
 end
 
 function Selector:render()
+  local details = self:details()
+  local song = self:song()
+
+  love.graphics.draw(self:image(), 160, 100)
 end
 
 function Selector:progress()
-  local song = self.songs[self.index]
+  local song = self:song()
+  local details = self:details()
   local v = love.audio.getVolume()
 
   -- Play preview with fade in and fade out.
   if not song:playing() then
     love.audio.setVolume(0)
-    song:play(PREVIEW_OFFSET)
-  elseif song:tell() > PREVIEW_OFFSET + PREVIEW_LENGTH then
+    song:play(details.sample_start)
+  elseif song:tell() > details.sample_end then
     if v <= PREVIEW_FADE then
-      song:seek(PREVIEW_OFFSET)
+      song:seek(details.sample_start)
     else
       love.audio.setVolume(v - PREVIEW_FADE)
     end
@@ -38,7 +53,7 @@ function Selector:progress()
 end
 
 function Selector:previous()
-  self.songs[self.index]:pause()
+  self:song():pause()
 
   if self.index == 1 then
     self.index = #self.songs
@@ -48,7 +63,7 @@ function Selector:previous()
 end
 
 function Selector:next()
-  self.songs[self.index]:pause()
+  self:song():pause()
 
   if self.index == #self.songs then
     self.index = 1
@@ -62,6 +77,14 @@ function Selector:reset()
   love.audio.stop()
 end
 
-function Selector:songid()
-  return self.songs[self.index].songid
+function Selector:song()
+  return self.songs[self.index].song
+end
+
+function Selector:details()
+  return self.songs[self.index].details
+end
+
+function Selector:image()
+  return self.songs[self.index].image
 end
