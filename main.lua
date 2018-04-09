@@ -31,7 +31,7 @@ function title:keypressed(key)
 end
 
 function menu:enter()
-  -- Grab each songid (dirs in ./data/*).
+  local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
   self.selector = Selector:new(songs)
 end
 
@@ -53,7 +53,7 @@ function menu:keypressed(key)
   elseif key == BTN_C then
     -- Difficulty increment.
   else
-    Gamestate.switch(play, self.selector.songid)
+    Gamestate.switch(play, self.selector:song())
   end
 end
 
