@@ -13,6 +13,17 @@ function Difficulty:new()
 end
 
 function Difficulty:render()
+  local name = self.levels[self.index].name
+
+  withFont("medium", function()
+    withColour(220, 29, 29, 255, function()
+      love.graphics.print("Difficulty: ", 160, 720)
+    end)
+
+    withColour(200, 200, 200, 255, function()
+      love.graphics.print(name, 307, 720)
+    end)
+  end)
 end
 
 function Difficulty:next()
