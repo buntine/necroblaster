@@ -5,7 +5,6 @@ BTN_D = "d"
 DATA_PATH = "data"
 LANE_WIDTH = 175
 LANE_OFFSET = 50
-DEFAULT_SPEED = 180
 TIME_SCALE = 1000 / 15
 DAMPENING = 2
 VANISHING_POINT_Y = -100
@@ -25,3 +24,4 @@ SCORE_X = 540
 SCORE_Y = 220
 SCORE_BORDER = 3
 PREVIEW_FADE = 0.01
+DIFFICULTIES = {{speed = 240, name = "Poser"}, {speed = 180, name = "Die Hard"}, {speed = 90, name = "Wimp Crusher"}}

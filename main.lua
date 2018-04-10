@@ -8,6 +8,7 @@ require "laneways"
 require "railing"
 require "score"
 require "selector"
+require "difficulty"
 
 local title = {}
 local menu = {}
@@ -32,13 +33,14 @@ end
 
 function menu:enter()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
+
   self.selector = Selector:new(songs)
+  self.difficulty = Difficulty:new()
 end
 
 function menu:draw()
   self.selector:render()
-  -- Songs with back/forth arrows
-  -- Start button
+  self.difficulty:render()
 end
 
 function menu:update()
@@ -51,9 +53,12 @@ function menu:keypressed(key)
   elseif key == BTN_B then
     self.selector:next()
   elseif key == BTN_C then
-    -- Difficulty increment.
+    self.difficulty:next()
   elseif key == BTN_D then
-    Gamestate.switch(play, self.selector:song().songid)
+    local songid = self.selector:song().songid
+    local speed = self.difficulty:speed()
+
+    Gamestate.switch(play, songid, speed)
   end
 end
 
@@ -61,12 +66,12 @@ function menu:leave()
   self.selector:reset()
 end
 
-function play:enter(_, songid)
+function play:enter(_, songid, speed)
   self.bg = love.graphics.newImage("assets/images/background.png")
   self.castle = love.graphics.newImage("assets/images/castle.png")
 
   self.song = Song:new(songid)
-  self.tapMap = TapMap:new(songid)
+  self.tapMap = TapMap:new(songid, speed)
   self.tapSet = TapSet:new()
   self.laneways = LaneWays:new()
   self.railing = Railing:new()

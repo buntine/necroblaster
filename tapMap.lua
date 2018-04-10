@@ -6,11 +6,13 @@ TapMap = {
   framePointer = 0,
   position = 0,
   bestScore = 0,
-  speed = DEFAULT_SPEED
+  speed = 180,
 }
 
-function TapMap:new(songid)
-  local o = {}
+function TapMap:new(songid, speed)
+  local o = {
+    speed = speed
+  }
 
   setmetatable(o, self)
   self.__index = self
