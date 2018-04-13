@@ -30,6 +30,8 @@ function Song:play(offset)
   if o > 0 then
     self:seek(o)
   end
+
+  --self:seek(98)
 end
 
 function Song:seek(offset)
