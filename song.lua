@@ -31,7 +31,7 @@ function Song:play(offset)
     self:seek(o)
   end
 
-  self:seek(134)
+  self:seek(156)
 end
 
 function Song:seek(offset)
