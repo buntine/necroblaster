@@ -30,8 +30,10 @@ function Song:play(offset)
   if o > 0 then
     self:seek(o)
   end
+end
 
-  self:seek(156)
+function Song:length()
+  return self.stream:getDuration()
 end
 
 function Song:seek(offset)

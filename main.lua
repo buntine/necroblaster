@@ -9,6 +9,7 @@ require "railing"
 require "score"
 require "selector"
 require "difficulty"
+require "progress"
 
 local title = {}
 local menu = {}
@@ -76,6 +77,7 @@ function play:enter(_, songid, speed)
   self.laneways = LaneWays:new()
   self.railing = Railing:new()
   self.score = Score:new()
+  self.progress = Progress:new(self.song:length())
 
   self.song:play()
   self.tapMap:generate()
@@ -94,8 +96,9 @@ function play:draw()
 
   self.score:render(self.tapSet.score)
   self.railing:render(w, h)
+  self.progress:render(self.song:tell(), w)
 
-  love.graphics.draw(self.castle, 0, 0)
+  love.graphics.draw(self.castle, 0, PROGRESS_HEIGHT)
 end
 
 function play:update()

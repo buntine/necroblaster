@@ -25,3 +25,4 @@ SCORE_Y = 220
 SCORE_BORDER = 3
 PREVIEW_FADE = 0.01
 DIFFICULTIES = {{speed = 240, name = "Poser"}, {speed = 180, name = "Die Hard"}, {speed = 90, name = "Wimp Crusher"}}
+PROGRESS_HEIGHT = 4
