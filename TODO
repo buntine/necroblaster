@@ -20,9 +20,9 @@
 *- Implement gamestates
 *- Data for Manic Demise (intro at least)
 *- Implement menu and song picker
+*- Finish data for Manic Demise
 - Implement blood transition
 - Finish data for Ritual
-- Finish data for Manic Demise
 - Upgrade to Love 11.0
 - Show overall score and rank after song (gamestate: finish)
 - Design and build overall GUI
