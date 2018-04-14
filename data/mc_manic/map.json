@@ -507,6 +507,76 @@
   {"kind": "tap", "offset": 137750, "char": "b"},
   {"kind": "tap", "offset": 138250, "char": "b"},
   {"kind": "tap", "offset": 138750, "char": "b"},
+  {"kind": "tap", "offset": 139000, "char": "b"},
+
+  {"kind": "tap", "offset": 139300, "char": "a"},
+  {"kind": "tap", "offset": 139434, "char": "a"},
+  {"kind": "tap", "offset": 139568, "char": "a"},
+  {"kind": "tap", "offset": 139702, "char": "a"},
+  {"kind": "tap", "offset": 139800, "char": "d"},
+
+  {"kind": "tap", "offset": 139836, "char": "a"},
+  {"kind": "tap", "offset": 139970, "char": "a"},
+  {"kind": "tap", "offset": 140104, "char": "a"},
+  {"kind": "tap", "offset": 140238, "char": "a"},
+  {"kind": "tap", "offset": 140300, "char": "d"},
+
+  {"kind": "tap", "offset": 140372, "char": "a"},
+  {"kind": "tap", "offset": 140506, "char": "a"},
+  {"kind": "tap", "offset": 140640, "char": "a"},
+  {"kind": "tap", "offset": 140774, "char": "a"},
+  {"kind": "tap", "offset": 140750, "char": "d"},
+
+  {"kind": "tap", "offset": 140908, "char": "a"},
+  {"kind": "tap", "offset": 141042, "char": "a"},
+  {"kind": "tap", "offset": 141176, "char": "a"},
+  {"kind": "tap", "offset": 141200, "char": "d"},
+  {"kind": "tap", "offset": 141310, "char": "a"},
+
+  {"kind": "tap", "offset": 141444, "char": "a"},
+  {"kind": "tap", "offset": 141578, "char": "a"},
+  {"kind": "tap", "offset": 141712, "char": "a"},
+  {"kind": "tap", "offset": 141650, "char": "d"},
+  {"kind": "tap", "offset": 141846, "char": "a"},
+
+  {"kind": "tap", "offset": 141980, "char": "a"},
+  {"kind": "tap", "offset": 142114, "char": "a"},
+  {"kind": "tap", "offset": 142248, "char": "a"},
+  {"kind": "tap", "offset": 142050, "char": "d"},
+  {"kind": "tap", "offset": 142382, "char": "a"},
+
+  {"kind": "tap", "offset": 142516, "char": "a"},
+  {"kind": "tap", "offset": 142650, "char": "a"},
+  {"kind": "tap", "offset": 142784, "char": "a"},
+  {"kind": "tap", "offset": 142500, "char": "d"},
+  {"kind": "tap", "offset": 142918, "char": "a"},
+
+  {"kind": "tap", "offset": 143052, "char": "a"},
+  {"kind": "tap", "offset": 143186, "char": "a"},
+  {"kind": "tap", "offset": 142950, "char": "d"},
+  {"kind": "tap", "offset": 143320, "char": "a"},
+  {"kind": "tap", "offset": 143454, "char": "a"},
+
+  {"kind": "tap", "offset": 143588, "char": "a"},
+  {"kind": "tap", "offset": 143722, "char": "a"},
+  {"kind": "tap", "offset": 143400, "char": "d"},
+  {"kind": "tap", "offset": 143856, "char": "a"},
+  {"kind": "tap", "offset": 143990, "char": "a"},
+
+  {"kind": "tap", "offset": 144124, "char": "a"},
+  {"kind": "tap", "offset": 144258, "char": "a"},
+  {"kind": "tap", "offset": 143850, "char": "d"},
+  {"kind": "tap", "offset": 144392, "char": "a"},
+  {"kind": "tap", "offset": 144526, "char": "a"},
+
+  {"kind": "tap", "offset": 144660, "char": "a"},
+  {"kind": "tap", "offset": 144794, "char": "a"},
+  {"kind": "tap", "offset": 144300, "char": "d"},
+
+  {"kind": "doublekick", "offset": 144900, "finish": 145300, "char": "a"},
+  {"kind": "doublekick", "offset": 145300, "finish": 145700, "char": "b"},
+  {"kind": "doublekick", "offset": 145700, "finish": 146100, "char": "c"},
+  {"kind": "doublekick", "offset": 146100, "finish": 146400, "char": "d"},
 
   {"kind": "tap", "offset": 200000, "char": "d"},
 ]
