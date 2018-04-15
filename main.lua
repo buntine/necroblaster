@@ -10,10 +10,12 @@ require "score"
 require "selector"
 require "difficulty"
 require "progress"
+require "result"
 
 local title = {}
 local menu = {}
 local play = {}
+local results = {}
 
 function love.load()
   Gamestate.registerEvents()
@@ -28,7 +30,7 @@ function title:draw()
   love.graphics.draw(self.title, 0, 0)
 end
 
-function title:keypressed(key)
+function title:keypressed(_)
   Gamestate.switch(menu)
 end
 
@@ -46,6 +48,18 @@ end
 
 function menu:update()
   self.selector:progress()
+end
+
+function results:enter(_, score, bestScore)
+  self.result = Result:new(score, bestScore)
+end
+
+function results:keypressed(_)
+  Gamestate.switch(menu)
+end
+
+function results:draw()
+  self.result:render()
 end
 
 function menu:keypressed(key)
@@ -104,6 +118,10 @@ end
 function play:update()
   local h = love.graphics.getHeight()
   local pos = self.song:tell()
+
+  if self.song:finished() then
+    Gamestate.switch(results, self.tapSet.score, self.tapMap.bestScore)
+  end
 
   self.tapMap:progress(pos)
 
