@@ -59,7 +59,10 @@ function results:keypressed(_)
 end
 
 function results:draw()
-  self.result:render()
+  local w = love.graphics.getWidth()
+  local h = love.graphics.getHeight()
+
+  self.result:render(w, h)
 end
 
 function menu:keypressed(key)
@@ -99,8 +102,8 @@ end
 
 function play:draw()
   local frame = self.tapMap.framePointer
-  local h = love.graphics.getHeight()
   local w = love.graphics.getWidth()
+  local h = love.graphics.getHeight()
 
   love.graphics.draw(self.bg, 0, 0)
 

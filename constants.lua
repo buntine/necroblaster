@@ -24,5 +24,7 @@ SCORE_X = 540
 SCORE_Y = 220
 SCORE_BORDER = 3
 PREVIEW_FADE = 0.01
-DIFFICULTIES = {{speed = 240, name = "Poser"}, {speed = 180, name = "Die Hard"}, {speed = 90, name = "Wimp Crusher"}}
+DIFFICULTIES = {{speed = 240, name = "Poser"}, {speed = 180, name = "Dexterity von Doom"}, {speed = 90, name = "Soul Crushing"}}
 PROGRESS_HEIGHT = 4
+RANKS = {{25, "Total Poser"}, {50, "Sum-Human Scum"}, {65, "Die Hard"}, {75, "Berserker!"}, {85, "Immortal Warlord"}, {100, "The Thundergod"}}
+

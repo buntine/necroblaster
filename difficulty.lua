@@ -17,11 +17,11 @@ function Difficulty:render()
 
   withFont("medium", function()
     withColour(220, 29, 29, 255, function()
-      love.graphics.print("Difficulty: ", 160, 720)
+      love.graphics.print("Difficulty: ", 160, 780)
     end)
 
     withColour(200, 200, 200, 255, function()
-      love.graphics.print(name, 307, 720)
+      love.graphics.print(name, 307, 780)
     end)
   end)
 end

@@ -28,22 +28,16 @@ function Selector:render()
   local details = self:details()
   local song = self:song()
 
-  withColour(220, 29, 29, 255, function()
-    withFont("big", function()
-      love.graphics.print("Pick your evil spell", 30, 20)
-    end)
-  end)
-
-  love.graphics.draw(self:image(), 160, 120)
+  love.graphics.draw(self:image(), 160, 180)
   withColour(200, 200, 200, 255, function()
-    love.graphics.rectangle("line", 159, 119, 481, 481)
+    love.graphics.rectangle("line", 159, 179, 481, 481)
 
     withFont("medium", function()
-      love.graphics.print(details.artist, 160, 620)
+      love.graphics.print(details.artist, 160, 680)
     end)
 
     withFont("small", function()
-      love.graphics.print(details.title, 160, 660)
+      love.graphics.print(details.title, 160, 720)
     end)
   end)
 end
