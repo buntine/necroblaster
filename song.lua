@@ -18,7 +18,7 @@ function Song:tell()
 end
 
 function Song:finished()
-  return self.stream:isStopped()
+  return not self.stream:isPlaying()
 end
 
 function Song:playing()
