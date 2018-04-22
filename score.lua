@@ -17,7 +17,7 @@ end
 function Score:render(score)
   love.graphics.draw(self.bg, SCORE_X, SCORE_Y)
 
-  withColour(61, 62, 90, 255, function()
+  withColour(0.24, 0.24, 0.35, 1, function()
     local diff = SCORE_WIDTH - self.x
 
     love.graphics.rectangle("fill",

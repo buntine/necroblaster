@@ -15,14 +15,14 @@ function Result:new(s, bs)
 end
 
 function Result:render(w, h)
-  withColour(220, 29, 29, 255, function()
+  withColour(0.86, 0.11, 0.11, 1, function()
     local score = love.graphics.newText(fonts.huge, self.percentage .. "%")
     local x, y = unpack(center(w, h, score:getWidth(), score:getHeight(), 0, -100))
 
     love.graphics.draw(score, x, y)
   end)
 
-  withColour(200, 200, 200, 255, function()
+  withColour(0.78, 0.78, 0.78, 1, function()
     local rank = love.graphics.newText(fonts.big, self:getRank())
     local x, y = unpack(center(w, h, rank:getWidth(), rank:getHeight(), 0, 50))
 

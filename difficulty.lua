@@ -16,11 +16,11 @@ function Difficulty:render()
   local name = self.levels[self.index].name
 
   withFont("medium", function()
-    withColour(220, 29, 29, 255, function()
+    withColour(0.86, 0.11, 0.11, 1, function()
       love.graphics.print("Difficulty: ", 160, 780)
     end)
 
-    withColour(200, 200, 200, 255, function()
+    withColour(0.78, 0.78, 0.78, 1, function()
       love.graphics.print(name, 307, 780)
     end)
   end)

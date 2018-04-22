@@ -23,9 +23,9 @@
 *- Finish data for Manic Demise
 *- Show overall score and rank after song (gamestate: finish)
 *- Correctly show score and rank in gamestate=results
+*- Upgrade to Love 11.0
 - Implement blood transition
 - Finish data for Ritual
-- Upgrade to Love 11.0
 - Design and build overall GUI
 - Allow for right-handed players to switch gamepad (a->d, b->c, c->b, d->a)
 - Setup directory strucure for code

@@ -12,11 +12,11 @@ function Progress:new(total)
 end
 
 function Progress:render(pos, w)
-  withColour(0, 0, 0, 255, function()
+  withColour(0, 0, 0, 1, function()
     love.graphics.rectangle("fill", 0, 0, w, PROGRESS_HEIGHT)
   end)
 
-  withColour(120, 30, 30, 255, function()
+  withColour(0.47, 0.12, 0.12, 1, function()
     local width = w * (pos / self.total)
     love.graphics.rectangle("fill", 0, 0, width, PROGRESS_HEIGHT)
   end)
