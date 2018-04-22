@@ -23,9 +23,9 @@ function menu:keypressed(key)
   elseif key == BTN_B then
     self.selector:next()
   elseif key == BTN_D then
-    local songid = self.selector:song().songid
+    local carry = { songid = self.selector:song().songid }
 
-    Gamestate.switch(difficulty, songid)
+    Gamestate.switch(difficulty, carry)
   end
 end
 

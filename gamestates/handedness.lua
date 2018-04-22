@@ -3,12 +3,9 @@ require "gamestates.play"
 
 handedness = {}
 
-function handedness:enter(_, songid, speed)
-  print(songid)
-  print(speed)
+function handedness:enter(_, carry)
   self.chooser = Chooser:new("Dominant hand: ", HANDEDNESS)
-  self.songid = songid
-  self.speed = speed
+  self.carry = carry
 end
 
 function handedness:draw()
@@ -22,7 +19,8 @@ function handedness:keypressed(key)
     self.chooser:next()
   elseif key == BTN_D then
     local dominant = self.chooser:value()
+    self.carry.dominant = dominant
 
-    Gamestate.switch(play, self.songid, self.speed, dominant)
+    Gamestate.switch(play, self.carry)
   end
 end

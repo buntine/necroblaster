@@ -9,12 +9,12 @@ require "gamestates.results"
 
 play = {}
 
-function play:enter(_, songid, speed, dominant)
+function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
   self.castle = love.graphics.newImage("assets/images/castle.png")
 
-  self.song = Song:new(songid)
-  self.tapMap = TapMap:new(songid, speed)
+  self.song = Song:new(carry.songid)
+  self.tapMap = TapMap:new(carry.songid, carry.speed)
   self.tapSet = TapSet:new()
   self.laneways = LaneWays:new()
   self.railing = Railing:new()
