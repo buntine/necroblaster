@@ -1,53 +1,22 @@
 fun = require "lib.fun"
 Gamestate = require "lib.hump.gamestate"
 require "constants"
+require "gamestates.title"
 require "song"
 require "tapSet"
 require "tapMap"
 require "laneways"
 require "railing"
 require "score"
-require "selector"
-require "difficulty"
 require "progress"
 require "result"
 
-local title = {}
-local menu = {}
 local play = {}
 local results = {}
 
 function love.load()
   Gamestate.registerEvents()
   Gamestate.switch(title)
-end
-
-function title:enter()
-  self.title = love.graphics.newImage("assets/images/title.png")
-end
-
-function title:draw()
-  love.graphics.draw(self.title, 0, 0)
-end
-
-function title:keypressed(_)
-  Gamestate.switch(menu)
-end
-
-function menu:enter()
-  local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
-
-  self.selector = Selector:new(songs)
-  self.difficulty = Difficulty:new()
-end
-
-function menu:draw()
-  self.selector:render()
-  self.difficulty:render()
-end
-
-function menu:update()
-  self.selector:progress()
 end
 
 function results:enter(_, score, bestScore)
@@ -63,25 +32,6 @@ function results:draw()
   local h = love.graphics.getHeight()
 
   self.result:render(w, h)
-end
-
-function menu:keypressed(key)
-  if key == BTN_A then
-    self.selector:previous()
-  elseif key == BTN_B then
-    self.selector:next()
-  elseif key == BTN_C then
-    self.difficulty:next()
-  elseif key == BTN_D then
-    local songid = self.selector:song().songid
-    local speed = self.difficulty:speed()
-
-    Gamestate.switch(play, songid, speed)
-  end
-end
-
-function menu:leave()
-  self.selector:reset()
 end
 
 function play:enter(_, songid, speed)
