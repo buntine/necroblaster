@@ -25,6 +25,7 @@ SCORE_Y = 220
 SCORE_BORDER = 3
 PREVIEW_FADE = 0.01
 DIFFICULTIES = {{value = 240, name = "Poser"}, {value = 180, name = "Dexterity von Doom"}, {value = 90, name = "Soul Crushing"}}
+HANDEDNESS = {{value = "right", name = "Right"}, {value = "left", name = "Left"}}
 PROGRESS_HEIGHT = 5
 RANKS = {{25, "Total Poser"}, {50, "Sum-Human Scum"}, {65, "Die Hard"}, {75, "Berserker!"}, {85, "Immortal Warlord"}, {100, "The Thundergod"}}
 

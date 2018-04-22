@@ -25,7 +25,7 @@ function menu:keypressed(key)
   elseif key == BTN_D then
     local songid = self.selector:song().songid
 
-    Gamestate.switch(difficulty, songid, 120)
+    Gamestate.switch(difficulty, songid)
   end
 end
 

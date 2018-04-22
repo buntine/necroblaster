@@ -5,11 +5,11 @@ require "laneways"
 require "railing"
 require "score"
 require "progress"
-require "gamestates.resultS"
+require "gamestates.results"
 
 play = {}
 
-function play:enter(_, songid, speed)
+function play:enter(_, songid, speed, dominant)
   self.bg = love.graphics.newImage("assets/images/background.png")
   self.castle = love.graphics.newImage("assets/images/castle.png")
 

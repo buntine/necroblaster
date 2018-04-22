@@ -3,7 +3,9 @@ require "gamestates.play"
 
 handedness = {}
 
-function handedness:enter(songid, speed)
+function handedness:enter(_, songid, speed)
+  print(songid)
+  print(speed)
   self.chooser = Chooser:new("Dominant hand: ", HANDEDNESS)
   self.songid = songid
   self.speed = speed

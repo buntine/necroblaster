@@ -29,7 +29,7 @@ function Chooser:render()
 end
 
 function Chooser:previous()
-  if self.index == 0 then
+  if self.index == 1 then
     self.index = #self.options
   else
     self.index = self.index - 1

@@ -3,9 +3,10 @@ require "gamestates.handedness"
 
 difficulty = {}
 
-function difficulty:enter(songid)
+function difficulty:enter(_, songid)
   self.chooser = Chooser:new("Speed: ", DIFFICULTIES, 2)
   self.songid = songid
+  print(songid)
 end
 
 function difficulty:draw()
