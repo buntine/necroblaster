@@ -5,7 +5,7 @@ require "laneways"
 require "railing"
 require "score"
 require "progress"
-require "gamestates.progress"
+require "gamestates.resultS"
 
 play = {}
 
