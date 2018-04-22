@@ -4,7 +4,8 @@ require "gamestates.handedness"
 difficulty = {}
 
 function difficulty:enter(songid)
-  self.chooser = Chooser:new(DIFFICULTIES, 2)
+  self.chooser = Chooser:new("Speed: ", DIFFICULTIES, 2)
+  self.songid = songid
 end
 
 function difficulty:draw()
@@ -19,6 +20,6 @@ function difficulty:keypressed(key)
   elseif key == BTN_D then
     local speed = self.chooser:value()
 
-    Gamestate.switch(handedness, songid, speed)
+    Gamestate.switch(handedness, self.songid, speed)
   end
 end
