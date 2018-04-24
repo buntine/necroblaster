@@ -67,7 +67,7 @@ function TapMap:generate()
     else
       local finishIndex = math.floor(d.finish / TIME_SCALE)
       local step, health = unpack(
-        (d.kind == "blastbeat" and {2, 1}  or {1, 0.5})
+        (d.kind == "blastbeat" and {1, 1} or {1, 0.5})
       )
 
       self:populateKeys(index, finishIndex, step, d, function(i)

@@ -58,6 +58,11 @@ function Lane:render(w, h)
         love.graphics.circle("fill", x, t.y, radius)
       end)
     elseif t.kind == "blastbeat" then
+      -- Skip rendering of every second blastbeat (visually more appealing).
+      if t.nth % 2 == 0 then
+        return
+      end
+
       local radius = DOUBLEKICK_RADIUS * scaling
 
       withColour(0.14, 0.34, 0.93, 1, function()

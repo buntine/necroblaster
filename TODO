@@ -25,6 +25,7 @@
 *- Correctly show score and rank in gamestate=results
 *- Upgrade to Love 11.0
 *- Setup directory strucure for code and refactor
+- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 - Implement blood transition
 - Finish data for Ritual
 - Design and build overall GUI
