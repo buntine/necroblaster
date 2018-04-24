@@ -1,4 +1,4 @@
-require "lane"
+require "gui.lane"
 
 LaneWays = {
   lanes = {}

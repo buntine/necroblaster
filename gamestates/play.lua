@@ -1,10 +1,10 @@
-require "song"
-require "tapSet"
-require "tapMap"
-require "laneways"
-require "railing"
-require "score"
-require "progress"
+require "mapping.song"
+require "mapping.tapSet"
+require "mapping.tapMap"
+require "gui.laneways"
+require "gui.railing"
+require "gui.score"
+require "gui.progress"
 require "gamestates.results"
 
 play = {}

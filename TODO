@@ -24,8 +24,8 @@
 *- Show overall score and rank after song (gamestate: finish)
 *- Correctly show score and rank in gamestate=results
 *- Upgrade to Love 11.0
+*- Setup directory strucure for code and refactor
 - Implement blood transition
 - Finish data for Ritual
 - Design and build overall GUI
 - Allow for right-handed players to switch gamepad (a->d, b->c, c->b, d->a)
-- Setup directory strucure for code

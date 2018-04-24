@@ -1,4 +1,4 @@
-require "approachable"
+require "gui.approachable"
 
 Lane = Approachable:new()
 
