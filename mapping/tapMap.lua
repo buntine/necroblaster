@@ -2,16 +2,18 @@ json = require "lib/json"
 
 TapMap = {
   data = {},
-  keys = {},
+  frames = {},
+  laneChars = {},
   framePointer = 0,
   position = 0,
   bestScore = 0,
   speed = 180,
 }
 
-function TapMap:new(songid, speed)
+function TapMap:new(songid, speed, handedness)
   local o = {
-    speed = speed
+    speed = speed,
+    laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D}
   }
 
   setmetatable(o, self)
@@ -42,19 +44,20 @@ function TapMap:progress(pos)
 end
 
 function TapMap:currentTaps()
-  return self.keys[self.framePointer] or {}
+  return self.frames[self.framePointer] or {}
 end
 
 -- Returns the taps for the frame we will be up to in exactly N=(self.speed / 60) seconds.
 function TapMap:futureTaps(pos)
   local frame = math.floor(((pos + (self.speed / 60)) * 1000) / TIME_SCALE)
 
-  return self.keys[frame] or {}
+  return self.frames[frame] or {}
 end
 
 function TapMap:generate()
   local size = math.floor(self.data[#self.data].offset / TIME_SCALE) + DAMPENING
-  self.keys = fun.totable(fun.take(size, fun.tabulate(function(x) return {} end)))
+
+  self.frames = fun.totable(fun.take(size, fun.tabulate(function(x) return {} end)))
 
   for _it, d in fun.iter(self.data) do
     local index = math.floor(d.offset / TIME_SCALE)
@@ -80,9 +83,9 @@ end
 function TapMap:populateKeys(start, stop, step, d, f)
   for _it, i in fun.range(start, stop, step) do
     local o = f(i)
-    o.char = d.char
+    o.char = self.laneChars[d.lane]
     o.kind = d.kind
 
-    table.insert(self.keys[i], o)
+    table.insert(self.frames[i], o)
   end
 end

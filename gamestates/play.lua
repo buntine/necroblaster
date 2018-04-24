@@ -14,7 +14,7 @@ function play:enter(_, carry)
   self.castle = love.graphics.newImage("assets/images/castle.png")
 
   self.song = Song:new(carry.songid)
-  self.tapMap = TapMap:new(carry.songid, carry.speed)
+  self.tapMap = TapMap:new(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet:new()
   self.laneways = LaneWays:new()
   self.railing = Railing:new()
