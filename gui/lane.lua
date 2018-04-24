@@ -1,3 +1,8 @@
+-- Represents a single laneway.
+-- 
+-- A lane maintains a set of upcoming/renderable taps and a graphical display
+-- when a tap is successfully hit.
+
 require "gui.approachable"
 
 Lane = Approachable:new()

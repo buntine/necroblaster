@@ -1,3 +1,6 @@
+-- Represents the set of taps that have been successfully "hit".
+-- The current score is cached here.
+
 TapSet = {
   taps = {},
   score = 0

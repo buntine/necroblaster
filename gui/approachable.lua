@@ -1,3 +1,5 @@
+-- Abstract class for 2D projection and scaling.
+
 Approachable = {
   items = {}
 }

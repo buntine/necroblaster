@@ -1,3 +1,8 @@
+-- Represents the collection of upcoming taps for an entire song.
+--
+-- The song is broken into a list of small windows of time (~15ms) and the framePointer
+-- moves through the list as time passes while a song is playing.
+
 json = require "lib/json"
 
 TapMap = {
@@ -54,6 +59,7 @@ function TapMap:futureTaps(pos)
   return self.frames[frame] or {}
 end
 
+-- Loads a song from JSON into a list of time frames.
 function TapMap:generate()
   local size = math.floor(self.data[#self.data].offset / TIME_SCALE) + DAMPENING
 
