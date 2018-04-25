@@ -84,7 +84,7 @@ function Lane:render(w, h)
   end)
 
   withColour(r, g, b, 1, function()
-    love.graphics.rectangle("fill", self.x - 20, h - 49, 40, 28)
+    love.graphics.rectangle("fill", self.x - 30, h - 49, 60, 28)
   end)
 
   love.graphics.draw(self.icon, self.x - 76.5, h - 50)

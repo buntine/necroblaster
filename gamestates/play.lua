@@ -40,7 +40,7 @@ function play:draw()
   self.railing:render(w, h)
   self.progress:render(self.song:tell(), w)
 
-  love.graphics.draw(self.castle, 0, PROGRESS_HEIGHT)
+  --love.graphics.draw(self.castle, 0, PROGRESS_HEIGHT)
 end
 
 function play:update()
