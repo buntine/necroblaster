@@ -14,6 +14,7 @@ function Lane:new(nth)
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
     highlightStep = 1,
+    reverbs = {},
     icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
     tap = love.graphics.newImage("assets/images/tap.png"),
     doublekick = love.graphics.newImage("assets/images/doublekick.png"),
@@ -39,6 +40,15 @@ function Lane:progress(h, speed)
     self.highlightStep = 1
   end
 
+  for i, r in ipairs(self.reverbs) do
+    r[2] = r[2] + 1
+    r[3] = r[3] - 0.08
+
+    if r[3] <= 0 then
+      table.remove(self.reverbs, i)
+    end
+  end
+
   Approachable.progress(self, h, speed)
 end
 
@@ -48,9 +58,13 @@ function Lane:add(tap)
 end
 
 function Lane:hit()
+  table.insert(self.reverbs, {-0.2, 1, 1})
+  table.insert(self.reverbs, {0.3, 1, 1})
+
   if self.highlightStep == 1 then
     self.highlightStep = HIGHLIGHT_STEP + 1
   else
+    -- We are already mid-highlight, so just prolong the current one.
     self.highlightStep = #HIGHLIGHT_COLORS / 2
   end
 end
@@ -75,6 +89,13 @@ function Lane:render(w, h)
       love.graphics.draw(self.doublekick, x + position - (DOUBLEKICK_RADIUS * scaling), t.y, 0, scaling)
     end
   end)
+
+  -- Reverberations from hits.
+  for _, r in pairs(self.reverbs) do
+    withColour(_, _, _, r[3], function()
+      love.graphics.draw(self.tap, self.x + (LANE_WIDTH * r[1]), h - 50 - (r[2] * 20), 0, 0.4);
+    end)
+  end
 
   -- Background of "tap plate" for highlights. Some dank hardcoding. :/
   withColour(r, g, b, 1, function()
