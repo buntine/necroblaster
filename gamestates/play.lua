@@ -69,7 +69,7 @@ function play:keypressed(key, sc, ...)
   for _, tap in ipairs(self.tapMap:currentTaps()) do
     if tap and key == tap.char and not self.tapSet:seen(tap.id) then
       self.tapSet:add(tap)
-      self.laneways.lanes[tap.char]:hit()
+      self.laneways.lanes[tap.char]:hit(tap)
     end
   end
 end

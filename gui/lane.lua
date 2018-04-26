@@ -4,6 +4,7 @@
 -- when a tap is successfully hit.
 
 require "gui.approachable"
+require "gui.reverberation"
 
 Lane = Approachable:new()
 
@@ -41,10 +42,9 @@ function Lane:progress(h, speed)
   end
 
   for i, r in ipairs(self.reverbs) do
-    r[2] = r[2] + 1
-    r[3] = r[3] - 0.08
+    r:progress()
 
-    if r[3] <= 0 then
+    if r:done() then
       table.remove(self.reverbs, i)
     end
   end
@@ -57,9 +57,9 @@ function Lane:add(tap)
   table.insert(self.items, {y=0, x=self.x, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
 end
 
-function Lane:hit()
-  table.insert(self.reverbs, {-0.2, 1, 1})
-  table.insert(self.reverbs, {0.3, 1, 1})
+function Lane:hit(tap)
+  table.insert(self.reverbs, Reverberation:new(tap.kind, self.x - LANE_OFFSET))
+  table.insert(self.reverbs, Reverberation:new(tap.kind, self.x + LANE_OFFSET))
 
   if self.highlightStep == 1 then
     self.highlightStep = HIGHLIGHT_STEP + 1
@@ -92,8 +92,10 @@ function Lane:render(w, h)
 
   -- Reverberations from hits.
   for _, r in pairs(self.reverbs) do
-    withColour(_, _, _, r[3], function()
-      love.graphics.draw(self.tap, self.x + (LANE_WIDTH * r[1]), h - 50 - (r[2] * 20), 0, 0.4);
+    local img = self[r.kind]
+
+    withColour(_, _, _, r.opacity, function()
+      love.graphics.draw(img, r.x, r.y, 0, (r.kind == "tap" and 0.7 or 1))
     end)
   end
 
