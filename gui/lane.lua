@@ -14,7 +14,10 @@ function Lane:new(nth)
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
     highlightStep = 1,
-    icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png")
+    icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
+    tap = love.graphics.newImage("assets/images/tap.png"),
+    doublekick = love.graphics.newImage("assets/images/doublekick.png"),
+    blastbeat = love.graphics.newImage("assets/images/blastbeat.png")
   }
 
   setmetatable(o, self)
@@ -57,35 +60,26 @@ function Lane:render(w, h)
 
   self:project(w, h, function(t, x, scaling)
     if t.kind == "tap" then
-      local radius = TAP_RADIUS * scaling
-
-      withColour(0.93, 0.87, 0.87, 1, function()
-        love.graphics.circle("fill", x, t.y, radius)
-      end)
+      love.graphics.draw(self.tap, x - (TAP_RADIUS * scaling), t.y, 0, scaling)
     elseif t.kind == "blastbeat" then
       -- Skip rendering of every second blastbeat (visually more appealing).
       if t.nth % 2 == 0 then
         return
       end
 
-      local radius = DOUBLEKICK_RADIUS * scaling
-
-      withColour(0.14, 0.34, 0.93, 1, function()
-        love.graphics.circle("fill", x, t.y, radius)
-      end)
+      love.graphics.draw(self.blastbeat, x - (DOUBLEKICK_RADIUS * scaling), t.y, 0, scaling)
     elseif t.kind == "doublekick" then
-      local radius = DOUBLEKICK_RADIUS * scaling
       local offset = DOUBLEKICK_SPACING * scaling
+      local position = (t.nth % 2 == 0 and -offset or offset)
 
-      withColour(0.60, 0.93, 0.14, 1, function()
-        love.graphics.circle("fill", (t.nth % 2 == 0 and x - offset or x + offset), t.y, radius)
-      end)
+      love.graphics.draw(self.doublekick, x + position - (DOUBLEKICK_RADIUS * scaling), t.y, 0, scaling)
     end
   end)
 
+  -- Background of "tap plate" for highlights. Some dank hardcoding. :/
   withColour(r, g, b, 1, function()
-    love.graphics.rectangle("fill", self.x - 30, h - 49, 60, 28)
+    love.graphics.rectangle("fill", self.x - 30, h - 38, 60, 28)
   end)
 
-  love.graphics.draw(self.icon, self.x - 76.5, h - 50)
+  love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), h - 41)
 end
