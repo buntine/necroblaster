@@ -11,7 +11,6 @@ play = {}
 
 function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
-  self.castle = love.graphics.newImage("assets/images/castle.png")
 
   self.song = Song:new(carry.songid)
   self.tapMap = TapMap:new(carry.songid, carry.speed, carry.dominant)
@@ -39,8 +38,6 @@ function play:draw()
   self.score:render(self.tapSet.score)
   self.railing:render(w, h)
   self.progress:render(self.song:tell(), w)
-
-  --love.graphics.draw(self.castle, 0, PROGRESS_HEIGHT)
 end
 
 function play:update()
