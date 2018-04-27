@@ -5,13 +5,13 @@
 Reverberation = {
   opacity = 1,
   tap = nil,
-  scaling = 0.5,
+  scaling = 1,
   x = 0,
   y = 0,
 }
 
 function Reverberation:new(tap, x)
-  local o = { tap = tap, x = x, y = love.graphics.getHeight() - 70 }
+  local o = { tap = tap, x = x, y = love.graphics.getHeight() - PLATE_OFFSET - TAP_RADIUS[tap.kind] }
 
   setmetatable(o, self)
   self.__index = self
@@ -20,9 +20,9 @@ function Reverberation:new(tap, x)
 end
 
 function Reverberation:progress()
-  self.y = self.y - 10
-  self.scaling = self.scaling + 0.3
-  self.opacity = self.opacity - 0.09
+  self.y = self.y - (TAP_RADIUS[self.tap.kind] / 2)
+  self.scaling = self.scaling + REVERB_SCALING_FACTOR
+  self.opacity = self.opacity - REVERB_OPACITY_FACTOR
 end
 
 function Reverberation:render()

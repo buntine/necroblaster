@@ -90,5 +90,5 @@ function Lane:render(w, h)
     love.graphics.rectangle("fill", self.x - 30, h - 38, 60, 28)
   end)
 
-  love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), h - 41)
+  love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), h - PLATE_OFFSET)
 end

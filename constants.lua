@@ -6,6 +6,7 @@ DATA_PATH = "data"
 LANE_WIDTH = 175
 LANE_HIT_OFFSET = LANE_WIDTH * 0.3
 LANE_OFFSET = 50
+PLATE_OFFSET = 41
 TIME_SCALE = 1000 / 15
 DAMPENING = 2
 VANISHING_POINT_Y = -100
@@ -24,6 +25,8 @@ DIFFICULTIES = {{value = 240, name = "Poser"}, {value = 180, name = "Dexterity v
 HANDEDNESS = {{value = "right", name = "Right"}, {value = "left", name = "Left"}}
 PROGRESS_HEIGHT = 5
 RANKS = {{25, "Total Poser"}, {50, "Sum-Human Scum"}, {65, "Die Hard"}, {75, "Berserker!"}, {85, "Immortal Warlord"}, {100, "The Thundergod"}}
+REVERB_SCALING_FACTOR = 0.2
+REVERB_OPACITY_FACTOR = 0.10
 TAP_IMAGES = {
   tap = love.graphics.newImage("assets/images/tap.png"),
   doublekick = love.graphics.newImage("assets/images/doublekick.png"),
