@@ -22,7 +22,7 @@ function Reverberation:new(tap, x)
 end
 
 function Reverberation:progress()
-  self.y = self.y - (TAP_RADIUS[self.tap.kind] / 2)
+  self.y = self.y - (TAP_RADIUS[self.tap.kind] / 1.5)
   self.scaling = self.scaling + REVERB_SCALING_FACTOR
   self.opacity = self.opacity - REVERB_OPACITY_FACTOR
 end
