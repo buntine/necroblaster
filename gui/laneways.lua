@@ -44,7 +44,7 @@ end
 function Laneways:seen(tap)
   local lane = self:laneFor(tap)
 
-  return lane:seen(tap.id)
+  return lane:seen(tap)
 end
 
 function Laneways:laneFor(tap)

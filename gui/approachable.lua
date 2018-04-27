@@ -30,5 +30,5 @@ function Approachable:project(w, h, f)
   local x = (self.y - b) / a
   local scaling = ((self.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
 
-  f(o, x, scaling)
+  return {x, scaling}
 end

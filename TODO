@@ -26,12 +26,12 @@
 *- Upgrade to Love 11.0
 *- Setup directory strucure for code and refactor
 *- Allow for right-handed players to switch gamepad (a->d, b->c, c->b, d->a)
+*- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 - Finish reverbs and highlights
 -- With gravitational curve. Or follow path towards vanishing point.
 -- Always highlight regardless of hit?
 -- Highilght mtaches colour of hit?
 -- Tap disappears as soon as hit occurs?
-- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 - Implement blood transition
 - Finish data for Ritual
 - Design and build overall GUI

@@ -10,7 +10,7 @@ Lane = {}
 
 function Lane:new(nth)
   local o = {
-    taps = {},
+    visibleTaps = {},
     nth = nth,
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
@@ -25,8 +25,8 @@ function Lane:new(nth)
   return o
 end
 
-function Lane:seen(id)
-  return fun.any(function(t) return t.id == id end, self.taps)
+function Lane:seen(tap)
+  return fun.any(function(t) return t.tap.id == tap.id end, self.visibleTaps)
 end
 
 function Lane:progress(h, speed)
@@ -46,18 +46,18 @@ function Lane:progress(h, speed)
     end
   end
 
-  for i, tap in ipairs(self.taps) do
+  for i, tap in ipairs(self.visibleTaps) do
     tap:progress(h, speed)
 
     if tap:done(h) then
-      table.remove(self.taps, i)
+      table.remove(self.visibleTaps, i)
     end
   end
 end
 
 function Lane:add(tap)
   self.total = self.total + 1
-  table.insert(self.taps, VisibleTap:new(tap, self.x, self.total))
+  table.insert(self.visibleTaps, VisibleTap:new(tap, self.x, self.total))
 end
 
 function Lane:hit(tap)
@@ -75,7 +75,7 @@ end
 function Lane:render(w, h)
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
-  for _, tap in pairs(self.taps) do
+  for _, tap in pairs(self.visibleTaps) do
     tap:render(w, h)
   end
 
