@@ -2,7 +2,6 @@ require "mapping.song"
 require "mapping.tapSet"
 require "mapping.songFrameset"
 require "gui.laneways"
---require "gui.railing"
 require "gui.score"
 require "gui.progress"
 require "gamestates.results"
@@ -16,7 +15,6 @@ function play:enter(_, carry)
   self.songFrameset = SongFrameset:new(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet:new()
   self.laneways = Laneways:new()
-  --self.railing = Railing:new()
   self.score = Score:new()
   self.progress = Progress:new(self.song:length())
 
@@ -33,7 +31,6 @@ function play:draw()
 
   self.laneways:render(w, h)
   self.score:render(self.tapSet.score)
-  --self.railing:render(w, h)
   self.progress:render(self.song:tell(), w)
 end
 
@@ -54,12 +51,7 @@ function play:update()
     end
   end
 
-  --if pos - self.railing.lastRail >= RAILING_FREQUENCY then
-   -- self.railing:add(pos)
- -- end
-
   self.laneways:progress(h, self.songFrameset.speed)
---  self.railing:progress(h, self.songFrameset.speed)
   self.score:progress(score, self.songFrameset.bestScore)
 end
 
