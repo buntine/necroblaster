@@ -1,3 +1,5 @@
+-- A visible tap that is approaching the bottom of the screen.
+
 require "gui.approachable"
 
 VisibleTap = Approachable:new()
@@ -9,6 +11,8 @@ function VisibleTap:new(tap, x, nth)
     y = 0,
     tap = tap,
     nth = nth,
+    -- Skip rendering of every second blastbeat (visually more appealing).
+    renderable = not (tap.kind == "blastbeat" and nth % 2 == 0)
   }
 
   setmetatable(o, self)
@@ -20,21 +24,16 @@ end
 function VisibleTap:render(w, h)
   local tap = self.tap
   local x, scaling = unpack(self:project(w, h))
+  local img = TAP_IMAGES[tap.kind]
+  local radius = TAP_RADIUS[tap.kind]
 
-  if tap.kind == "tap" then
-    love.graphics.draw(TAP_IMG, x - (TAP_RADIUS * scaling), self.y, 0, scaling)
-  elseif tap.kind == "blastbeat" then
-    -- Skip rendering of every second blastbeat (visually more appealing).
-    if self.nth % 2 == 0 then
-      return
-    end
-
-    love.graphics.draw(BLASTBEAT_IMG, x - (DOUBLEKICK_RADIUS * scaling), self.y, 0, scaling)
-  elseif tap.kind == "doublekick" then
+  if tap.kind == "doublekick" then
     local offset = DOUBLEKICK_SPACING * scaling
     local position = (self.nth % 2 == 0 and -offset or offset)
 
-    love.graphics.draw(DOUBLEKICK_IMG, x + position - (DOUBLEKICK_RADIUS * scaling), self.y, 0, scaling)
+    love.graphics.draw(img, x + position - (radius * scaling), self.y, 0, scaling)
+  else
+    love.graphics.draw(img, x - (radius * scaling), self.y, 0, scaling)
   end
 end
 

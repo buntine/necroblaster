@@ -4,13 +4,14 @@
 
 Reverberation = {
   opacity = 1,
+  tap = nil,
+  scaling = 0.5,
   x = 0,
   y = 0,
-  kind = "tap",
 }
 
-function Reverberation:new(kind, x)
-  local o = { kind = kind, x = x, y = love.graphics.getHeight() - 70 }
+function Reverberation:new(tap, x)
+  local o = { tap = tap, x = x, y = love.graphics.getHeight() - 70 }
 
   setmetatable(o, self)
   self.__index = self
@@ -19,8 +20,18 @@ function Reverberation:new(kind, x)
 end
 
 function Reverberation:progress()
-  self.y = self.y - 20
-  self.opacity = self.opacity - 0.08
+  self.y = self.y - 10
+  self.scaling = self.scaling + 0.3
+  self.opacity = self.opacity - 0.09
+end
+
+function Reverberation:render()
+  local img = TAP_IMAGES[self.tap.kind]
+  local radius = TAP_RADIUS[self.tap.kind]
+
+  withColour(1, 1, 1, self.opacity, function()
+    love.graphics.draw(img, self.x - (radius * self.scaling), self.y, 0, self.scaling)
+  end)
 end
 
 function Reverberation:done()

@@ -9,13 +9,8 @@ LANE_OFFSET = 50
 TIME_SCALE = 1000 / 15
 DAMPENING = 2
 VANISHING_POINT_Y = -100
-TAP_RADIUS = 47
-DOUBLEKICK_RADIUS = 31
 DOUBLEKICK_SPACING = 37
 TAP_Z = 4
-RAILING_FREQUENCY = 2.5
-RAILING_WIDTH = 25
-RAILING_POSITIONS = {LANE_OFFSET - RAILING_WIDTH, LANE_OFFSET + (4 * LANE_WIDTH)}
 HIGHLIGHT_COLORS = {{0.47, 0.12, 0.12}, {0.59, 0.12, 0.12}, {0.7, 0.12, 0.12}, {0.82, 0.12, 0.12}, {0.7, 0.12, 0.12}, {0.59, 0.12, 0.12}, {0.47, 0.12, 0.12}}
 HIGHLIGHT_STEP = 0.25
 APPROACH_MAX_OFFSET = 97
@@ -29,6 +24,13 @@ DIFFICULTIES = {{value = 240, name = "Poser"}, {value = 180, name = "Dexterity v
 HANDEDNESS = {{value = "right", name = "Right"}, {value = "left", name = "Left"}}
 PROGRESS_HEIGHT = 5
 RANKS = {{25, "Total Poser"}, {50, "Sum-Human Scum"}, {65, "Die Hard"}, {75, "Berserker!"}, {85, "Immortal Warlord"}, {100, "The Thundergod"}}
-TAP_IMG = love.graphics.newImage("assets/images/tap.png")
-DOUBLEKICK_IMG = love.graphics.newImage("assets/images/doublekick.png")
-BLASTBEAT_IMG = love.graphics.newImage("assets/images/blastbeat.png")
+TAP_IMAGES = {
+  tap = love.graphics.newImage("assets/images/tap.png"),
+  doublekick = love.graphics.newImage("assets/images/doublekick.png"),
+  blastbeat = love.graphics.newImage("assets/images/blastbeat.png")
+}
+TAP_RADIUS = {
+  tap = 47,
+  doublekick = 31,
+  blastbeat = 31
+}

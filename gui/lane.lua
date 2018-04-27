@@ -61,8 +61,7 @@ function Lane:add(tap)
 end
 
 function Lane:hit(tap)
-  table.insert(self.reverbs, Reverberation:new(tap.kind, self.x - LANE_OFFSET))
-  table.insert(self.reverbs, Reverberation:new(tap.kind, self.x + LANE_OFFSET))
+  table.insert(self.reverbs, Reverberation:new(tap, self.x))
 
   if self.highlightStep == 1 then
     self.highlightStep = HIGHLIGHT_STEP + 1
@@ -76,16 +75,14 @@ function Lane:render(w, h)
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
   for _, tap in pairs(self.visibleTaps) do
-    tap:render(w, h)
+    if tap.renderable then
+      tap:render(w, h)
+    end
   end
 
   -- Reverberations from hits.
-  for _, r in pairs(self.reverbs) do
-    local img = TAP_IMG
-
-    withColour(_, _, _, r.opacity, function()
-      love.graphics.draw(img, r.x, r.y, 0, (r.kind == "tap" and 0.7 or 1))
-    end)
+  for _, reverb in pairs(self.reverbs) do
+    reverb:render()
   end
 
   -- Background of "tap plate" for highlights. Some dank hardcoding. :/
