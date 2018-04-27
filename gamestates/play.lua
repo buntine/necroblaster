@@ -1,6 +1,6 @@
 require "mapping.song"
 require "mapping.tapSet"
-require "mapping.tapMap"
+require "mapping.songFrameset"
 require "gui.laneways"
 require "gui.railing"
 require "gui.score"
@@ -13,7 +13,7 @@ function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
 
   self.song = Song:new(carry.songid)
-  self.tapMap = TapMap:new(carry.songid, carry.speed, carry.dominant)
+  self.songFrameset = SongFrameset:new(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet:new()
   self.laneways = LaneWays:new()
   self.railing = Railing:new()
@@ -21,11 +21,11 @@ function play:enter(_, carry)
   self.progress = Progress:new(self.song:length())
 
   self.song:play()
-  self.tapMap:generate()
+  self.songFrameset:generate()
 end
 
 function play:draw()
-  local frame = self.tapMap.framePointer
+  local frame = self.songFrameset.framePointer
   local w = love.graphics.getWidth()
   local h = love.graphics.getHeight()
 
@@ -45,12 +45,12 @@ function play:update()
   local pos = self.song:tell()
 
   if self.song:finished() then
-    Gamestate.switch(results, self.tapSet.score, self.tapMap.bestScore)
+    Gamestate.switch(results, self.tapSet.score, self.songFrameset.bestScore)
   end
 
-  self.tapMap:progress(pos)
+  self.songFrameset:progress(pos)
 
-  for _, tap in ipairs(self.tapMap:futureTaps(pos)) do
+  for _, tap in ipairs(self.songFrameset:futureTaps(pos)) do
     if tap and not self.laneways:seen(tap) then
       self.laneways:add(tap)
     end
@@ -60,13 +60,13 @@ function play:update()
     self.railing:add(pos)
   end
 
-  self.laneways:progress(h, self.tapMap.speed)
-  self.railing:progress(h, self.tapMap.speed)
-  self.score:progress(self.tapSet.score, self.tapMap.bestScore)
+  self.laneways:progress(h, self.songFrameset.speed)
+  self.railing:progress(h, self.songFrameset.speed)
+  self.score:progress(self.tapSet.score, self.songFrameset.bestScore)
 end
 
 function play:keypressed(key, sc, ...)
-  for _, tap in ipairs(self.tapMap:currentTaps()) do
+  for _, tap in ipairs(self.songFrameset:currentTaps()) do
     if tap and key == tap.char and not self.tapSet:seen(tap.id) then
       self.tapSet:add(tap)
       self.laneways.lanes[tap.char]:hit(tap)

@@ -11,7 +11,7 @@ Reverberation = {
 }
 
 function Reverberation:new(kind, x)
-  local o = { kind = kind, x = x, y = love.graphics.getHeight() - 100 }
+  local o = { kind = kind, x = x, y = love.graphics.getHeight() - 70 }
 
   setmetatable(o, self)
   self.__index = self
