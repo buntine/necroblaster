@@ -1,13 +1,13 @@
 -- Abstract class for 2D projection and scaling.
 
 Approachable = {
-  items = {}
+  z = 0,
+  x = 0,
+  y = 0
 }
 
 function Approachable:new()
-  local o = {
-    items = {},
-  }
+  local o = {}
 
   setmetatable(o, self)
   self.__index = self
@@ -16,29 +16,19 @@ function Approachable:new()
 end
 
 function Approachable:progress(h, speed)
-  for i=#self.items, 1, -1 do
-    local o = self.items[i]
-
-    -- Super simple projection from Z to Y.
-    o.z = o.z - ((TAP_Z - 1) / speed)
-    o.y = (h / o.z) - (h / TAP_Z)
-
-    if o.y > h - APPROACH_MAX_OFFSET then
-      table.remove(self.items, i)
-    end
-  end
+  -- Super simple projection from Z to Y.
+  self.z = self.z - ((TAP_Z - 1) / speed)
+  self.y = (h / self.z) - (h / TAP_Z)
 end
 
 function Approachable:project(w, h, f)
   local xVanishingPoint = w / 2
 
-  for _, o in ipairs(self.items) do
-    -- Calculate scale and X position to imply distance.
-    local a = (h - VANISHING_POINT_Y) / (o.x - xVanishingPoint)
-    local b = VANISHING_POINT_Y - (a * xVanishingPoint)
-    local x = (o.y - b) / a
-    local normaliser = ((o.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
+  -- Calculate scale and X position to imply distance.
+  local a = (h - VANISHING_POINT_Y) / (self.x - xVanishingPoint)
+  local b = VANISHING_POINT_Y - (a * xVanishingPoint)
+  local x = (self.y - b) / a
+  local scaling = ((self.y - VANISHING_POINT_Y) / (h - VANISHING_POINT_Y))
 
-    f(o, x, normaliser)
-  end
+  f(o, x, scaling)
 end

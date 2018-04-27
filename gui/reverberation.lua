@@ -7,7 +7,6 @@ Reverberation = {
   x = 0,
   y = 0,
   kind = "tap",
-
 }
 
 function Reverberation:new(kind, x)

@@ -29,3 +29,6 @@ DIFFICULTIES = {{value = 240, name = "Poser"}, {value = 180, name = "Dexterity v
 HANDEDNESS = {{value = "right", name = "Right"}, {value = "left", name = "Left"}}
 PROGRESS_HEIGHT = 5
 RANKS = {{25, "Total Poser"}, {50, "Sum-Human Scum"}, {65, "Die Hard"}, {75, "Berserker!"}, {85, "Immortal Warlord"}, {100, "The Thundergod"}}
+TAP_IMG = love.graphics.newImage("assets/images/tap.png")
+DOUBLEKICK_IMG = love.graphics.newImage("assets/images/doublekick.png")
+BLASTBEAT_IMG = love.graphics.newImage("assets/images/blastbeat.png")

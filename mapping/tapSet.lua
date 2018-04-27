@@ -1,4 +1,6 @@
--- Represents the set of taps that have been successfully "hit".
+-- Represents the set of taps that have been successfully "hit" for
+-- the current song.
+--
 -- The current score is cached here.
 
 TapSet = {
@@ -20,6 +22,6 @@ function TapSet:add(tap)
   self.score = self.score + tap.health
 end
 
-function TapSet:seen(tapID)
-  return (not tapID) or (#self.taps > 0 and self.taps[#self.taps].id == tapID or false)
+function TapSet:seen(tap)
+  return (not tap.id) or (#self.taps > 0 and self.taps[#self.taps].id == tap.id or false)
 end

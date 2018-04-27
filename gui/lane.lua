@@ -3,23 +3,20 @@
 -- A lane maintains a set of upcoming/renderable taps and a graphical display
 -- when a tap is successfully hit.
 
-require "gui.approachable"
 require "gui.reverberation"
+require "gui.visibleTap"
 
-Lane = Approachable:new()
+Lane = {}
 
 function Lane:new(nth)
   local o = {
-    items = {},
+    taps = {},
     nth = nth,
     x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
     total = 0,
     highlightStep = 1,
     reverbs = {},
     icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
-    tap = love.graphics.newImage("assets/images/tap.png"),
-    doublekick = love.graphics.newImage("assets/images/doublekick.png"),
-    blastbeat = love.graphics.newImage("assets/images/blastbeat.png")
   }
 
   setmetatable(o, self)
@@ -29,7 +26,7 @@ function Lane:new(nth)
 end
 
 function Lane:seen(id)
-  return fun.any(function(t) return t.id == id end, self.items)
+  return fun.any(function(t) return t.id == id end, self.taps)
 end
 
 function Lane:progress(h, speed)
@@ -49,12 +46,18 @@ function Lane:progress(h, speed)
     end
   end
 
-  Approachable.progress(self, h, speed)
+  for i, tap in ipairs(self.taps) do
+    tap:progress(h, speed)
+
+    if tap:done(h) then
+      table.remove(self.taps, i)
+    end
+  end
 end
 
 function Lane:add(tap)
   self.total = self.total + 1
-  table.insert(self.items, {y=0, x=self.x, z=TAP_Z, id=tap.id, kind=tap.kind, nth=self.total})
+  table.insert(self.taps, VisibleTap:new(tap, self.x, self.total))
 end
 
 function Lane:hit(tap)
@@ -72,27 +75,13 @@ end
 function Lane:render(w, h)
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
-  self:project(w, h, function(t, x, scaling)
-    if t.kind == "tap" then
-      love.graphics.draw(self.tap, x - (TAP_RADIUS * scaling), t.y, 0, scaling)
-    elseif t.kind == "blastbeat" then
-      -- Skip rendering of every second blastbeat (visually more appealing).
-      if t.nth % 2 == 0 then
-        return
-      end
-
-      love.graphics.draw(self.blastbeat, x - (DOUBLEKICK_RADIUS * scaling), t.y, 0, scaling)
-    elseif t.kind == "doublekick" then
-      local offset = DOUBLEKICK_SPACING * scaling
-      local position = (t.nth % 2 == 0 and -offset or offset)
-
-      love.graphics.draw(self.doublekick, x + position - (DOUBLEKICK_RADIUS * scaling), t.y, 0, scaling)
-    end
-  end)
+  for _, tap in pairs(self.taps) do
+    tap:render(w, h)
+  end
 
   -- Reverberations from hits.
   for _, r in pairs(self.reverbs) do
-    local img = self[r.kind]
+    local img = TAP_IMG
 
     withColour(_, _, _, r.opacity, function()
       love.graphics.draw(img, r.x, r.y, 0, (r.kind == "tap" and 0.7 or 1))

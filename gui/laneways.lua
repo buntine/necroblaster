@@ -3,11 +3,11 @@
 
 require "gui.lane"
 
-LaneWays = {
+Laneways = {
   lanes = {}
 }
 
-function LaneWays:new()
+function Laneways:new()
   local o = {
     lanes = {
       a = Lane:new(0),
@@ -23,24 +23,30 @@ function LaneWays:new()
   return o
 end
 
-function LaneWays:progress(height, speed)
-  fun.each(function(_, l)
+function Laneways:progress(height, speed)
+  for _, l in pairs(self.lanes) do
     l:progress(height, speed)
-  end, self.lanes)
+  end
 end
 
-function LaneWays:add(tap)
-  local lane = self:lanefor(tap.char)
+function Laneways:render(width, height)
+  for _, l in pairs(self.lanes) do
+    l:render(width, height)
+  end
+end
+
+function Laneways:add(tap)
+  local lane = self:laneFor(tap)
 
   lane:add(tap)
 end
 
-function LaneWays:seen(tap)
-  local lane = self:lanefor(tap.char)
+function Laneways:seen(tap)
+  local lane = self:laneFor(tap)
 
   return lane:seen(tap.id)
 end
 
-function LaneWays:lanefor(c)
-  return self.lanes[c]
+function Laneways:laneFor(tap)
+  return self.lanes[tap.char]
 end
