@@ -30,8 +30,8 @@ function play:draw()
   love.graphics.draw(self.bg, 0, 0)
 
   self.laneways:render(w, h)
-  self.score:render(self.tapSet.score)
   self.progress:render(self.song:tell(), w)
+  self.score:render(self.tapSet.score)
 end
 
 function play:update()
