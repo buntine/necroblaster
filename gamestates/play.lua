@@ -31,7 +31,7 @@ function play:draw()
 
   self.laneways:render(w, h)
   self.progress:render(self.song:tell(), w)
-  self.score:render(self.tapSet.score)
+  self.score:render()
 end
 
 function play:update()
@@ -52,7 +52,7 @@ function play:update()
   end
 
   self.laneways:progress(h, self.songFrameset.speed)
-  self.score:progress(score, self.songFrameset.bestScore)
+  self.score:progress(score)
 end
 
 function play:keypressed(key, sc, ...)

@@ -28,9 +28,8 @@
 *- Allow for right-handed players to switch gamepad (a->d, b->c, c->b, d->a)
 *- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 *- Finish reverbs and highlights
-- Add score highlights in
+*- Add score highlights in
 - Always highlight regardless of hit?
-- Highilght matches colour of hit?
 - Implement blood transition
 - Finish data for Ritual
 - Design and build overall GUI
