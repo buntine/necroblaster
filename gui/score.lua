@@ -1,8 +1,9 @@
 require "helpers"
 
 Score = {
-  x = SCORE_WIDTH / 2,
-  bg = love.graphics.newImage("assets/images/score.png")
+  clip = 0,
+  bg = love.graphics.newImage("assets/images/score.png"),
+  powerbar = love.graphics.newImage("assets/images/powerbar.png")
 }
 
 function Score:new()
@@ -16,13 +17,11 @@ end
 
 function Score:render(score)
   love.graphics.draw(self.bg, SCORE_X, 0)
-
+  withScissor(SCORE_X, 48, self.clip, 50, function()
+    love.graphics.draw(self.powerbar, SCORE_X, 48)
+  end)
 end
 
 function Score:progress(score, bestScore)
-  if bestScore > 0 then
-    local percentage = math.min(100, (score / (bestScore * 0.75)) * 100)
-
-    self.x = (percentage * SCORE_WIDTH) / 100
-  end
+  self.clip = self.clip + 0.5
 end
