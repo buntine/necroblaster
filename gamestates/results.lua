@@ -1,14 +1,16 @@
+require "tweening.transition"
+
 results = {}
 
-function results:enter(_, s, bs)
+function results:enter(_, carry)
 
-  self.score = s
-  self.bestScore = bs
-  self.percentage = round((s / bs) * 100)
+  self.score = carry.score
+  self.bestScore = carry.bestScore
+  self.percentage = round((self.score / self.bestScore) * 100)
 end
 
 function results:keypressed(_)
-  Gamestate.switch(menu)
+  self:transitionTo(menu)
 end
 
 function results:draw()
@@ -28,6 +30,8 @@ function results:draw()
 
     love.graphics.draw(rank, x, y)
   end)
+
+  self:drawTween()
 end
 
 function results:getRank()

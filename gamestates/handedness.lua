@@ -1,7 +1,8 @@
 require "widgets.chooser"
 require "gamestates.play"
+require "tweening.transition"
 
-handedness = {}
+handedness = Transition:new()
 
 function handedness:enter(_, carry)
   self.chooser = Chooser:new("Dominant hand: ", HANDEDNESS)
@@ -10,6 +11,7 @@ end
 
 function handedness:draw()
   self.chooser:render()
+  self:drawTween()
 end
 
 function handedness:keypressed(key)
@@ -21,6 +23,6 @@ function handedness:keypressed(key)
     local dominant = self.chooser:value()
     self.carry.dominant = dominant
 
-    Gamestate.switch(play, self.carry)
+    self:transitionTo(play, self.carry)
   end
 end

@@ -23,6 +23,6 @@ function difficulty:keypressed(key)
     local speed = self.chooser:value()
     self.carry.speed = speed
 
-    Gamestate.switch(handedness, self.carry)
+    self:transitionTo(handedness, self.carry)
   end
 end

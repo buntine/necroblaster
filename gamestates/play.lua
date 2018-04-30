@@ -5,8 +5,9 @@ require "gui.laneways"
 require "gui.score"
 require "gui.progress"
 require "gamestates.results"
+require "tweening.transition"
 
-play = {}
+play = Transition:new()
 
 function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
@@ -32,6 +33,7 @@ function play:draw()
   self.laneways:render(w, h)
   self.progress:render(self.song:tell(), w)
   self.score:render()
+  self:drawTween()
 end
 
 function play:update()
@@ -40,7 +42,7 @@ function play:update()
   local score = self.tapSet.score
 
   if self.song:finished() then
-    Gamestate.switch(results, score, self.songFrameset.bestScore)
+    self:transitionTo(results, {score = score, bestScore = self.songFrameset.bestScore})
   end
 
   self.songFrameset:progress(pos)
@@ -53,6 +55,7 @@ function play:update()
 
   self.laneways:progress(h, self.songFrameset.speed)
   self.score:progress(score)
+  self:updateTween()
 end
 
 function play:keypressed(key, sc, ...)
