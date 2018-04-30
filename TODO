@@ -29,7 +29,8 @@
 *- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 *- Finish reverbs and highlights
 *- Add score highlights in
+*- Implement transition
+*- Preload songs before getting to selection?
 - Always highlight regardless of hit?
-- Implement blood transition
 - Finish data for Ritual
 - Design and build overall GUI

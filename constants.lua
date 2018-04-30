@@ -22,6 +22,7 @@ PREVIEW_FADE = 0.01
 PROGRESS_HEIGHT = 5
 REVERB_SCALING_FACTOR = 0.2
 REVERB_OPACITY_FACTOR = 0.1
+TRANSITION_DELTA = 0.04
 DIFFICULTIES = {
   {value = 240, name = "Poser"},
   {value = 180, name = "Dexterity von Doom"},

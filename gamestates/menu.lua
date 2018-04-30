@@ -1,7 +1,8 @@
 require "widgets.selector"
 require "gamestates.difficulty"
+require "tweening.transition"
 
-menu = {}
+menu = Transition:new()
 
 function menu:enter()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
@@ -11,10 +12,12 @@ end
 
 function menu:draw()
   self.selector:render()
+  self:drawTween()
 end
 
 function menu:update()
   self.selector:progress()
+  self:updateTween()
 end
 
 function menu:keypressed(key)
@@ -25,7 +28,7 @@ function menu:keypressed(key)
   elseif key == BTN_D then
     local carry = { songid = self.selector:song().songid }
 
-    Gamestate.switch(difficulty, carry)
+    self:transitionTo(difficulty, carry)
   end
 end
 

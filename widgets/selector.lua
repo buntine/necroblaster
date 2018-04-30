@@ -29,6 +29,7 @@ function Selector:render()
   local song = self:song()
 
   love.graphics.draw(self:image(), 160, 180)
+
   withColour(0.78, 0.78, 0.78, 1, function()
     love.graphics.rectangle("line", 159, 179, 481, 481)
 

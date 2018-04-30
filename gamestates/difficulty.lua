@@ -1,7 +1,8 @@
 require "widgets.chooser"
 require "gamestates.handedness"
+require "tweening.transition"
 
-difficulty = {}
+difficulty = Transition:new()
 
 function difficulty:enter(_, carry)
   self.chooser = Chooser:new("Speed: ", DIFFICULTIES, 2)
@@ -10,6 +11,7 @@ end
 
 function difficulty:draw()
   self.chooser:render()
+  self:drawTween()
 end
 
 function difficulty:keypressed(key)
