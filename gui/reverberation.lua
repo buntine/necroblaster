@@ -31,7 +31,7 @@ function Reverberation:render()
   local img = TAP_IMAGES[self.tap.kind]
   local radius = TAP_RADIUS[self.tap.kind]
 
-  withColour(1, 1, 1, self.opacity, function()
+  withOpacity(self.opacity, function()
     love.graphics.draw(img, self.x - (radius * self.scaling), self.y, 0, self.scaling)
   end)
 end

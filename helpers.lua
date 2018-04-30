@@ -14,6 +14,10 @@ function withColour(r, g, b, a, f)
   love.graphics.setColor(_r, _g, _b, _a)
 end
 
+function withOpacity(a, f)
+  withColour(1, 1, 1, a, f)
+end
+
 function withFont(name, f)
   local _f = love.graphics.getFont()
 
