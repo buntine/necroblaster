@@ -74,14 +74,14 @@ end
 function Lane:render(w, h)
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
-  for _, tap in pairs(self.visibleTaps) do
+  for _, tap in ipairs(self.visibleTaps) do
     if tap.renderable then
       tap:render(w, h)
     end
   end
 
   -- Reverberations from hits.
-  for _, reverb in pairs(self.reverbs) do
+  for _, reverb in ipairs(self.reverbs) do
     reverb:render()
   end
 
