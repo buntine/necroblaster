@@ -8,6 +8,7 @@ function title:enter()
 end
 
 function title:draw()
+  scaleGraphics()
   love.graphics.draw(self.title, 0, 0)
   self:drawTween()
 end

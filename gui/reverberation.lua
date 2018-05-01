@@ -12,7 +12,7 @@ Reverberation = {
 
 function Reverberation:new(tap, x)
   local radius = TAP_RADIUS[tap.kind]
-  local y = love.graphics.getHeight() - PLATE_OFFSET - radius
+  local y = DESIRED_HEIGHT - PLATE_OFFSET - radius
   local o = { tap = tap, x = x, y = y }
 
   setmetatable(o, self)

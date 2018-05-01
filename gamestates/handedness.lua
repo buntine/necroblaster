@@ -10,6 +10,7 @@ function handedness:enter(_, carry)
 end
 
 function handedness:draw()
+  scaleGraphics()
   self.chooser:render()
   self:drawTween()
 end

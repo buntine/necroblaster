@@ -29,11 +29,8 @@ end
 
 function Transition:drawTween()
   if self.transition then
-    local w = love.graphics.getWidth()
-    local h = love.graphics.getHeight()
-
     withColour(0, 0, 0, self.opacity, function()
-      love.graphics.rectangle("fill", 0, 0, w, h)
+      love.graphics.rectangle("fill", 0, 0, DESIRED_WIDTH, DESIRED_HEIGHT)
     end)
   end
 end

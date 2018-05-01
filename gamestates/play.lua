@@ -26,8 +26,7 @@ end
 function play:draw()
   local frame = self.songFrameset.framePointer
 
-  love.graphics.translate(X_TRANSLATE, 0)
-  love.graphics.scale(WIDTH_SCALE, HEIGHT_SCALE)
+  scaleGraphics()
 
   love.graphics.draw(self.bg)
 

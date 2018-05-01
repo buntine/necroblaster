@@ -14,19 +14,18 @@ function results:keypressed(_)
 end
 
 function results:draw()
-  local w = love.graphics.getWidth()
-  local h = love.graphics.getHeight()
+  scaleGraphics()
 
   withColour(0.86, 0.11, 0.11, 1, function()
     local score = love.graphics.newText(fonts.huge, self.percentage .. "%")
-    local x, y = unpack(center(w, h, score:getWidth(), score:getHeight(), 0, -100))
+    local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, score:getWidth(), score:getHeight(), 0, -100))
 
     love.graphics.draw(score, x, y)
   end)
 
   withColour(0.78, 0.78, 0.78, 1, function()
     local rank = love.graphics.newText(fonts.big, self:getRank())
-    local x, y = unpack(center(w, h, rank:getWidth(), rank:getHeight(), 0, 50))
+    local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, rank:getWidth(), rank:getHeight(), 0, 50))
 
     love.graphics.draw(rank, x, y)
   end)

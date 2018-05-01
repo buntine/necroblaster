@@ -10,6 +10,7 @@ function difficulty:enter(_, carry)
 end
 
 function difficulty:draw()
+  scaleGraphics()
   self.chooser:render()
   self:drawTween()
 end

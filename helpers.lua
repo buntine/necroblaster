@@ -46,3 +46,10 @@ end
 function centerOfLane(nth)
   return LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2)
 end
+
+-- Transforms coordination system so that GUI is drawn centered in
+-- fullscreen mode.
+function scaleGraphics()
+  love.graphics.translate(X_TRANSLATE, 0)
+  love.graphics.scale(WIDTH_SCALE, HEIGHT_SCALE)
+end

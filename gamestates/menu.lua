@@ -11,6 +11,7 @@ function menu:enter()
 end
 
 function menu:draw()
+  scaleGraphics()
   self.selector:render()
   self:drawTween()
 end
