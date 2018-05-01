@@ -42,3 +42,7 @@ function center(tw, th, w, h, ox, oy)
 
   return { (tw / 2 - w / 2) + ox, (th / 2 - h / 2) + oy }
 end
+
+function centerOfLane(nth)
+  return LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2)
+end

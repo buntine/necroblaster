@@ -29,6 +29,7 @@
 *- Make a Tap object (with attributes and render method (tap, blastbeat, doublekick, etc))
 *- Finish reverbs and highlights
 *- Add score highlights in
+*- Allow for rullscreen with automatic scalinG
 *- Implement transition
 - Proper UI for handedness and difficulty
 - Proper UI for song selection

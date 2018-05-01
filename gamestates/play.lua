@@ -25,19 +25,19 @@ end
 
 function play:draw()
   local frame = self.songFrameset.framePointer
-  local w = love.graphics.getWidth()
-  local h = love.graphics.getHeight()
 
-  love.graphics.draw(self.bg, 0, 0)
+  love.graphics.translate(X_TRANSLATE, 0)
+  love.graphics.scale(WIDTH_SCALE, HEIGHT_SCALE)
 
-  self.laneways:render(w, h)
-  self.progress:render(self.song:tell(), w)
+  love.graphics.draw(self.bg)
+
+  self.laneways:render()
+  self.progress:render(self.song:tell())
   self.score:render()
   self:drawTween()
 end
 
 function play:update()
-  local h = love.graphics.getHeight()
   local pos = self.song:tell()
   local score = self.tapSet.score
 
@@ -53,12 +53,13 @@ function play:update()
     end
   end
 
-  self.laneways:progress(h, self.songFrameset.speed)
+  self.laneways:progress(self.songFrameset.speed)
   self.score:progress(score)
   self:updateTween()
 end
 
 function play:keypressed(key, sc, ...)
+love.event.quit( )
   for _, tap in ipairs(self.songFrameset:currentTaps()) do
     if tap and key == tap.char and not self.tapSet:seen(tap) then
       local lane = self.laneways:laneFor(tap)

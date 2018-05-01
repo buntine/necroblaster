@@ -29,9 +29,9 @@ function Laneways:progress(height, speed)
   end
 end
 
-function Laneways:render(width, height)
+function Laneways:render()
   for _, l in pairs(self.lanes) do
-    l:render(width, height)
+    l:render()
   end
 end
 

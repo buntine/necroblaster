@@ -12,7 +12,7 @@ function Lane:new(nth)
   local o = {
     visibleTaps = {},
     nth = nth,
-    x = LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2),
+    x = centerOfLane(nth),
     total = 0,
     highlightStep = 1,
     reverbs = {},
@@ -29,7 +29,7 @@ function Lane:seen(tap)
   return fun.any(function(t) return t.tap.id == tap.id end, self.visibleTaps)
 end
 
-function Lane:progress(h, speed)
+function Lane:progress(speed)
   if self.highlightStep > 1 then
     self.highlightStep = self.highlightStep + HIGHLIGHT_STEP
   end
@@ -47,9 +47,9 @@ function Lane:progress(h, speed)
   end
 
   for i, tap in ipairs(self.visibleTaps) do
-    tap:progress(h, speed)
+    tap:progress(speed)
 
-    if tap:done(h) then
+    if tap:done() then
       table.remove(self.visibleTaps, i)
     end
   end
@@ -71,12 +71,12 @@ function Lane:hit(tap)
   end
 end
 
-function Lane:render(w, h)
+function Lane:render()
   local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
 
   for _, tap in ipairs(self.visibleTaps) do
     if tap.renderable then
-      tap:render(w, h)
+      tap:render()
     end
   end
 
@@ -87,8 +87,8 @@ function Lane:render(w, h)
 
   -- Background of "tap plate" for highlights. Some dank hardcoding. :/
   withColour(r, g, b, 1, function()
-    love.graphics.rectangle("fill", self.x - 30, h - 38, 60, 28)
+    love.graphics.rectangle("fill", self.x - 30, DESIRED_HEIGHT - 38, 60, 28)
   end)
 
-  love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), h - PLATE_OFFSET)
+  love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), DESIRED_HEIGHT - PLATE_OFFSET)
 end

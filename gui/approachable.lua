@@ -15,14 +15,17 @@ function Approachable:new()
   return o
 end
 
-function Approachable:progress(h, speed)
+function Approachable:progress(speed)
+  local h = DESIRED_HEIGHT
+
   -- Super simple projection from Z to Y.
   self.z = self.z - ((TAP_Z - 1) / speed)
   self.y = (h / self.z) - (h / TAP_Z)
 end
 
-function Approachable:project(w, h, f)
-  local xVanishingPoint = w / 2
+function Approachable:project(f)
+  local xVanishingPoint = DESIRED_WIDTH / 2
+  local h = DESIRED_HEIGHT
 
   -- Calculate scale and X position to imply distance.
   local a = (h - VANISHING_POINT_Y) / (self.x - xVanishingPoint)

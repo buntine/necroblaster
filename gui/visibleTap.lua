@@ -21,9 +21,9 @@ function VisibleTap:new(tap, x, nth)
   return o
 end
 
-function VisibleTap:render(w, h)
+function VisibleTap:render()
   local tap = self.tap
-  local x, scaling = unpack(self:project(w, h))
+  local x, scaling = unpack(self:project())
   local img = TAP_IMAGES[tap.kind]
   local radius = TAP_RADIUS[tap.kind]
 
@@ -37,6 +37,6 @@ function VisibleTap:render(w, h)
   end
 end
 
-function VisibleTap:done(h)
-  return self.y > h - APPROACH_MAX_OFFSET
+function VisibleTap:done()
+  return self.y > DESIRED_HEIGHT - APPROACH_MAX_OFFSET
 end
