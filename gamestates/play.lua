@@ -31,8 +31,8 @@ function play:draw()
   love.graphics.draw(self.bg)
 
   self.laneways:render()
-  self.progress:render(self.song:tell())
   self.score:render()
+  self.progress:render(self.song:tell())
   self:drawTween()
 end
 
@@ -58,7 +58,6 @@ function play:update()
 end
 
 function play:keypressed(key, sc, ...)
-love.event.quit( )
   for _, tap in ipairs(self.songFrameset:currentTaps()) do
     if tap and key == tap.char and not self.tapSet:seen(tap) then
       local lane = self.laneways:laneFor(tap)

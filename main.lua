@@ -10,3 +10,8 @@ function love.load()
   Gamestate.switch(title)
 end
 
+function love.keypressed(k)
+  if k == 'escape' then
+    love.event.quit()
+  end
+end

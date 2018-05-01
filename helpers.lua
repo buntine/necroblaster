@@ -27,7 +27,9 @@ function withFont(name, f)
 end
 
 function withScissor(x, y, w, h, f)
-  love.graphics.setScissor(x, y, w, h)
+  -- Scissors are not affected by graphical translations so we have to apply
+  -- them manually.
+  love.graphics.setScissor(x + X_TRANSLATE, y + HEIGHT_SCALE, w + WIDTH_SCALE, h + HEIGHT_SCALE)
   f()
   love.graphics.setScissor()
 end
