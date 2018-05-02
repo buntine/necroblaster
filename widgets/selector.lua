@@ -1,6 +1,7 @@
 Selector = {
   songs = {},
   border = love.graphics.newImage("assets/images/menu_border.png"),
+  arrow = love.graphics.newImage("assets/images/bone_arrow.png"),
   index = 1,
 }
 
@@ -31,6 +32,11 @@ function Selector:render()
 
   love.graphics.draw(self:image(), 90, 175)
   love.graphics.draw(self.border, 23, 108)
+
+  withoutScale(function()
+    love.graphics.draw(self.arrow, 25, 390)
+    love.graphics.draw(self.arrow, ACTUAL_WIDTH - 325, 390, math.rad(180), 1, -1, 300, 0)
+  end)
 
   withColour(0.78, 0.78, 0.78, 1, function()
     withFont("medium", function()
