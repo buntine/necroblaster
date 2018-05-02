@@ -1,6 +1,6 @@
 require "tweening.transition"
 
-results = {}
+results = Transition:new()
 
 function results:enter(_, carry)
 
