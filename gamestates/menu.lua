@@ -12,6 +12,15 @@ end
 
 function menu:draw()
   scaleGraphics()
+
+  withoutScale(function()
+    withColour(0.47, 0.12, 0.12, 1, function()
+      withFont("medium", function()
+        love.graphics.print("Choose your evil spell...", 25, 25)
+      end)
+    end)
+  end)
+
   self.selector:render()
   self:drawTween()
 end

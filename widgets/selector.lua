@@ -1,5 +1,6 @@
 Selector = {
   songs = {},
+  border = love.graphics.newImage("assets/images/menu_border.png"),
   index = 1,
 }
 
@@ -28,17 +29,16 @@ function Selector:render()
   local details = self:details()
   local song = self:song()
 
-  love.graphics.draw(self:image(), 160, 180)
+  love.graphics.draw(self:image(), 90, 175)
+  love.graphics.draw(self.border, 23, 108)
 
   withColour(0.78, 0.78, 0.78, 1, function()
-    love.graphics.rectangle("line", 159, 179, 481, 481)
-
     withFont("medium", function()
-      love.graphics.print(details.artist, 160, 680)
+      love.graphics.print(details.artist, 90, 808)
     end)
 
     withFont("small", function()
-      love.graphics.print(details.title, 160, 720)
+      love.graphics.print(details.title, 90, 848)
     end)
   end)
 end
