@@ -1,3 +1,4 @@
+require "widgets.songMenu"
 require "widgets.selector"
 require "gamestates.difficulty"
 require "tweening.transition"
@@ -6,20 +7,13 @@ menu = Transition:new()
 
 function menu:enter()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
+  local songMenu = SongMenu:new(songs)
 
-  self.selector = Selector:new(songs)
+  self.selector = Selector:new(songMenu, "Choose your evil spell...")
 end
 
 function menu:draw()
   scaleGraphics()
-
-  withoutScale(function()
-    withColour(0.47, 0.12, 0.12, 1, function()
-      withFont("medium", function()
-        love.graphics.print("Choose your evil spell...", 25, ACTUAL_HEIGHT - 50)
-      end)
-    end)
-  end)
 
   self.selector:render()
   self:drawTween()
@@ -31,14 +25,12 @@ function menu:update()
 end
 
 function menu:keypressed(key)
-  if key == BTN_A then
-    self.selector:previous()
-  elseif key == BTN_B then
-    self.selector:next()
-  elseif key == BTN_D then
+  if key == BTN_D then
     local carry = { songid = self.selector:song().songid }
 
     self:transitionTo(difficulty, carry)
+  else
+    self.selector:keypressed(key)
   end
 end
 
