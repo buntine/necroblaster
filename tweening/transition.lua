@@ -29,8 +29,10 @@ end
 
 function Transition:drawTween()
   if self.transition then
-    withColour(0, 0, 0, self.opacity, function()
-      love.graphics.rectangle("fill", 0, 0, DESIRED_WIDTH, DESIRED_HEIGHT)
+    withoutScale(function()
+      withColour(0, 0, 0, self.opacity, function()
+        love.graphics.rectangle("fill", 0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT)
+      end)
     end)
   end
 end
