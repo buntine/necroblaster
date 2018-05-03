@@ -1,29 +1,30 @@
-require "widgets.chooser"
+require "widgets.menu"
+require "widgets.selector"
 require "gamestates.handedness"
 require "tweening.transition"
 
 difficulty = Transition:new()
 
 function difficulty:enter(_, carry)
-  self.chooser = Chooser:new("Speed: ", DIFFICULTIES, 2)
+  local menu = Menu:new(DIFFICULTIES, 2)
+
+  self.selector = Selector:new(menu, "Difficulty...")
   self.carry = carry
 end
 
 function difficulty:draw()
   scaleGraphics()
-  self.chooser:render()
+  self.selector:render()
   self:drawTween()
 end
 
 function difficulty:keypressed(key)
-  if key == BTN_A then
-    self.chooser:previous()
-  elseif key == BTN_B then
-    self.chooser:next()
-  elseif key == BTN_D then
-    local speed = self.chooser:value()
+  if key == BTN_D then
+    local speed = self.selector:value()
     self.carry.speed = speed
 
     self:transitionTo(handedness, self.carry)
+  else
+    self.selector:keypressed(key)
   end
 end

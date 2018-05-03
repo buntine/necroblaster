@@ -1,12 +1,11 @@
-Chooser = {
-  title = "",
+Menu = {
   options = {},
   index = 1
 }
 
-function Chooser:new(title, options, selected)
+function Menu:new(options, selected)
   local s = selected or 1
-  local o = { title = title, options = options, selected = s }
+  local o = { options = options, index = s }
 
   setmetatable(o, self)
   self.__index = self
@@ -14,21 +13,17 @@ function Chooser:new(title, options, selected)
   return o
 end
 
-function Chooser:render()
+function Menu:render()
   local name = self.options[self.index].name
 
   withFont("medium", function()
-    withColour(0.86, 0.11, 0.11, 1, function()
-      love.graphics.print(self.title, 160, 780)
-    end)
-
     withColour(0.78, 0.78, 0.78, 1, function()
       love.graphics.print(name, 307, 780)
     end)
   end)
 end
 
-function Chooser:previous()
+function Menu:previous()
   if self.index == 1 then
     self.index = #self.options
   else
@@ -36,7 +31,7 @@ function Chooser:previous()
   end
 end
 
-function Chooser:next()
+function Menu:next()
   if self.index == #self.options then
     self.index = 1
   else
@@ -44,6 +39,7 @@ function Chooser:next()
   end
 end
 
-function Chooser:value()
+
+function Menu:value()
   return self.options[self.index].value
 end

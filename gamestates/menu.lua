@@ -14,7 +14,6 @@ end
 
 function menu:draw()
   scaleGraphics()
-
   self.selector:render()
   self:drawTween()
 end
@@ -26,7 +25,7 @@ end
 
 function menu:keypressed(key)
   if key == BTN_D then
-    local carry = { songid = self.selector:song().songid }
+    local carry = { songid = self.selector:value() }
 
     self:transitionTo(difficulty, carry)
   else

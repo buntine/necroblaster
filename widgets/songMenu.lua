@@ -85,6 +85,10 @@ function SongMenu:next()
   end
 end
 
+function SongMenu:value()
+  return self:song().songid
+end
+
 function SongMenu:reset()
   love.audio.setVolume(1)
   love.audio.stop()

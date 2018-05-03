@@ -1,29 +1,30 @@
-require "widgets.chooser"
+require "widgets.menu"
+require "widgets.selector"
 require "gamestates.play"
 require "tweening.transition"
 
 handedness = Transition:new()
 
 function handedness:enter(_, carry)
-  self.chooser = Chooser:new("Dominant hand: ", HANDEDNESS)
+  local menu = Menu:new(HANDEDNESS)
+
+  self.selector = Selector:new(menu, "Dominant Hand...")
   self.carry = carry
 end
 
 function handedness:draw()
   scaleGraphics()
-  self.chooser:render()
+  self.selector:render()
   self:drawTween()
 end
 
 function handedness:keypressed(key)
-  if key == BTN_A then
-    self.chooser:previous()
-  elseif key == BTN_B then
-    self.chooser:next()
-  elseif key == BTN_D then
-    local dominant = self.chooser:value()
+  if key == BTN_D then
+    local dominant = self.selector:value()
     self.carry.dominant = dominant
 
     self:transitionTo(play, self.carry)
+  else
+    self.selector:keypressed(key)
   end
 end

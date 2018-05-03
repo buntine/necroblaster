@@ -34,7 +34,9 @@ end
 function Selector:progress()
   -- Arrow quads...
 
-  self.body:progress()
+  if self.body.progress then
+    self.body:progress()
+  end
 end
 
 function Selector:keypressed(key)
@@ -43,6 +45,10 @@ function Selector:keypressed(key)
   elseif key == BTN_B then
     self.body:next()
   end
+end
+
+function Selector:value()
+  return self.body:value()
 end
 
 function Selector:reset()
