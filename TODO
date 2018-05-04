@@ -33,8 +33,9 @@
 *- Implement transition
 *- Proper UI for handedness and difficulty
 *- Proper UI for song selection
-- Correct font and size for Menu
+*- Correct font and size for Menu
 - Animation or highlight on next/prev in Selector
+- Fix sensitivity of score meter
 - Always highlight regardless of hit?
 - Preload songs before getting to selection?
 - Finish data for Ritual

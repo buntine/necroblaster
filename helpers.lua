@@ -60,8 +60,6 @@ function withoutScale(f)
   -- Save and reset current transformation so we can draw on the whole screen.
   love.graphics.push()
   love.graphics.origin()
-
   f()
-
   love.graphics.pop() -- Restore previous transformation.
 end

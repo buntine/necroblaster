@@ -1,13 +1,13 @@
 Selector = {
   body = {},
-  title = "",
+  title = {},
   arrow = love.graphics.newImage("assets/images/bone_arrow.png"),
 }
 
 function Selector:new(body, title)
   local o = {
     body = body,
-    title = title,
+    title = love.graphics.newText(fonts.big, title)
   }
 
   setmetatable(o, self)
@@ -19,13 +19,13 @@ end
 function Selector:render()
   withoutScale(function()
     withColour(0.47, 0.12, 0.12, 1, function()
-      withFont("medium", function()
-        love.graphics.print(self.title, 25, ACTUAL_HEIGHT - 50)
-      end)
+      love.graphics.draw(self.title, MENU_BORDER, ACTUAL_HEIGHT - self.title:getHeight() - MENU_BORDER)
     end)
 
-    love.graphics.draw(self.arrow, 25, 390)
-    love.graphics.draw(self.arrow, ACTUAL_WIDTH - 325, 390, math.rad(180), 1, -1, 300, 0)
+    local _, y = unpack(center(0, ACTUAL_HEIGHT, 0, self.arrow:getHeight()))
+
+    love.graphics.draw(self.arrow, MENU_BORDER, y)
+    love.graphics.draw(self.arrow, ACTUAL_WIDTH - MENU_BORDER, y, math.rad(180), 1, -1)
   end)
 
   self.body:render()

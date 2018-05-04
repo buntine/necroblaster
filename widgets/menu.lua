@@ -1,3 +1,5 @@
+require "widgets.menuOption"
+
 Menu = {
   options = {},
   index = 1
@@ -5,7 +7,14 @@ Menu = {
 
 function Menu:new(options, selected)
   local s = selected or 1
-  local o = { options = options, index = s }
+  local o = {
+    options = fun.totable(
+      fun.map(function(o)
+        return MenuOption:new(o.name, o.value)
+      end, options)
+    ),
+    index = s
+  }
 
   setmetatable(o, self)
   self.__index = self
@@ -14,11 +23,11 @@ function Menu:new(options, selected)
 end
 
 function Menu:render()
-  local name = self.options[self.index].name
+  local option = self.options[self.index]
 
   withFont("medium", function()
     withColour(0.78, 0.78, 0.78, 1, function()
-      love.graphics.print(name, 307, 780)
+      option:render()
     end)
   end)
 end
