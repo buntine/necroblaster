@@ -1,3 +1,5 @@
+-- A single item within a menu widget.
+
 MenuOption = {
   text = {},
   value = 1

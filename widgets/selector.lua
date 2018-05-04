@@ -1,3 +1,6 @@
+-- A wrapper class that presents its "body" along with arrows to move back and forward through
+-- the items available in body.
+
 Selector = {
   body = {},
   title = {},

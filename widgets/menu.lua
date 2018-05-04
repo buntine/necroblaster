@@ -1,3 +1,5 @@
+-- A multi-item menu used as a "body" to Selector.
+
 require "widgets.menuOption"
 
 Menu = {
@@ -25,10 +27,8 @@ end
 function Menu:render()
   local option = self.options[self.index]
 
-  withFont("medium", function()
-    withColour(0.78, 0.78, 0.78, 1, function()
-      option:render()
-    end)
+  withColour(0.66, 0.66, 0.66, 1, function()
+    option:render()
   end)
 end
 
