@@ -15,8 +15,8 @@ function Selector:new(body, title)
   local o = {
     body = body,
     title = love.graphics.newText(fonts.big, title),
-    leftBump = Bump:new(MENU_BORDER, -21),
-    rightBump = Bump:new(ACTUAL_WIDTH - MENU_BORDER, 21),
+    leftBump = Bump:new(MENU_BORDER, -3),
+    rightBump = Bump:new(ACTUAL_WIDTH - MENU_BORDER, 3),
   }
 
   setmetatable(o, self)
