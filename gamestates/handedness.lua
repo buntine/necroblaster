@@ -18,6 +18,11 @@ function handedness:draw()
   self:drawTween()
 end
 
+function handedness:update()
+  self.selector:progress()
+  self:updateTween()
+end
+
 function handedness:keypressed(key)
   if key == BTN_D then
     local dominant = self.selector:value()

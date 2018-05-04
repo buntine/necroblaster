@@ -1,16 +1,22 @@
 -- A wrapper class that presents its "body" along with arrows to move back and forward through
 -- the items available in body.
 
+require "tweening.bump"
+
 Selector = {
   body = {},
   title = {},
+  leftBump = {},
+  rightBump = {},
   arrow = love.graphics.newImage("assets/images/bone_arrow.png"),
 }
 
 function Selector:new(body, title)
   local o = {
     body = body,
-    title = love.graphics.newText(fonts.big, title)
+    title = love.graphics.newText(fonts.big, title),
+    leftBump = Bump:new(MENU_BORDER, -21),
+    rightBump = Bump:new(ACTUAL_WIDTH - MENU_BORDER, 21),
   }
 
   setmetatable(o, self)
@@ -27,15 +33,16 @@ function Selector:render()
 
     local _, y = unpack(center(0, ACTUAL_HEIGHT, 0, self.arrow:getHeight()))
 
-    love.graphics.draw(self.arrow, MENU_BORDER, y)
-    love.graphics.draw(self.arrow, ACTUAL_WIDTH - MENU_BORDER, y, math.rad(180), 1, -1)
+    love.graphics.draw(self.arrow, self.leftBump.x, y)
+    love.graphics.draw(self.arrow, self.rightBump.x, y, math.rad(180), 1, -1)
   end)
 
   self.body:render()
 end
 
 function Selector:progress()
-  -- Arrow quads...
+  self.leftBump:progress()
+  self.rightBump:progress()
 
   if self.body.progress then
     self.body:progress()
@@ -44,8 +51,10 @@ end
 
 function Selector:keypressed(key)
   if key == BTN_A then
+    self.leftBump:start()
     self.body:previous()
   elseif key == BTN_B then
+    self.rightBump:start()
     self.body:next()
   end
 end

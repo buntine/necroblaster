@@ -18,6 +18,11 @@ function difficulty:draw()
   self:drawTween()
 end
 
+function difficulty:update()
+  self.selector:progress()
+  self:updateTween()
+end
+
 function difficulty:keypressed(key)
   if key == BTN_D then
     local speed = self.selector:value()
