@@ -8,7 +8,7 @@ handedness = Transition:new()
 function handedness:enter(_, carry)
   local menu = Menu:new(HANDEDNESS)
 
-  self.selector = Selector:new(menu, "Dominant Hand...")
+  self.selector = Selector:new(menu, "Dominant Hand...", "menu_bg_witches.png")
   self.carry = carry
 end
 

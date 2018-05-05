@@ -28,7 +28,7 @@ function Bump:progress()
     self.x = self.x + self.gravity
     self.gravity = self.gravity + self.inertia
 
-    if self:finished() then
+    if self:isFinished() then
       self.gravity = 0
     end
   end
@@ -38,7 +38,7 @@ function Bump:isRunning()
   return self.x ~= self.initialX or self.gravity ~= 0
 end
 
-function Bump:finished()
+function Bump:isFinished()
   return math.abs(self.gravity) > math.abs(self.applicableGravity)
 end
 

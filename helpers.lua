@@ -1,9 +1,9 @@
 -- Helper functions to get around Love2D oddities.
 fonts = {
-  small = love.graphics.newFont("assets/fonts/seagram_tfb.ttf", 24),
-  medium = love.graphics.newFont("assets/fonts/seagram_tfb.ttf", 32),
-  big = love.graphics.newFont("assets/fonts/seagram_tfb.ttf", 56),
-  huge = love.graphics.newFont("assets/fonts/seagram_tfb.ttf", 124)
+  small = love.graphics.newFont("assets/fonts/germgoth.ttf", 24),
+  medium = love.graphics.newFont("assets/fonts/germgoth.ttf", 32),
+  big = love.graphics.newFont("assets/fonts/germgoth.ttf", 56),
+  huge = love.graphics.newFont("assets/fonts/germgoth.ttf", 124)
 }
 
 function withColour(r, g, b, a, f)
@@ -62,4 +62,11 @@ function withoutScale(f)
   love.graphics.origin()
   f()
   love.graphics.pop() -- Restore previous transformation.
+end
+
+function stretchToScreen(img)
+  local sx = ACTUAL_WIDTH / img:getWidth()
+  local sy = ACTUAL_HEIGHT / img:getHeight()
+
+  love.graphics.draw(img, 0, 0, 0, sx, sy)
 end

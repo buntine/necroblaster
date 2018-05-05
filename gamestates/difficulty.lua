@@ -8,7 +8,7 @@ difficulty = Transition:new()
 function difficulty:enter(_, carry)
   local menu = Menu:new(DIFFICULTIES, 2)
 
-  self.selector = Selector:new(menu, "Difficulty...")
+  self.selector = Selector:new(menu, "Difficulty...", "menu_bg_church.png")
   self.carry = carry
 end
 

@@ -8,15 +8,17 @@ Selector = {
   title = {},
   leftBump = {},
   rightBump = {},
+  bg = {},
   arrow = love.graphics.newImage("assets/images/bone_arrow.png"),
 }
 
-function Selector:new(body, title)
+function Selector:new(body, title, bg)
   local o = {
     body = body,
-    title = love.graphics.newText(fonts.big, title),
+    title = love.graphics.newText(fonts.big, title, bg),
     leftBump = Bump:new(MENU_BORDER, -3),
     rightBump = Bump:new(ACTUAL_WIDTH - MENU_BORDER, 3),
+    bg = love.graphics.newImage("assets/images/" .. bg),
   }
 
   setmetatable(o, self)
@@ -27,6 +29,8 @@ end
 
 function Selector:render()
   withoutScale(function()
+    stretchToScreen(self.bg)
+
     withColour(0.47, 0.12, 0.12, 1, function()
       love.graphics.draw(self.title, MENU_BORDER, ACTUAL_HEIGHT - self.title:getHeight() - MENU_BORDER)
     end)

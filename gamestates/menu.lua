@@ -9,7 +9,7 @@ function menu:enter()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
   local songMenu = SongMenu:new(songs)
 
-  self.selector = Selector:new(songMenu, "Evil spell...")
+  self.selector = Selector:new(songMenu, "Evil spell...", "menu_bg_forest.png")
 end
 
 function menu:draw()
