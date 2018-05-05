@@ -3,13 +3,13 @@
 Bump = {
   x = 0,
   initialX = 0,
-  inertia = 0.5,
+  inertia = 0.75,
   gravity = 0,
   applicableGravity = 0,
 }
 
 function Bump:new(x, gravity, inertia)
-  local n = inertia or 0.5
+  local n = inertia or self.inertia
   local o = {
     x = x,
     initialX = x,
@@ -43,5 +43,7 @@ function Bump:finished()
 end
 
 function Bump:start()
-  self.gravity = self.applicableGravity
+  if not self:isRunning() then
+    self.gravity = self.applicableGravity
+  end
 end
