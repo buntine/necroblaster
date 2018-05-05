@@ -33,3 +33,7 @@ function handedness:keypressed(key)
     self.selector:keypressed(key)
   end
 end
+
+function handedness:leave()
+  love.audio.stop()
+end

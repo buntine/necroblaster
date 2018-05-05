@@ -49,6 +49,12 @@ function centerOfLane(nth)
   return LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2)
 end
 
+function drawInCenter(drawable)
+  local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, drawable:getWidth(), drawable:getHeight()))
+
+  love.graphics.draw(drawable, x, y)
+end
+
 -- Transforms coordination system so that GUI is drawn centered in
 -- fullscreen mode.
 function scaleGraphics()

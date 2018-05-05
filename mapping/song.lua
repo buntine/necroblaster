@@ -47,3 +47,7 @@ end
 function Song:pause()
   love.audio.pause(self.stream)
 end
+
+function Song:stop()
+  love.audio.stop(self.stream)
+end

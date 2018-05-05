@@ -91,7 +91,7 @@ end
 
 function SongMenu:reset()
   love.audio.setVolume(1)
-  love.audio.stop()
+  self:song():stop()
 end
 
 function SongMenu:song()
