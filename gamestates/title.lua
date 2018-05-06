@@ -1,6 +1,7 @@
 require "gamestates.menu"
 require "tweening.transition"
 require "gui.droplet"
+require "gui.lightning"
 
 title = Transition:new()
 
@@ -8,16 +9,13 @@ function title:enter()
   self.title = love.graphics.newImage("assets/images/title.png")
   self.music = love.audio.newSource("assets/audio/intro.ogg", "stream")
   self.rain = love.audio.newSource("assets/audio/rain.ogg", "stream")
-  self.thunder = love.audio.newSource("assets/audio/thunder.ogg", "stream")
-  self.lightning = -1
-  self.lightning1 = -1
+  self.lightning = Lightning:new()
   self.droplets = {}
   self.titleOpacity = 0.0
 
-  self.music:play()
   self.rain:setVolume(0.1)
+  self.music:play()
   self.rain:play()
-  self.thunder:setVolume(0.1)
 end
 
 function title:draw()
@@ -30,16 +28,8 @@ function title:draw()
       end
     end)
 
-    if self.lightning1 > 0 then
-      withColour(1, 1, 1, self.lightning1, function()
-        love.graphics.rectangle("fill", 0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT)
-      end)
-    end
-
-    if self.lightning > 0 then
-      withColour(1, 1, 1, self.lightning, function()
-        love.graphics.rectangle("fill", 0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT)
-      end)
+    if self.lightning:running() then
+      self.lightning:render()
     end
   end)
 
@@ -61,25 +51,16 @@ function title:update()
     end
   end
 
+  if self.lightning:running() then
+    self.lightning:progress()
+
+  -- Start lightning as soon as fade-in completes.
+  elseif self.titleOpacity >= 1 and not self.lightning:completed() then
+    self.lightning:start()
+  end
+
   if self.titleOpacity < 1 then
     self.titleOpacity = self.titleOpacity + 0.001
-  end
-
-  if self.lightning > 0 then
-    self.lightning = self.lightning - 0.005
-  end
-
-  if self.lightning1 > 0 then
-    self.thunder:play()
-    self.lightning1 = self.lightning1 - 0.07
-  end
-
-  if self.titleOpacity > 0.97 and self.lightning1 == -1 then
-    self.lightning1 = 0.76
-  end
-
-  if self.titleOpacity > 0.99 and self.lightning == -1 then
-    self.lightning = 0.76
   end
 
   self:updateTween()

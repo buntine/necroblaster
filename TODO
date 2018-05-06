@@ -41,6 +41,7 @@
 - Bug in returning to menu after song finishes
 - Always highlight regardless of hit?
 - Preload songs before getting to selection?
+- Finish UI for gameplay
 - Finish data for Ritual
 - Actual serial-port reading to try increase accuracy of multiple taps simultaneously
 -- https://github.com/moteus/lua-lluv-rs232
