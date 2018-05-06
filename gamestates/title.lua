@@ -1,5 +1,6 @@
 require "gamestates.menu"
 require "tweening.transition"
+require "gui.droplet"
 
 title = Transition:new()
 
@@ -23,12 +24,10 @@ function title:draw()
   end)
 
   withoutScale(function()
-    withLineWidth(math.random(1, 2), function()
-      withColour(0.18, 0.18, 0.18, 1, function()
-        for _, d in pairs(self.droplets) do
-          love.graphics.line(d.x, d.y, d.x - 20, d.y + 25)
-        end
-      end)
+    withColour(0.18, 0.18, 0.18, 1, function()
+      for _, d in pairs(self.droplets) do
+        d:render()
+      end
     end)
   end)
 
@@ -36,13 +35,12 @@ function title:draw()
 end
 
 function title:update()
-  table.insert(self.droplets, {x = math.random(10, ACTUAL_WIDTH * 1.8), y = 0})
+  table.insert(self.droplets, Droplet:new())
 
   for i, d in ipairs(self.droplets) do
-    d.x = d.x - math.random(10, 13)
-    d.y = d.y + math.random(14, 17)
-  
-    if d.x < 0 or d.y < 0 then
+    d:progress()
+
+    if d:done() then
       table.remove(self.droplets, i)
     end
   end
@@ -61,4 +59,3 @@ end
 function title:leave()
   self.music:stop()
 end
-

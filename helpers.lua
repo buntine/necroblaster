@@ -42,6 +42,10 @@ function withScissor(x, y, w, h, f)
   love.graphics.setScissor()
 end
 
+function normalise(x, min, max, base)
+  return ((x - min) / (max - min)) * base
+end
+
 function round(x)
   return x>=0 and math.floor(x+0.5) or math.ceil(x-0.5)
 end
