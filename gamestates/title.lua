@@ -23,10 +23,12 @@ function title:draw()
   end)
 
   withoutScale(function()
-    withColour(0.18,0.18,0.18,1,function()
-      for _, d in pairs(self.droplets) do
-        love.graphics.line(d.x, d.y, d.x - 20, d.y + 20)
-      end
+    withLineWidth(math.random(1, 2), function()
+      withColour(0.18, 0.18, 0.18, 1, function()
+        for _, d in pairs(self.droplets) do
+          love.graphics.line(d.x, d.y, d.x - 20, d.y + 25)
+        end
+      end)
     end)
   end)
 

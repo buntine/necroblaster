@@ -26,6 +26,14 @@ function withFont(name, f)
   love.graphics.setFont(_f)
 end
 
+function withLineWidth(width, f)
+  local _width = love.graphics.getLineWidth()
+
+  love.graphics.setLineWidth(width)
+  f()
+  love.graphics.setLineWidth(_width)
+end
+
 function withScissor(x, y, w, h, f)
   -- Scissors are not affected by graphical translations so we have to apply
   -- them manually.
