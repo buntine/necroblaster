@@ -36,8 +36,9 @@
 *- Correct font and size for Menu
 *- Animation or highlight on next/prev in Selector
 *- Pixelated gothic font?
-- Intro screen with music
+*- Intro screen with music
 - Fix sensitivity of score meter
+- Bug in returning to menu after song finishes
 - Always highlight regardless of hit?
 - Preload songs before getting to selection?
 - Finish data for Ritual
