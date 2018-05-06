@@ -45,8 +45,9 @@ DROP_MIN_ANGLE = 3
 DROP_MAX_ANGLE = 10
 DIFFICULTIES = {
   {value = 240, name = "Poser"},
-  {value = 180, name = "Dexterity von Doom"},
-  {value = 90, name = "Soul Crushing"}
+  {value = 180, name = "Infantry"},
+  {value = 120, name = "Commando"},
+  {value = 60, name = "Soul Crusher"}
 }
 HANDEDNESS = {
   {value = "right", name = "Right"},

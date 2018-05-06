@@ -6,7 +6,7 @@ require "tweening.transition"
 difficulty = Transition:new()
 
 function difficulty:enter(_, carry)
-  local menu = Menu:new(DIFFICULTIES, 2)
+  local menu = Menu:new(DIFFICULTIES)
 
   self.selector = Selector:new(menu, "Difficulty...", "menu_bg_church.png")
   self.carry = carry
