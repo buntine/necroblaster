@@ -58,9 +58,16 @@ function play:update()
 end
 
 function play:keypressed(key, sc, ...)
+  local lane = self.laneways:laneFor(key)
+
+  if not lane then
+    return
+  end
+
+  lane:highlight()
+
   for _, tap in ipairs(self.songFrameset:currentTaps()) do
     if tap and key == tap.char and not self.tapSet:seen(tap) then
-      local lane = self.laneways:laneFor(tap)
 
       self.tapSet:add(tap)
       lane:hit(tap)

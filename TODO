@@ -37,9 +37,9 @@
 *- Animation or highlight on next/prev in Selector
 *- Pixelated gothic font?
 *- Intro screen with music
+*- Always highlight regardless of hit?
 - Fix sensitivity of score meter
 - Bug in returning to menu after song finishes
-- Always highlight regardless of hit?
 - Preload songs before getting to selection?
 - Finish UI for gameplay
 - Finish data for Ritual

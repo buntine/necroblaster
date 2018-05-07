@@ -36,17 +36,17 @@ function Laneways:render()
 end
 
 function Laneways:add(tap)
-  local lane = self:laneFor(tap)
+  local lane = self:laneFor(tap.char)
 
   lane:add(tap)
 end
 
 function Laneways:seen(tap)
-  local lane = self:laneFor(tap)
+  local lane = self:laneFor(tap.char)
 
   return lane:seen(tap)
 end
 
-function Laneways:laneFor(tap)
-  return self.lanes[tap.char]
+function Laneways:laneFor(key)
+  return self.lanes[key]
 end

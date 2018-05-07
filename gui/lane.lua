@@ -60,15 +60,17 @@ function Lane:add(tap)
   table.insert(self.visibleTaps, VisibleTap:new(tap, self.x, self.total))
 end
 
-function Lane:hit(tap)
-  table.insert(self.reverbs, Reverberation:new(tap, self.x))
-
+function Lane:highlight()
   if self.highlightStep == 1 then
     self.highlightStep = HIGHLIGHT_STEP + 1
   else
     -- We are already mid-highlight, so just prolong the current one.
     self.highlightStep = #HIGHLIGHT_COLORS / 2
   end
+end
+
+function Lane:hit(tap)
+  table.insert(self.reverbs, Reverberation:new(tap, self.x))
 end
 
 function Lane:render()
