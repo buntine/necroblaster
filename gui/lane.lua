@@ -4,6 +4,7 @@
 -- when a tap is successfully hit.
 
 require "gui.reverberation"
+require "gui.laneHighlight"
 require "gui.visibleTap"
 
 Lane = {}
@@ -14,7 +15,7 @@ function Lane:new(nth)
     nth = nth,
     x = centerOfLane(nth),
     total = 0,
-    highlightStep = 1,
+    highlighter = LaneHighlight:new(),
     reverbs = {},
     icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
   }
@@ -30,13 +31,7 @@ function Lane:seen(tap)
 end
 
 function Lane:progress(speed)
-  if self.highlightStep > 1 then
-    self.highlightStep = self.highlightStep + HIGHLIGHT_STEP
-  end
-
-  if self.highlightStep > #HIGHLIGHT_COLORS then
-    self.highlightStep = 1
-  end
+  self.highlighter:progress()
 
   for i, r in ipairs(self.reverbs) do
     r:progress()
@@ -61,12 +56,7 @@ function Lane:add(tap)
 end
 
 function Lane:highlight()
-  if self.highlightStep == 1 then
-    self.highlightStep = HIGHLIGHT_STEP + 1
-  else
-    -- We are already mid-highlight, so just prolong the current one.
-    self.highlightStep = #HIGHLIGHT_COLORS / 2
-  end
+  self.highlighter:start()
 end
 
 function Lane:hit(tap)
@@ -74,8 +64,6 @@ function Lane:hit(tap)
 end
 
 function Lane:render()
-  local r, g, b = unpack(HIGHLIGHT_COLORS[math.floor(self.highlightStep)])
-
   for _, tap in ipairs(self.visibleTaps) do
     if tap.renderable then
       tap:render()
@@ -87,10 +75,6 @@ function Lane:render()
     reverb:render()
   end
 
-  -- Background of "tap plate" for highlights. Some dank hardcoding. :/
-  withColour(r, g, b, 1, function()
-    love.graphics.rectangle("fill", self.x - 30, DESIRED_HEIGHT - 38, 60, 28)
-  end)
-
+  self.highlighter:render(self.x)
   love.graphics.draw(self.icon, self.x - 70 - (self.nth * 3), DESIRED_HEIGHT - PLATE_OFFSET)
 end

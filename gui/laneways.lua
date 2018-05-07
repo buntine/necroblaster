@@ -1,4 +1,5 @@
 -- A wrapper class over the set of lanes.
+--
 -- Each lane maintains a set of upcoming/renderable taps.
 
 require "gui.lane"
