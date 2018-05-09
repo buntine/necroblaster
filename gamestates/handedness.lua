@@ -5,10 +5,13 @@ require "tweening.transition"
 
 handedness = Transition:new()
 
-function handedness:enter(_, carry)
+function handedness:init()
   local menu = Menu:new(HANDEDNESS)
 
   self.selector = Selector:new(menu, "Dominant Hand...", "menu_bg_witches.png")
+end
+
+function handedness:enter(_, carry)
   self.carry = carry
 end
 

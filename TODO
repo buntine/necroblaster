@@ -39,6 +39,7 @@
 *- Intro screen with music
 *- Always highlight regardless of hit?
 *- Bug in returning to menu after song finishes
+- Proper UI (background and positioning) for "results"
 - Fix sensitivity of score meter
 - Preload songs before getting to selection?
 - Finish UI for gameplay

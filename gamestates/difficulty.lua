@@ -5,10 +5,13 @@ require "tweening.transition"
 
 difficulty = Transition:new()
 
-function difficulty:enter(_, carry)
+function difficulty:init()
   local menu = Menu:new(DIFFICULTIES)
 
   self.selector = Selector:new(menu, "Difficulty...", "menu_bg_church.png")
+end
+
+function difficulty:enter(_, carry)
   self.carry = carry
 end
 
