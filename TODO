@@ -38,8 +38,8 @@
 *- Pixelated gothic font?
 *- Intro screen with music
 *- Always highlight regardless of hit?
+*- Bug in returning to menu after song finishes
 - Fix sensitivity of score meter
-- Bug in returning to menu after song finishes
 - Preload songs before getting to selection?
 - Finish UI for gameplay
 - Finish data for Ritual

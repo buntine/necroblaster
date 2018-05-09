@@ -3,7 +3,6 @@ require "tweening.transition"
 results = Transition:new()
 
 function results:enter(_, carry)
-
   self.score = carry.score
   self.bestScore = carry.bestScore
   self.percentage = round((self.score / self.bestScore) * 100)

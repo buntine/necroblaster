@@ -29,7 +29,7 @@ function Song:play(offset)
   local o = offset or 0
   self.stream:setLooping(false)
 
-  love.audio.play(self.stream)
+  self.stream:play()
 
   if o > 0 then
     self:seek(o)
@@ -45,9 +45,9 @@ function Song:seek(offset)
 end
 
 function Song:pause()
-  love.audio.pause(self.stream)
+  self.stream:pause()
 end
 
 function Song:stop()
-  love.audio.stop(self.stream)
+  self.stream:stop()
 end

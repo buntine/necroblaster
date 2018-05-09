@@ -9,7 +9,7 @@ Transition = {
   carry = {},
 }
 
-function Transition:new(tap, x)
+function Transition:new()
   local o = {}
 
   setmetatable(o, self)
@@ -40,7 +40,8 @@ end
 function Transition:updateTween()
   if self.transition == states.up then
     if self.opacity >= 1 then
-      Gamestate.switch(self.nextGameState, self.carry)
+      self.transition = states.down
+      return Gamestate.switch(self.nextGameState, self.carry)
     end
 
     self.opacity = self.opacity + TRANSITION_DELTA

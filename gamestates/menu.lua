@@ -5,7 +5,7 @@ require "tweening.transition"
 
 menu = Transition:new()
 
-function menu:enter()
+function menu:init()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
   local songMenu = SongMenu:new(songs)
 

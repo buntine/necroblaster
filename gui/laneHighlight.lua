@@ -1,6 +1,6 @@
 -- A highlight that appears behind a lane "plate" upon the appropriate keystroke.
 
-laneHighlight = {
+LaneHighlight = {
   step = 1,
 }
 

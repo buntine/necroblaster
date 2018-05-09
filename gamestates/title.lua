@@ -5,10 +5,13 @@ require "gui.lightning"
 
 title = Transition:new()
 
-function title:enter()
+function title:init()
   self.title = love.graphics.newImage("assets/images/title.png")
   self.music = love.audio.newSource("assets/audio/intro.ogg", "stream")
   self.rain = love.audio.newSource("assets/audio/rain.ogg", "stream")
+end
+
+function title:enter()
   self.lightning = Lightning:new()
   self.droplets = {}
   self.titleOpacity = 0.0
