@@ -1,4 +1,5 @@
 require "tweening.transition"
+require "gui.layout"
 
 results = Transition:new()
 
@@ -6,6 +7,7 @@ function results:enter(_, carry)
   self.score = carry.score
   self.bestScore = carry.bestScore
   self.percentage = round((self.score / self.bestScore) * 100)
+  self.layout = Layout:new("Results...", "menu_bg_church.png")
 end
 
 function results:keypressed(_)
@@ -13,20 +15,15 @@ function results:keypressed(_)
 end
 
 function results:draw()
+  local score = love.graphics.newText(fonts.ridiculous, self.percentage .. "%")
+  local rank = love.graphics.newText(fonts.big, self:getRank())
+
   scaleGraphics()
+  self.layout:render()
 
-  withColour(0.86, 0.11, 0.11, 1, function()
-    local score = love.graphics.newText(fonts.huge, self.percentage .. "%")
-    local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, score:getWidth(), score:getHeight(), 0, -100))
-
-    love.graphics.draw(score, x, y)
-  end)
-
-  withColour(0.78, 0.78, 0.78, 1, function()
-    local rank = love.graphics.newText(fonts.big, self:getRank())
-    local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, rank:getWidth(), rank:getHeight(), 0, 50))
-
-    love.graphics.draw(rank, x, y)
+  withColour(0.66, 0.66, 0.66, 1, function()
+    drawInCenter(score, 0, -(score:getHeight() / 2) - 10)
+    drawInCenter(rank, 0, rank:getHeight())
   end)
 
   self:drawTween()

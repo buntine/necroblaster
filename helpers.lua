@@ -3,7 +3,8 @@ fonts = {
   small = love.graphics.newFont("assets/fonts/germgoth.ttf", 24),
   medium = love.graphics.newFont("assets/fonts/germgoth.ttf", 32),
   big = love.graphics.newFont("assets/fonts/germgoth.ttf", 56),
-  huge = love.graphics.newFont("assets/fonts/germgoth.ttf", 124)
+  huge = love.graphics.newFont("assets/fonts/germgoth.ttf", 124),
+  ridiculous = love.graphics.newFont("assets/fonts/germgoth.ttf", 248)
 }
 
 function withColour(r, g, b, a, f)
@@ -61,8 +62,8 @@ function centerOfLane(nth)
   return LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2)
 end
 
-function drawInCenter(drawable)
-  local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, drawable:getWidth(), drawable:getHeight()))
+function drawInCenter(drawable, ox, oy)
+  local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, drawable:getWidth(), drawable:getHeight(), ox, oy))
 
   love.graphics.draw(drawable, x, y)
 end

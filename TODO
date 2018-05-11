@@ -39,11 +39,11 @@
 *- Intro screen with music
 *- Always highlight regardless of hit?
 *- Bug in returning to menu after song finishes
-- Proper UI (background and positioning) for "results"
-- Fix sensitivity of score meter
-- Preload songs before getting to selection?
-- Finish UI for gameplay
+*- Proper UI (background and positioning) for "results"
 - Finish data for Ritual
+- Finish UI for gameplay
+- Fix sensitivity of score meter?
+- Preload songs before getting to selection?
 - Actual serial-port reading to try increase accuracy of multiple taps simultaneously
 -- https://github.com/moteus/lua-lluv-rs232
 -- https://luvit.io/
