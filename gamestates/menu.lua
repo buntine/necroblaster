@@ -1,5 +1,6 @@
 require "widgets.songMenu"
 require "widgets.selector"
+require "gui.layout"
 require "gamestates.difficulty"
 require "tweening.transition"
 
@@ -9,11 +10,13 @@ function menu:init()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))
   local songMenu = SongMenu:new(songs)
 
-  self.selector = Selector:new(songMenu, "Evil spell...", "menu_bg_forest.png")
+  self.selector = Selector:new(songMenu)
+  self.layout = Layout:new("Evil spell...", "menu_bg_forest.png")
 end
 
 function menu:draw()
   scaleGraphics()
+  self.layout:render()
   self.selector:render()
   self:drawTween()
 end

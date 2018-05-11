@@ -1,5 +1,6 @@
 require "widgets.menu"
 require "widgets.selector"
+require "gui.layout"
 require "gamestates.handedness"
 require "tweening.transition"
 
@@ -8,7 +9,8 @@ difficulty = Transition:new()
 function difficulty:init()
   local menu = Menu:new(DIFFICULTIES)
 
-  self.selector = Selector:new(menu, "Difficulty...", "menu_bg_church.png")
+  self.selector = Selector:new(menu)
+  self.layout = Layout:new("Difficulty...", "menu_bg_church.png")
 end
 
 function difficulty:enter(_, carry)
@@ -17,6 +19,7 @@ end
 
 function difficulty:draw()
   scaleGraphics()
+  self.layout:render()
   self.selector:render()
   self:drawTween()
 end
