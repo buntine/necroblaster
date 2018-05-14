@@ -32,7 +32,13 @@ function Reverberation:render()
   local radius = TAP_RADIUS[self.tap.kind]
 
   withOpacity(self.opacity, function()
-    love.graphics.draw(img, self.x - (radius * self.scaling), self.y, 0, self.scaling)
+    local offset = 0
+
+    if (self.tap.kind == "doublekick") then
+      offset = (self.tap.nth % 2 == 0 and -DOUBLEKICK_SPACING or DOUBLEKICK_SPACING)
+    end
+
+    love.graphics.draw(img, self.x + offset - (radius * self.scaling), self.y, 0, self.scaling)
   end)
 end
 

@@ -14,7 +14,6 @@ function Lane:new(nth)
     visibleTaps = {},
     nth = nth,
     x = centerOfLane(nth),
-    total = 0,
     highlighter = LaneHighlight:new(),
     reverbs = {},
     icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
@@ -51,8 +50,7 @@ function Lane:progress(speed)
 end
 
 function Lane:add(tap)
-  self.total = self.total + 1
-  table.insert(self.visibleTaps, VisibleTap:new(tap, self.x, self.total))
+  table.insert(self.visibleTaps, VisibleTap:new(tap, self.x))
 end
 
 function Lane:highlight()

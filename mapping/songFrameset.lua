@@ -12,6 +12,7 @@ SongFrameset = {
   data = {},
   frames = {},
   laneChars = {},
+  laneTotals = {},
   framePointer = 0,
   position = 0,
   bestScore = 0,
@@ -21,7 +22,8 @@ SongFrameset = {
 function SongFrameset:new(songid, speed, handedness)
   local o = {
     speed = speed,
-    laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D}
+    laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D},
+    laneTotals = {0, 0, 0, 0},
   }
 
   setmetatable(o, self)
@@ -74,7 +76,9 @@ function SongFrameset:generate()
     if d.kind == "tap" then
       self:populateKeys(index - DAMPENING, index + DAMPENING, 1, d, function(i)
         local blurring = math.abs(index - i) + 1
-        return Tap:new(index, 1 / blurring)
+        local nth = self.laneTotals[d.lane]
+
+        return Tap:new(index, nth, 1 / blurring)
       end)
     else
       local finishIndex = math.floor(d.finish / TIME_SCALE)
@@ -83,7 +87,9 @@ function SongFrameset:generate()
       )
 
       self:populateKeys(index, finishIndex, step, d, function(i)
-        return Tap:new(i, health)
+        local nth = self.laneTotals[d.lane]
+
+        return Tap:new(i, nth, health)
       end)
     end
   end
@@ -91,10 +97,17 @@ end
 
 function SongFrameset:populateKeys(start, stop, step, d, f)
   for _it, i in fun.range(start, stop, step) do
+    self:incrementLaneTotal(d.lane)
+
     local tap = f(i)
+
     tap.char = self.laneChars[d.lane]
     tap.kind = d.kind
 
     table.insert(self.frames[i], tap)
   end
+end
+
+function SongFrameset:incrementLaneTotal(lane)
+  self.laneTotals[lane] = self.laneTotals[lane] + 1
 end

@@ -4,15 +4,14 @@ require "gui.approachable"
 
 VisibleTap = Approachable:new()
 
-function VisibleTap:new(tap, x, nth)
+function VisibleTap:new(tap, x)
   local o = {
     z = TAP_Z,
     x = x,
     y = 0,
     tap = tap,
-    nth = nth,
     -- Skip rendering of every second blastbeat (visually more appealing).
-    renderable = not (tap.kind == "blastbeat" and nth % 2 == 0)
+    renderable = not (tap.kind == "blastbeat" and tap.nth % 2 == 0)
   }
 
   setmetatable(o, self)
@@ -29,7 +28,7 @@ function VisibleTap:render()
 
   if tap.kind == "doublekick" then
     local offset = DOUBLEKICK_SPACING * scaling
-    local position = (self.nth % 2 == 0 and -offset or offset)
+    local position = (self.tap.nth % 2 == 0 and -offset or offset)
 
     love.graphics.draw(img, x + position - (radius * scaling), self.y, 0, scaling)
   else
