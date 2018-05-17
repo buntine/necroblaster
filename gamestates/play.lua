@@ -29,10 +29,10 @@ function play:draw()
   scaleGraphics()
 
   love.graphics.draw(self.bg)
-
   self.laneways:render()
   self.score:render()
   self.progress:render(self.song:tell())
+
   self:drawTween()
 end
 

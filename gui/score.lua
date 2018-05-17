@@ -1,14 +1,18 @@
 require "helpers"
+require "gui.streak"
 
 Score = {
-  clip = 30,
+  clip = MIN_SCORE_CLIP,
   lastScore = 0,
+  streak = {},
   bg = love.graphics.newImage("assets/images/score.png"),
   powerbar = love.graphics.newImage("assets/images/powerbar.png")
 }
 
 function Score:new()
-  local o = {}
+  local o = {
+    streak = Streak:new(),
+  }
 
   setmetatable(o, self)
   self.__index = self
@@ -17,10 +21,14 @@ function Score:new()
 end
 
 function Score:render()
-  love.graphics.draw(self.bg, SCORE_X, 0)
+  self.streak:render()
 
-  withScissor(SCORE_X, 48, self.clip, 50, function()
-    love.graphics.draw(self.powerbar, SCORE_X, 48)
+  withoutScale(function()
+    love.graphics.draw(self.bg, SCORE_X, 0)
+
+    withScissor(SCORE_X, 48, self.clip, 50, function()
+      love.graphics.draw(self.powerbar, SCORE_X, 48)
+    end)
   end)
 end
 
@@ -32,7 +40,9 @@ function Score:progress(score)
   local adjustment = (score > self.lastScore) and SCORE_FORCE or -resistance
   local nextClip = clip + adjustment
 
-  if nextClip >= 1 and nextClip < SCORE_WIDTH then
+  self.streak:progress(adjustment)
+
+  if nextClip >= MIN_SCORE_CLIP and nextClip < SCORE_WIDTH then
     self.clip = nextClip
   end
 

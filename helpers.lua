@@ -35,10 +35,14 @@ function withLineWidth(width, f)
   love.graphics.setLineWidth(_width)
 end
 
-function withScissor(x, y, w, h, f)
+function withScaledScissor(x, y, w, h, f)
   -- Scissors are not affected by graphical translations so we have to apply
   -- them manually.
-  love.graphics.setScissor(x + X_TRANSLATE, y + HEIGHT_SCALE, w + WIDTH_SCALE, h + HEIGHT_SCALE)
+  withScissor(x + X_TRANSLATE, y + HEIGHT_SCALE, w + WIDTH_SCALE, h + HEIGHT_SCALE, f)
+end
+
+function withScissor(x, y, w, h, f)
+  love.graphics.setScissor(x, y, w, h)
   f()
   love.graphics.setScissor()
 end
