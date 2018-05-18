@@ -48,6 +48,12 @@ DROP_MIN_THICKNESS = 1
 DROP_MAX_THICKNESS = 3
 DROP_MIN_ANGLE = 3
 DROP_MAX_ANGLE = 10
+STREAKS = {
+  {value = 20, word = "Massacre!"},
+  {value = 40, word = "Necromancy!"},
+  {value = 60, word = "Morbid Upheaval!"},
+  {value = 80, word = "Unholy Putrefaction!"},
+}
 DIFFICULTIES = {
   {value = 240, name = "Poser"},
   {value = 180, name = "Infantry"},

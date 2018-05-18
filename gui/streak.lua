@@ -3,7 +3,7 @@
 
 Streak = {
   count = 0,
-  word = 0,
+  word = nil,
   opacity = 1,
   scale = 1,
 }
@@ -28,11 +28,11 @@ function Streak:progress(adjustment)
     self:reset()
   end
 
-  -- Has passed threshold?
-  ---- Set word
-  --
-  -- Is current word?
-  ---- Progress 
+  if self.word then
+    self:progressWord();
+  else
+    self:setWord();
+  end
 end
 
 function Streak:increment()
@@ -41,4 +41,28 @@ end
 
 function Streak:reset()
   self.count = 0
+end
+
+function Streak:progressWord()
+  self.scale = self.scale + STREAK_SCALE_FACTOR
+  self.opacity = self.opacity - STREAK_OPACITY_FACTOR
+
+  if self.opacity <= 0 then
+    self:removeWord()
+  end
+end
+
+function Streak:setWord()
+  local streaks = fun.filter(function (s) return s.value == self.count end, STREAKS)
+  local streak = fun.nth(1, streaks)
+
+  if streak then
+    self.word = streak.word
+  end
+end
+
+function Streak:removeWord()
+  self.word = nil
+  self.scale = 1
+  self.opacity = 1
 end

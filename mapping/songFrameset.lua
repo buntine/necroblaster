@@ -57,6 +57,12 @@ function SongFrameset:currentTaps()
   return self.frames[self.framePointer] or {}
 end
 
+function SongFrameset:isEmptyFrame()
+  local ct = self:currentTaps()
+
+  return #ct == 0
+end
+
 -- Returns the taps for the frame we will be up to in exactly N=(self.speed / 60) seconds.
 function SongFrameset:futureTaps(pos)
   local frame = math.floor(((pos + (self.speed / 60)) * 1000) / TIME_SCALE)

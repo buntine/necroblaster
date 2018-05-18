@@ -52,8 +52,11 @@ function play:update()
     end
   end
 
+  if not self.songFrameset:isEmptyFrame() then
+    self.score:progress(score)
+  end
+
   self.laneways:progress(self.songFrameset.speed)
-  self.score:progress(score)
   self:updateTween()
 end
 
