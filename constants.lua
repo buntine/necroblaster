@@ -1,3 +1,5 @@
+require "helpers"
+
 BTN_A = "a"
 BTN_B = "b"
 BTN_C = "c"
@@ -48,11 +50,13 @@ DROP_MIN_THICKNESS = 1
 DROP_MAX_THICKNESS = 3
 DROP_MIN_ANGLE = 3
 DROP_MAX_ANGLE = 10
+STREAK_OPACITY_FACTOR = 0.030
+STREAK_SCALE_FACTOR = 0.09
 STREAKS = {
-  {value = 20, word = "Massacre!"},
-  {value = 40, word = "Necromancy!"},
-  {value = 60, word = "Morbid Upheaval!"},
-  {value = 80, word = "Unholy Putrefaction!"},
+  {value = 20, word = love.graphics.newText(fonts.huge, "Fantastic!")},
+  {value = 40, word = love.graphics.newText(fonts.huge, "Desecration!")},
+  {value = 60, word = love.graphics.newText(fonts.huge, "Necromancy!")},
+  {value = 80, word = love.graphics.newText(fonts.huge, "Putrefaction!")},
 }
 DIFFICULTIES = {
   {value = 240, name = "Poser"},

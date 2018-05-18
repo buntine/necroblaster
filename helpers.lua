@@ -66,10 +66,24 @@ function centerOfLane(nth)
   return LANE_OFFSET + (LANE_WIDTH * nth) + (LANE_WIDTH / 2)
 end
 
-function drawInCenter(drawable, ox, oy)
-  local x, y = unpack(center(DESIRED_WIDTH, DESIRED_HEIGHT, drawable:getWidth(), drawable:getHeight(), ox, oy))
+function drawInCenter(drawable, offsetx, offsety, scalex, scaley)
+  local sx = scalex or 0
+  local sy = scaley or 0
+  local ox = offsetx or 0
+  local oy = offsety or 0
 
-  love.graphics.draw(drawable, x, y)
+  -- Account for scaling in X/Y offset.
+  if sx > 1 or sy > 1 then
+    ox = ox - (((sx - 1) * drawable:getWidth()) / 2)
+    oy = oy - (((sy - 1) * drawable:getHeight()) / 2)
+  end
+
+  local x, y = unpack(
+                 center(DESIRED_WIDTH, DESIRED_HEIGHT, drawable:getWidth(),
+                        drawable:getHeight(), ox, oy)
+               )
+
+  love.graphics.draw(drawable, x, y, 0, sx, sy)
 end
 
 -- Transforms coordination system so that GUI is drawn centered in

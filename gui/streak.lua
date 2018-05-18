@@ -18,14 +18,20 @@ function Streak:new()
 end
 
 function Streak:render(adjustment)
-  -- Render current word
+  if not self.word then
+    return
+  end
+
+  withColour(0.25, 0.038, 0.038, self.opacity, function()
+    drawInCenter(self.word, 0, 0, self.scale, self.scale)
+  end)
 end
 
 function Streak:progress(adjustment)
   if adjustment > 0 then
     self:increment()
-  else
-    self:reset()
+--  else
+ ----   self:reset()
   end
 
   if self.word then
