@@ -19,6 +19,8 @@ function play:enter(_, carry)
   self.score = Score:new()
   self.progress = Progress:new(self.song:length())
 
+  self.bandBG = love.graphics.newImage("data/mc_manic/backgrounds/4.jpg")
+
   self.song:play()
   self.songFrameset:generate()
 end
@@ -27,6 +29,10 @@ function play:draw()
   local frame = self.songFrameset.framePointer
 
   scaleGraphics()
+
+  withoutScale(function()
+    stretchToScreen(self.bandBG)
+  end)
 
   love.graphics.draw(self.bg)
   self.laneways:render()

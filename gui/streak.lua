@@ -35,9 +35,9 @@ function Streak:progress(adjustment)
   end
 
   if self.word then
-    self:progressWord();
+    self:progressWord()
   else
-    self:setWord();
+    self:setWord()
   end
 end
 
