@@ -18,8 +18,9 @@ function play:enter(_, carry)
   self.laneways = Laneways:new()
   self.score = Score:new()
   self.progress = Progress:new(self.song:length())
+  self.zoom = 0
 
-  self.bandBG = love.graphics.newImage("data/mc_manic/backgrounds/4.jpg")
+  self.bandBG = love.graphics.newImage("data/mc_manic/backgrounds/1.jpg")
 
   self.song:play()
   self.songFrameset:generate()
@@ -31,7 +32,7 @@ function play:draw()
   scaleGraphics()
 
   withoutScale(function()
-    stretchToScreen(self.bandBG)
+    stretchToScreen(self.bandBG, self.zoom)
   end)
 
   love.graphics.draw(self.bg)
@@ -61,6 +62,8 @@ function play:update()
   if not self.songFrameset:isEmptyFrame() then
     self.score:progress(score)
   end
+
+  self.zoom = self.zoom + 0.25
 
   self.laneways:progress(self.songFrameset.speed)
   self:updateTween()

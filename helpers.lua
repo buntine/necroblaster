@@ -101,9 +101,10 @@ function withoutScale(f)
   love.graphics.pop() -- Restore previous transformation.
 end
 
-function stretchToScreen(img)
-  local sx = ACTUAL_WIDTH / img:getWidth()
-  local sy = ACTUAL_HEIGHT / img:getHeight()
+function stretchToScreen(img, zoom)
+  local z = zoom or 0
+  local sx = (ACTUAL_WIDTH + z) / img:getWidth()
+  local sy = (ACTUAL_HEIGHT + z) / img:getHeight()
 
-  love.graphics.draw(img, 0, 0, 0, sx, sy)
+  love.graphics.draw(img, 0 - (z / 2), 0 - (z / 2), 0, sx, sy)
 end
