@@ -4,6 +4,7 @@ require "mapping.songFrameset"
 require "gui.laneways"
 require "gui.score"
 require "gui.progress"
+require "gui.background"
 require "gamestates.results"
 require "tweening.transition"
 
@@ -18,9 +19,7 @@ function play:enter(_, carry)
   self.laneways = Laneways:new()
   self.score = Score:new()
   self.progress = Progress:new(self.song:length())
-  self.zoom = 0
-
-  self.bandBG = love.graphics.newImage("data/mc_manic/backgrounds/1.jpg")
+  self.background = Background:new(carry.songid)
 
   self.song:play()
   self.songFrameset:generate()
@@ -31,10 +30,7 @@ function play:draw()
 
   scaleGraphics()
 
-  withoutScale(function()
-    stretchToScreen(self.bandBG, self.zoom)
-  end)
-
+  self.background:render()
   love.graphics.draw(self.bg)
   self.laneways:render()
   self.score:render()
@@ -63,9 +59,8 @@ function play:update()
     self.score:progress(score)
   end
 
-  self.zoom = self.zoom + 0.25
-
   self.laneways:progress(self.songFrameset.speed)
+  self.background:progress()
   self:updateTween()
 end
 
