@@ -42,8 +42,7 @@
 *- Proper UI (background and positioning) for "results"
 *- Fix sensitivity of score meter?
 *- Don't reduce score if nothing to hit in current frame.
-- Refactor menu, songMenu and Background ot sue base class for next/previous/value.
-- Band photos (stylized) for gameplay background. Fade through them slowly.
+*- Band photos (stylized) for gameplay background. Fade through them slowly.
 - Work out logic for showing streak words
 - Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
 -- Check score every Nth frame and if bigger then +1

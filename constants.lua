@@ -52,6 +52,9 @@ DROP_MIN_ANGLE = 3
 DROP_MAX_ANGLE = 10
 STREAK_OPACITY_FACTOR = 0.030
 STREAK_SCALE_FACTOR = 0.09
+BACKGROUND_ZOOM_AMOUNT = 0.25
+BACKGROUND_ZOOM_THRESHOLD = 200
+BACKGROUND_FADE_SPEED = 0.002
 STREAKS = {
   {value = 20, word = love.graphics.newText(fonts.huge, "Fantastic!")},
   {value = 40, word = love.graphics.newText(fonts.huge, "Desecration!")},
