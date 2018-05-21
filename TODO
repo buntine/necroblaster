@@ -43,9 +43,10 @@
 *- Fix sensitivity of score meter?
 *- Don't reduce score if nothing to hit in current frame.
 *- Band photos (stylized) for gameplay background. Fade through them slowly.
+- Art for gameplay pathway
 - Work out logic for showing streak words
-- Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
 -- Check score every Nth frame and if bigger then +1
+- Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
 - Finish data for Ritual
 - Add Teitenblood - Necrosemen
 - Preload songs before getting to selection?
