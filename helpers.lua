@@ -67,8 +67,8 @@ function centerOfLane(nth)
 end
 
 function drawInCenter(drawable, offsetx, offsety, scalex, scaley)
-  local sx = scalex or 0
-  local sy = scaley or 0
+  local sx = scalex or 1
+  local sy = scaley or 1
   local ox = offsetx or 0
   local oy = offsety or 0
 
