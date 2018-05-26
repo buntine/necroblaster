@@ -7,9 +7,9 @@ require "tweening.transition"
 handedness = Transition()
 
 function handedness:init()
-  local menu = Menu:new(HANDEDNESS)
+  local menu = Menu(HANDEDNESS)
 
-  self.selector = Selector:new(menu)
+  self.selector = Selector(menu)
   self.layout = Layout("Dominant Hand...", "menu_bg_witches.png")
 end
 

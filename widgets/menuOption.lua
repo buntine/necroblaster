@@ -1,21 +1,11 @@
 -- A single item within a menu widget.
 
-MenuOption = {
-  text = {},
-  value = 1
+MenuOption = Class{
+  init = function(self, name, value)
+    self.text = love.graphics.newText(fonts.huge, name)
+    self.value = value
+  end,
 }
-
-function MenuOption:new(name, value)
-  local o = {
-    text = love.graphics.newText(fonts.huge, name),
-    value = value
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function MenuOption:render()
   local w = self.text:getWidth()

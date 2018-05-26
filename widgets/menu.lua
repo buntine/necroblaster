@@ -1,28 +1,21 @@
--- A multi-item menu used as a "body" to Selector.
+-- A multi-item menu that keeps track of where it's up to.
+--
+-- This class conforms to the Selector interface.
 
 require "widgets.menuOption"
 
-Menu = {
-  options = {},
-  index = 1
-}
+Menu = Class{
+  init = function(self, options, selected)
+    local s = selected or 1
 
-function Menu:new(options, selected)
-  local s = selected or 1
-  local o = {
-    options = fun.totable(
+    self.index = s
+    self.options = fun.totable(
       fun.map(function(o)
-        return MenuOption:new(o.name, o.value)
+        return MenuOption(o.name, o.value)
       end, options)
-    ),
-    index = s
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
+    )
+  end,
+}
 
 function Menu:render()
   local option = self.options[self.index]

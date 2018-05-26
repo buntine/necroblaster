@@ -7,9 +7,9 @@ require "tweening.transition"
 difficulty = Transition()
 
 function difficulty:init()
-  local menu = Menu:new(DIFFICULTIES, 2)
+  local menu = Menu(DIFFICULTIES, 2)
 
-  self.selector = Selector:new(menu)
+  self.selector = Selector(menu)
   self.layout = Layout("Difficulty...", "menu_bg_church.png")
 end
 
