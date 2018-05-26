@@ -4,7 +4,7 @@ require "gui.layout"
 require "gamestates.difficulty"
 require "tweening.transition"
 
-menu = Transition:new()
+menu = Transition()
 
 function menu:init()
   local songs = fun.totable(love.filesystem.getDirectoryItems(DATA_PATH))

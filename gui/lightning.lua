@@ -3,27 +3,18 @@
 -- Currently fairly not configurable by the called but easy to extend
 -- if multiple strikes or differing animations are required.
 
-Lightning = {
+Lightning = Class{
+  init = function(self)
+    self.thunder:setVolume(0.1)
+  end,
   flashes = {
     {opacity = 0.76, speed = 0.07},
     {opacity = 0.79, speed = 0.005},
   },
+  thunder = love.audio.newSource("assets/audio/thunder.ogg", "stream"),
   opacity = 0,
-  index = 0
+  index = 0,
 }
-
-function Lightning:new()
-  local o = {
-    thunder = love.audio.newSource("assets/audio/thunder.ogg", "stream"),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  o.thunder:setVolume(0.1)
-
-  return o
-end
 
 function Lightning:render()
   withColour(1, 1, 1, self.opacity, function()

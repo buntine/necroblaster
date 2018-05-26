@@ -4,13 +4,13 @@ require "gui.layout"
 require "gamestates.handedness"
 require "tweening.transition"
 
-difficulty = Transition:new()
+difficulty = Transition()
 
 function difficulty:init()
   local menu = Menu:new(DIFFICULTIES, 2)
 
   self.selector = Selector:new(menu)
-  self.layout = Layout:new("Difficulty...", "menu_bg_church.png")
+  self.layout = Layout("Difficulty...", "menu_bg_church.png")
 end
 
 function difficulty:enter(_, carry)

@@ -1,22 +1,15 @@
 -- The fade in/out transition between each gamestate.
 
-local states = {down = "down", up = "up", neutral = "neutral" }
+local states = {down = "down", up = "up", neutral = "neutral"}
 
-Transition = {
+Transition = Class{
+  init = function(self)
+    self.carry = {}
+  end,
   transition = states.down,
   opacity = 1,
   nextGameState = nil,
-  carry = {},
 }
-
-function Transition:new()
-  local o = {}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Transition:draw()
   self:drawTween()

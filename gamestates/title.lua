@@ -3,7 +3,7 @@ require "tweening.transition"
 require "gui.droplet"
 require "gui.lightning"
 
-title = Transition:new()
+title = Transition()
 
 function title:init()
   self.title = love.graphics.newImage("assets/images/title.png")
@@ -12,7 +12,7 @@ function title:init()
 end
 
 function title:enter()
-  self.lightning = Lightning:new()
+  self.lightning = Lightning()
   self.droplets = {}
   self.titleOpacity = 0.0
 
@@ -44,7 +44,7 @@ function title:draw()
 end
 
 function title:update()
-  table.insert(self.droplets, Droplet:new())
+  table.insert(self.droplets, Droplet())
 
   for i, d in ipairs(self.droplets) do
     d:progress()

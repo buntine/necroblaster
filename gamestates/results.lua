@@ -1,12 +1,12 @@
 require "tweening.transition"
 require "gui.layout"
 
-results = Transition:new()
+results = Transition()
 
 function results:enter(_, carry)
   local percentage = round((carry.score / carry.bestScore) * 100)
 
-  self.layout = Layout:new("Results...", "menu_bg_church.png")
+  self.layout = Layout("Results...", "menu_bg_church.png")
   self.score = love.graphics.newText(fonts.ridiculous, percentage .. "%")
   self.rank = love.graphics.newText(fonts.big, self:getRank(percentage))
 end

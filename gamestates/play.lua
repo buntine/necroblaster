@@ -8,7 +8,7 @@ require "gui.background"
 require "gamestates.results"
 require "tweening.transition"
 
-play = Transition:new()
+play = Transition()
 
 function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")

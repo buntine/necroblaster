@@ -4,13 +4,13 @@ require "gui.layout"
 require "gamestates.play"
 require "tweening.transition"
 
-handedness = Transition:new()
+handedness = Transition()
 
 function handedness:init()
   local menu = Menu:new(HANDEDNESS)
 
   self.selector = Selector:new(menu)
-  self.layout = Layout:new("Dominant Hand...", "menu_bg_witches.png")
+  self.layout = Layout("Dominant Hand...", "menu_bg_witches.png")
 end
 
 function handedness:enter(_, carry)
