@@ -1,5 +1,6 @@
 fun = require "lib.fun"
 Gamestate = require "lib.hump.gamestate"
+Class = require "lib.hump.class"
 
 require "constants"
 require "gamestates.title"

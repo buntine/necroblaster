@@ -1,21 +1,11 @@
 -- General layout rendering of non-play-time screens.
 
-Layout = {
-  title = {},
-  bg = {},
+Layout = Class{
+  init = function(self, title, bg)
+    self.title = love.graphics.newText(fonts.big, title, bg)
+    self.bg = love.graphics.newImage("assets/images/" .. bg)
+  end,
 }
-
-function Layout:new(title, bg)
-  local o = {
-    title = love.graphics.newText(fonts.big, title, bg),
-    bg = love.graphics.newImage("assets/images/" .. bg),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Layout:render()
   withoutScale(function()

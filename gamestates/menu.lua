@@ -11,7 +11,7 @@ function menu:init()
   local songMenu = SongMenu:new(songs)
 
   self.selector = Selector:new(songMenu)
-  self.layout = Layout:new("Evil spell...", "menu_bg_forest.png")
+  self.layout = Layout("Evil spell...", "menu_bg_forest.png")
 end
 
 function menu:draw()
