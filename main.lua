@@ -6,6 +6,8 @@ require "gamestates.title"
 
 function love.load()
   love.window.setMode(0, 0, {fullscreen = true})
+  love.mouse.setVisible(false)
+
   Gamestate.registerEvents()
   Gamestate.switch(title)
 end

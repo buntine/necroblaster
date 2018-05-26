@@ -43,9 +43,9 @@
 *- Fix sensitivity of score meter?
 *- Don't reduce score if nothing to hit in current frame.
 *- Band photos (stylized) for gameplay background. Fade through them slowly.
-- Art for gameplay pathway.
-- Don't default to "Poser" difficulty.
-- Hide mouse
+*- Art for gameplay pathway.
+*- Don't default to "Poser" difficulty.
+*- Hide mouse
 - Work out logic for showing streak words
 -- Check score every Nth frame and if bigger then +1
 - Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
