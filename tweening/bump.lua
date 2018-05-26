@@ -1,27 +1,16 @@
 -- A simple bump effect across the X axis.
 
-Bump = {
-  x = 0,
-  initialX = 0,
-  inertia = 0.75,
+Bump = Class{
+  init = function(self, x, gravity, inertia)
+    local n = inertia or 0.75
+
+    self.x = x
+    self.initialX = x
+    self.inertia = (gravity > 0) and -n or n
+    self.applicableGravity = gravity
+  end,
   gravity = 0,
-  applicableGravity = 0,
 }
-
-function Bump:new(x, gravity, inertia)
-  local n = inertia or self.inertia
-  local o = {
-    x = x,
-    initialX = x,
-    inertia = (gravity > 0) and -n or n,
-    applicableGravity = gravity,
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Bump:progress()
   if self:isRunning() then

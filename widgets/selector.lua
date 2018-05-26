@@ -3,25 +3,14 @@
 
 require "tweening.bump"
 
-Selector = {
-  body = {},
-  leftBump = {},
-  rightBump = {},
+Selector = Class{
+  init = function(self, body)
+    self.body = body
+    self.leftBump = Bump(MENU_BORDER, -3)
+    self.rightBump = Bump(ACTUAL_WIDTH - MENU_BORDER, 3)
+  end,
   arrow = love.graphics.newImage("assets/images/bone_arrow.png"),
 }
-
-function Selector:new(body)
-  local o = {
-    body = body,
-    leftBump = Bump:new(MENU_BORDER, -3),
-    rightBump = Bump:new(ACTUAL_WIDTH - MENU_BORDER, 3),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Selector:render()
   withoutScale(function()

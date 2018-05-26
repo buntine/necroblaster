@@ -1,31 +1,26 @@
-SongMenu = {
-  songs = {},
-  border = love.graphics.newImage("assets/images/menu_border.png"),
-  index = 1,
-}
+-- The navigatable menu of the playable songs including song previews and album covers.
+--
+-- Conforms to the "Selector" interface requirements.
 
-function SongMenu:new(songs)
-  local o = {
-    songs = fun.totable(
+SongMenu = Class{
+  init = function(self, songs)
+    self.songs = fun.totable(
       fun.map(function(s)
         local file = io.open(DATA_PATH .. "/" .. s .. "/details.json", "r")
         local data = file:read("*a")
         file:close()
 
         return {
-          song = Song:new(s),
+          song = Song(s),
           details = json.decode(data),
-          image = love.graphics.newImage(DATA_PATH .. "/" .. s .. "/cover.jpg")
+          image = love.graphics.newImage(DATA_PATH .. "/" .. s .. "/cover.jpg"),
         }
       end, songs)
-    ),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
+    )
+  end,
+  border = love.graphics.newImage("assets/images/menu_border.png"),
+  index = 1,
+}
 
 function SongMenu:render()
   local details = self:details()

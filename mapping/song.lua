@@ -1,17 +1,11 @@
-Song = {
-  songid = nil,
-  stream = nil
+-- Wrapper around a streaming song.
+
+Song = Class{
+  init = function(self, songid)
+    self.songid = songid
+    self.stream = love.audio.newSource(DATA_PATH .. "/" .. songid .. "/audio.ogg", "static")
+  end,
 }
-
-function Song:new(songid)
-  local sound = love.audio.newSource(DATA_PATH .. "/" .. songid .. "/audio.ogg", "static")
-  local o = {songid = songid, stream = sound}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Song:tell()
   return self.stream:tell()
