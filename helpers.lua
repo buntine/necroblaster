@@ -108,3 +108,12 @@ function stretchToScreen(img, zoom)
 
   love.graphics.draw(img, 0 - (z / 2), 0 - (z / 2), 0, sx, sy)
 end
+
+function readFile(path)
+  local file = io.open(path)
+  local data = file:read("*a")
+
+  file:close()
+
+  return data
+end

@@ -8,35 +8,21 @@
 json = require "lib/json"
 tap = require "mapping/tap"
 
-SongFrameset = {
-  data = {},
+SongFrameset = Class{
+  init = function(self, songid, speed, handedness)
+    self.speed = speed
+    self.laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D}
+    self.laneTotals = {0, 0, 0, 0}
+
+    local path = DATA_PATH .. "/" .. songid .. "/map.json"
+
+    self.data = json.decode(readFile(path))
+  end,
   frames = {},
-  laneChars = {},
-  laneTotals = {},
   framePointer = 0,
   position = 0,
   bestScore = 0,
-  speed = 180,
 }
-
-function SongFrameset:new(songid, speed, handedness)
-  local o = {
-    speed = speed,
-    laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D},
-    laneTotals = {0, 0, 0, 0},
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  local file = io.open(DATA_PATH .. "/" .. songid .. "/map.json", "r")
-  local data = file:read("*a")
-  file:close()
-
-  o.data = json.decode(data)
-
-  return o
-end
 
 function SongFrameset:progress(pos)
   local currentFP = self.framePointer
@@ -84,7 +70,7 @@ function SongFrameset:generate()
         local blurring = math.abs(index - i) + 1
         local nth = self.laneTotals[d.lane]
 
-        return Tap:new(index, nth, 1 / blurring)
+        return Tap(index, nth, 1 / blurring)
       end)
     else
       local finishIndex = math.floor(d.finish / TIME_SCALE)
@@ -95,7 +81,7 @@ function SongFrameset:generate()
       self:populateKeys(index, finishIndex, step, d, function(i)
         local nth = self.laneTotals[d.lane]
 
-        return Tap:new(i, nth, health)
+        return Tap(i, nth, health)
       end)
     end
   end

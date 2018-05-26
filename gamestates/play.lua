@@ -14,7 +14,7 @@ function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
 
   self.song = Song(carry.songid)
-  self.songFrameset = SongFrameset:new(carry.songid, carry.speed, carry.dominant)
+  self.songFrameset = SongFrameset(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet:new()
   self.laneways = Laneways:new()
   self.score = Score:new()

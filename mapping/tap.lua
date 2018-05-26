@@ -12,23 +12,12 @@
 --   Tap: 127ms, health = 0.5
 --   Tap: 129ms, health = 0.25
 
-Tap = {
-  id = 0,
-  nth = 0,
-  health = 1,
+Tap = Class{
+  init = function(self, id, nth, health)
+    self.id = id
+    self.nth = nth
+    self.health = health
+  end,
   kind = "tap",
-  char = nil
+  char = nil,
 }
-
-function Tap:new(id, nth, health)
-  local o = {
-    id = id,
-    nth = nth,
-    health = health
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
