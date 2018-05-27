@@ -1,30 +1,22 @@
 -- Cross-fading set of band images for use during gameplay. The
 -- images cycle endlessly until the song finshes.
 
-Background = {
-  images = {},
+Background = Class{
+  init = function(self, songid)
+    local path = DATA_PATH .. "/" .. songid .. "/backgrounds/"
+    local images = love.filesystem.getDirectoryItems(path)
+
+    self.images = fun.totable(
+      fun.map(function (image)
+        return love.graphics.newImage(path .. image)
+      end, images)
+    )
+  end,
   auxillery = nil,
   index = 1,
   zoom = 0,
   opacity = 1,
 }
-
-function Background:new(songid)
-  local path = DATA_PATH .. "/" .. songid .. "/backgrounds/"
-  local images = love.filesystem.getDirectoryItems(path)
-  local o = {
-    images = fun.totable(
-               fun.map(function (image)
-                 return love.graphics.newImage(path .. image)
-               end, images)
-             ),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Background:render()
   withoutScale(function()

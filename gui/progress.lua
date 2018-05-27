@@ -1,15 +1,12 @@
-Progress = {
+-- A progress bar that runs across the top of the screen to indicate progress
+-- through the playing song.
+
+Progress = Class{
+  init = function(self, total)
+    self.total = total
+  end,
   total = 0,
 }
-
-function Progress:new(total)
-  local o = {total = total}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Progress:render(pos)
   withoutScale(function()

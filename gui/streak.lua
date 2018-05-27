@@ -1,21 +1,12 @@
 -- Manages the streak (consecutive hits) and the side-effects it produces
 -- such as exploding motivational words.
 
-Streak = {
+Streak = Class{
   count = 0,
   word = nil,
   opacity = 1,
   scale = 1,
 }
-
-function Streak:new()
-  local o = {}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Streak:render(adjustment)
   if not self.word then
