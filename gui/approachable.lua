@@ -1,19 +1,10 @@
 -- Abstract class for 2D projection and scaling.
 
-Approachable = {
+Approachable = Class{
   z = 0,
   x = 0,
   y = 0
 }
-
-function Approachable:new()
-  local o = {}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Approachable:progress(speed)
   local h = DESIRED_HEIGHT

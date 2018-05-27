@@ -7,23 +7,16 @@ require "gui.reverberation"
 require "gui.laneHighlight"
 require "gui.visibleTap"
 
-Lane = {}
-
-function Lane:new(nth)
-  local o = {
-    visibleTaps = {},
-    nth = nth,
-    x = centerOfLane(nth),
-    highlighter = LaneHighlight:new(),
-    reverbs = {},
-    icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png"),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
+Lane = Class{
+  init = function(self, nth)
+    self.visibleTaps = {}
+    self.nth = nth
+    self.x = centerOfLane(nth)
+    self.highlighter = LaneHighlight()
+    self.reverbs = {}
+    self.icon = love.graphics.newImage("assets/images/lane" .. nth .. ".png")
+  end,
+}
 
 function Lane:seen(tap)
   return fun.any(function(t) return t.tap.id == tap.id end, self.visibleTaps)
@@ -50,7 +43,7 @@ function Lane:progress(speed)
 end
 
 function Lane:add(tap)
-  table.insert(self.visibleTaps, VisibleTap:new(tap, self.x))
+  table.insert(self.visibleTaps, VisibleTap(tap, self.x))
 end
 
 function Lane:highlight()
@@ -58,7 +51,7 @@ function Lane:highlight()
 end
 
 function Lane:hit(tap)
-  table.insert(self.reverbs, Reverberation:new(tap, self.x))
+  table.insert(self.reverbs, Reverberation(tap, self.x))
 end
 
 function Lane:render()

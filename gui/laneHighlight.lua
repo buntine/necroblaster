@@ -1,17 +1,8 @@
 -- A highlight that appears behind a lane "plate" upon the appropriate keystroke.
 
-LaneHighlight = {
+LaneHighlight = Class{
   step = 1,
 }
-
-function LaneHighlight:new()
-  local o = {}
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function LaneHighlight:progress()
   if self.step > 1 then

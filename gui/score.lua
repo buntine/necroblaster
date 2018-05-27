@@ -1,24 +1,15 @@
 require "helpers"
 require "gui.streak"
 
-Score = {
+Score = Class{
+  init = function(self)
+    self.streak = Streak()
+  end,
   clip = MIN_SCORE_CLIP,
   lastScore = 0,
-  streak = {},
   bg = love.graphics.newImage("assets/images/score.png"),
-  powerbar = love.graphics.newImage("assets/images/powerbar.png")
+  powerbar = love.graphics.newImage("assets/images/powerbar.png"),
 }
-
-function Score:new()
-  local o = {
-    streak = Streak:new(),
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Score:render()
   self.streak:render()

@@ -4,25 +4,16 @@
 
 require "gui.lane"
 
-Laneways = {
-  lanes = {}
-}
-
-function Laneways:new()
-  local o = {
-    lanes = {
-      a = Lane:new(0),
-      b = Lane:new(1),
-      c = Lane:new(2),
-      d = Lane:new(3)
+Laneways = Class{
+  init = function(self)
+    self.lanes = {
+      a = Lane(0),
+      b = Lane(1),
+      c = Lane(2),
+      d = Lane(3),
     }
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
+  end,
+}
 
 function Laneways:progress(height, speed)
   for _, l in pairs(self.lanes) do

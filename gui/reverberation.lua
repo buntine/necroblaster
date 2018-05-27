@@ -2,24 +2,18 @@
 --
 -- This object maintains the state. Rendering is left to the lane.
 
-Reverberation = {
+Reverberation = Class{
+  init = function(self, tap, x)
+    local radius = TAP_RADIUS[tap.kind]
+    local y = DESIRED_HEIGHT - PLATE_OFFSET - radius
+
+    self.tap = tap
+    self.x = x
+    self.y = y
+  end,
   opacity = 1,
-  tap = nil,
   scaling = 1,
-  x = 0,
-  y = 0,
 }
-
-function Reverberation:new(tap, x)
-  local radius = TAP_RADIUS[tap.kind]
-  local y = DESIRED_HEIGHT - PLATE_OFFSET - radius
-  local o = { tap = tap, x = x, y = y }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
 
 function Reverberation:progress()
   self.y = self.y - (TAP_RADIUS[self.tap.kind] / 1.5)

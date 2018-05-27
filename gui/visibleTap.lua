@@ -2,23 +2,17 @@
 
 require "gui.approachable"
 
-VisibleTap = Approachable:new()
-
-function VisibleTap:new(tap, x)
-  local o = {
-    z = TAP_Z,
-    x = x,
-    y = 0,
-    tap = tap,
+VisibleTap = Class{
+  __includes = Approachable,
+  init = function(self, tap, x)
+    self.z = TAP_Z
+    self.x = x
+    self.y = 0
+    self.tap = tap
     -- Skip rendering of every second blastbeat (visually more appealing).
-    renderable = not (tap.kind == "blastbeat" and tap.nth % 2 == 0)
-  }
-
-  setmetatable(o, self)
-  self.__index = self
-
-  return o
-end
+    self.renderable = not (tap.kind == "blastbeat" and tap.nth % 2 == 0)
+  end,
+}
 
 function VisibleTap:render()
   local tap = self.tap
