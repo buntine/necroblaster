@@ -1,4 +1,3 @@
-require "helpers"
 require "gui.streak"
 
 Score = Class{

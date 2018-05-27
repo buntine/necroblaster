@@ -117,3 +117,7 @@ function readFile(path)
 
   return data
 end
+
+function isPlaying()
+  return Gamestate.current() == play
+end

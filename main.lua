@@ -14,7 +14,7 @@ function love.load()
 end
 
 function love.keypressed(k)
-  if k == 'escape' then
+  if k == 'escape' and not isPlaying() then
     love.event.quit()
   end
 end

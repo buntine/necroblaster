@@ -67,6 +67,10 @@ end
 function play:keypressed(key, sc, ...)
   local lane = self.laneways:laneFor(key)
 
+  if key == 'escape' then
+    self:transitionTo(menu)
+  end
+
   if not lane then
     return
   end
@@ -80,4 +84,8 @@ function play:keypressed(key, sc, ...)
       lane:hit(tap)
     end
   end
+end
+
+function play:leave()
+  self.song:stop()
 end
