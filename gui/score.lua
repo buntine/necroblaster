@@ -1,3 +1,5 @@
+-- Manages and renders the power bar to indicate the relative performance of the player.
+
 require "gui.streak"
 
 Score = Class{
@@ -28,9 +30,9 @@ function Score:progress(score)
   -- Resistance is stronger as player performance gets better.
   local resistance = (clip / SCORE_WIDTH) * SCORE_RESISTANCE
   local adjustment = (score > self.lastScore) and SCORE_FORCE or -resistance
-  local nextClip = clip + adjustment
+  local nextClip = math.min(clip + adjustment, MAX_SCORE_CLIP)
 
-  self.streak:progress(adjustment)
+  self.streak:progress(nextClip)
 
   if nextClip >= MIN_SCORE_CLIP and nextClip < SCORE_WIDTH then
     self.clip = nextClip

@@ -36,6 +36,7 @@ SCORE_X = ACTUAL_WIDTH - 500
 SCORE_RESISTANCE = 0.2
 SCORE_FORCE = 2
 MIN_SCORE_CLIP = 59
+MAX_SCORE_CLIP = 275
 PREVIEW_FADE = 0.01
 PROGRESS_HEIGHT = 5
 REVERB_SCALING_FACTOR = 0.2
@@ -56,10 +57,11 @@ BACKGROUND_ZOOM_AMOUNT = 0.25
 BACKGROUND_ZOOM_THRESHOLD = 200
 BACKGROUND_FADE_SPEED = 0.002
 STREAKS = {
-  {value = 20, word = love.graphics.newText(fonts.huge, "Fantastic!")},
-  {value = 40, word = love.graphics.newText(fonts.huge, "Desecration!")},
-  {value = 60, word = love.graphics.newText(fonts.huge, "Necromancy!")},
+  {value = 90, word = love.graphics.newText(fonts.huge, "Unholy Warfare!")},
   {value = 80, word = love.graphics.newText(fonts.huge, "Putrefaction!")},
+  {value = 65, word = love.graphics.newText(fonts.huge, "Necromancy!")},
+  {value = 45, word = love.graphics.newText(fonts.huge, "Skull Crushing!")},
+  {value = 30, word = love.graphics.newText(fonts.huge, "Fantastic!")},
 }
 DIFFICULTIES = {
   {value = 240, name = "Poser"},

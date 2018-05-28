@@ -2,42 +2,37 @@
 -- such as exploding motivational words.
 
 Streak = Class{
-  count = 0,
+  prevPower = 0,
+  prevValue = 0,
   word = nil,
   opacity = 1,
   scale = 1,
 }
 
-function Streak:render(adjustment)
+function Streak:render()
   if not self.word then
     return
   end
 
-  withColour(0.25, 0.038, 0.038, self.opacity, function()
+  withColour(0.15, 0.33, 0.17, self.opacity, function()
     drawInCenter(self.word, 0, 0, self.scale, self.scale)
   end)
 end
 
-function Streak:progress(adjustment)
-  if adjustment > 0 then
-    self:increment()
---  else
- ----   self:reset()
-  end
+function Streak:progress(clip)
+  local power = (clip / MAX_SCORE_CLIP) * 100
 
   if self.word then
     self:progressWord()
   else
-    self:setWord()
+    local streak = self:findNextWord(power)
+
+    if streak then
+      self:setWord(streak)
+    end
   end
-end
 
-function Streak:increment()
-  self.count = self.count + 1
-end
-
-function Streak:reset()
-  self.count = 0
+  self.prevPower = power
 end
 
 function Streak:progressWord()
@@ -49,12 +44,19 @@ function Streak:progressWord()
   end
 end
 
-function Streak:setWord()
-  local streaks = fun.filter(function (s) return s.value == self.count end, STREAKS)
+function Streak:setWord(streak)
+  self.word = streak.word
+  self.prevValue = streak.value
+end
+
+function Streak:findNextWord(power)
+  local streaks = fun.filter(function (s) return s.value <= power end, STREAKS)
   local streak = fun.nth(1, streaks)
 
-  if streak then
-    self.word = streak.word
+  -- Ensure the next word was not the one we just saw and also ensure we have crossed over
+  -- into it's domain and not fallen back into it from above.
+  if streak and streak.value ~= self.prevValue and self.prevPower < streak.value then
+    return streak
   end
 end
 

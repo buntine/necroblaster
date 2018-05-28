@@ -48,9 +48,8 @@
 *- Hide mouse
 *- Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
 *- ESC in song goes to menu.
+*- Work out logic for showing streak words
 - Windows compatible (no forward slashes in paths)
-- Work out logic for showing streak words
--- Check score every Nth frame and if bigger then +1
 - Finish data for Ritual
 - Add Teitenblood - Necrosemen
 - Preload songs before getting to selection?
