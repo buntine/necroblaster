@@ -49,11 +49,9 @@
 *- Actually need that OO boilerplate on every object? Can generalise or use the hump OO library?
 *- ESC in song goes to menu.
 *- Work out logic for showing streak words
+- Refactor SongFrameset (bug in blastbeats is due to conflicting IDs)
 - Windows compatible (no forward slashes in paths)
 - Finish data for Ritual
 - Add Teitenblood - Necrosemen
 - Preload songs before getting to selection?
-- Actual serial-port reading to try increase accuracy of multiple taps simultaneously
--- https://github.com/moteus/lua-lluv-rs232
--- https://luvit.io/
 - Design arcade cabinet
