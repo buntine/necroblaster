@@ -56,9 +56,7 @@ end
 
 function Lane:render()
   for _, tap in ipairs(self.visibleTaps) do
-    if tap.renderable then
-      tap:render()
-    end
+    tap:render()
   end
 
   -- Reverberations from hits.

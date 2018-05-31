@@ -9,8 +9,6 @@ VisibleTap = Class{
     self.x = x
     self.y = 0
     self.tap = tap
-    -- Skip rendering of every second blastbeat (visually more appealing).
-    self.renderable = true -- not (tap.kind == "blastbeat" and tap.nth % 2 == 0) -- TODO: Need this anymore?
   end,
 }
 

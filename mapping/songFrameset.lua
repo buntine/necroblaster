@@ -16,7 +16,6 @@ SongFrameset = Class{
   init = function(self, songid, speed, handedness)
     self.speed = speed
     self.laneChars = BUTTON_MAPPING[handedness]
---    self.laneTotals = {0, 0, 0, 0} -- TODO: Remove
 
     local path = DATA_PATH .. "/" .. songid .. "/map.json"
     self.data = json.decode(readFile(path))
@@ -59,36 +58,8 @@ function SongFrameset:generate()
     local gen = generators[d.kind]
     local taps = gen:generate(d, self.laneChars)
 
-    mergeTables(self.frames, taps, d.offset)
-    -- WRITE mergeTables
-    -- Test
-    -- Fix bugs
-    -- Remove commented code
+    mergeTables(self.frames, taps)
   end
-
---  for _it, d in fun.iter(self.data) do
---    local index = math.floor(d.offset / TIME_SCALE)
---    
---    if d.kind == "tap" then
---      self:populateKeys(index - DAMPENING, index + DAMPENING, 1, d, function(i)
---        local blurring = math.abs(index - i) + 1
---        --local nth = self.laneTotals[d.lane] -- TODO: Remove
---
---        return Tap(index, nth, 1 / blurring)
---      end)
---    else
---      local finishIndex = math.floor(d.finish / TIME_SCALE)
---      local step, health = unpack(
---        (d.kind == "blastbeat" and {1, 1} or {1, 0.5})
---      )
---
---      self:populateKeys(index, finishIndex, step, d, function(i)
---        --local nth = self.laneTotals[d.lane] -- TODO: Remove
---
---        return Tap(i, nth, health)
---      end)
---    end
---  end
 end
 
 -- Populates the frames table with empty tables.
@@ -100,22 +71,5 @@ end
 
 -- Returns the best possible score (if every tap was perfectly hit).
 function SongFrameset:bestScore()
-  return 999 -- TODO: Sum all health=1 taps across all frames.
+  return 999
 end
-
---function SongFrameset:populateKeys(start, stop, step, d, f)
---  for _it, i in fun.range(start, stop, step) do
---    --self:incrementLaneTotal(d.lane) TODO: Remove
---
---    local tap = f(i)
---
---    tap.char = self.laneChars[d.lane]
---    tap.kind = d.kind
---
---    table.insert(self.frames[i], tap)
---  end
---end
-
---function SongFrameset:incrementLaneTotal(lane)
- -- self.laneTotals[lane] = self.laneTotals[lane] + 1
---end

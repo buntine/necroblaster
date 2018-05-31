@@ -14,7 +14,7 @@ function BlastbeatGenerator:generate(d, laneChars)
     tap.char = laneChars[d.lane]
     tap.kind = d.kind
 
-    table.insert(taps, tap)
+    taps[i] = tap
   end
 
   return taps
