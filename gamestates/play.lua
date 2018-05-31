@@ -47,18 +47,12 @@ function play:update()
     self:transitionTo(results, {score = score, bestScore = self.songFrameset.bestScore})
   end
 
-  self.songFrameset:progress(pos)
-
-  for _, tap in ipairs(self.songFrameset:futureTaps(pos)) do
-    if tap and not self.laneways:seen(tap) then
-      self.laneways:add(tap)
-    end
-  end
-
   if not self.songFrameset:isEmptyFrame() then
     self.score:progress(score)
   end
 
+  self.songFrameset:progress(pos)
+  self:showFutureTaps(pos)
   self.laneways:progress(self.songFrameset.speed)
   self.background:progress()
   self:updateTween()
@@ -82,6 +76,14 @@ function play:keypressed(key, sc, ...)
 
       self.tapSet:add(tap)
       lane:hit(tap)
+    end
+  end
+end
+
+function play:showFutureTaps(pos)
+  for _, tap in ipairs(self.songFrameset:futureTaps(pos)) do
+    if tap and not self.laneways:seen(tap) then
+      self.laneways:add(tap)
     end
   end
 end

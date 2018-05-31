@@ -11,32 +11,19 @@ tap = require "mapping/tap"
 SongFrameset = Class{
   init = function(self, songid, speed, handedness)
     self.speed = speed
-    self.laneChars = (handedness == "right") and {BTN_D, BTN_C, BTN_B, BTN_A} or {BTN_A, BTN_B, BTN_C, BTN_D}
+    self.laneChars = BUTTON_MAPPING[handedness]
     self.laneTotals = {0, 0, 0, 0}
 
     local path = DATA_PATH .. "/" .. songid .. "/map.json"
-
     self.data = json.decode(readFile(path))
   end,
   frames = {},
   framePointer = 0,
-  position = 0,
   bestScore = 0,
 }
 
 function SongFrameset:progress(pos)
-  local currentFP = self.framePointer
-
   self.framePointer = math.floor((pos * 1000) / TIME_SCALE)
-
-  -- Update the cached best possible score for this point in the song.
-  if self.framePointer > currentFP then
-    for _, t in ipairs(self:currentTaps()) do
-      if not (t.kind == "tap" and t.health < 1) then
-        self.bestScore = self.bestScore + t.health
-      end
-    end
-  end
 end
 
 function SongFrameset:currentTaps()
@@ -44,14 +31,13 @@ function SongFrameset:currentTaps()
 end
 
 function SongFrameset:isEmptyFrame()
-  local ct = self:currentTaps()
-
-  return #ct == 0
+  return #self:currentTaps() == 0
 end
 
 -- Returns the taps for the frame we will be up to in exactly N=(self.speed / 60) seconds.
 function SongFrameset:futureTaps(pos)
-  local frame = math.floor(((pos + (self.speed / 60)) * 1000) / TIME_SCALE)
+  local milliseconds = (pos + (self.speed / 60)) * 1000
+  local frame = math.floor(milliseconds / TIME_SCALE)
 
   return self.frames[frame] or {}
 end
@@ -85,6 +71,8 @@ function SongFrameset:generate()
       end)
     end
   end
+
+  self.bestScore = 999 -- TODO: Sum all health=1 taps across all frames.
 end
 
 function SongFrameset:populateKeys(start, stop, step, d, f)

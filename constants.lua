@@ -4,6 +4,10 @@ BTN_A = "a"
 BTN_B = "b"
 BTN_C = "c"
 BTN_D = "d"
+BUTTON_MAPPING = {
+  right = {BTN_D, BTN_C, BTN_B, BTN_A},
+  left = {BTN_A, BTN_B, BTN_C, BTN_D},
+}
 DATA_PATH = "data"
 DESIRED_WIDTH = 800
 DESIRED_HEIGHT = 970
