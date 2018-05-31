@@ -5,8 +5,12 @@
 --
 -- The framePointer moves through the list as time passes while a song is playing.
 
-json = require "lib/json"
-tap = require "mapping/tap"
+json = require "lib.json"
+tap = require "mapping.tap"
+
+require "mapping.tapGenerator"
+require "mapping.doubleKickGenerator"
+require "mapping.blastbeatGenerator"
 
 SongFrameset = Class{
   init = function(self, songid, speed, handedness)
@@ -53,9 +57,13 @@ function SongFrameset:generate()
 
   for _it, d in fun.iter(self.data) do
     local gen = generators[d.kind]
-    local taps = gen.generate(d, self.laneChars)
+    local taps = gen:generate(d, self.laneChars)
 
     mergeTables(self.frames, taps, d.offset)
+    -- WRITE mergeTables
+    -- Test
+    -- Fix bugs
+    -- Remove commented code
   end
 
 --  for _it, d in fun.iter(self.data) do
@@ -95,18 +103,18 @@ function SongFrameset:bestScore()
   return 999 -- TODO: Sum all health=1 taps across all frames.
 end
 
-function SongFrameset:populateKeys(start, stop, step, d, f)
-  for _it, i in fun.range(start, stop, step) do
-    --self:incrementLaneTotal(d.lane) TODO: Remove
-
-    local tap = f(i)
-
-    tap.char = self.laneChars[d.lane]
-    tap.kind = d.kind
-
-    table.insert(self.frames[i], tap)
-  end
-end
+--function SongFrameset:populateKeys(start, stop, step, d, f)
+--  for _it, i in fun.range(start, stop, step) do
+--    --self:incrementLaneTotal(d.lane) TODO: Remove
+--
+--    local tap = f(i)
+--
+--    tap.char = self.laneChars[d.lane]
+--    tap.kind = d.kind
+--
+--    table.insert(self.frames[i], tap)
+--  end
+--end
 
 --function SongFrameset:incrementLaneTotal(lane)
  -- self.laneTotals[lane] = self.laneTotals[lane] + 1

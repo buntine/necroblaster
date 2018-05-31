@@ -1,7 +1,5 @@
 -- Generates single taps during song loading.
 
-require "mapping.generator"
-
 TapGenerator = Class{
 }
 

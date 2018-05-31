@@ -1,7 +1,5 @@
 -- Generates a range of double kick taps during song loading.
 
-require "mapping.generator"
-
 DoubleKickGenerator = Class{
 }
 

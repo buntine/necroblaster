@@ -121,3 +121,10 @@ end
 function isPlaying()
   return Gamestate.current() == play
 end
+
+function mergeTables(parent, child, offset)
+  fun.each(function(i, value)
+    parent[i] = value
+  end,
+  fun.zip(fun.range(offset, offset + #child), child))
+end
