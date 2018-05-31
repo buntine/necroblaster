@@ -10,7 +10,7 @@ VisibleTap = Class{
     self.y = 0
     self.tap = tap
     -- Skip rendering of every second blastbeat (visually more appealing).
-    self.renderable = not (tap.kind == "blastbeat" and tap.nth % 2 == 0)
+    self.renderable = true -- not (tap.kind == "blastbeat" and tap.nth % 2 == 0) -- TODO: Need this anymore?
   end,
 }
 
@@ -22,7 +22,7 @@ function VisibleTap:render()
 
   if tap.kind == "doublekick" then
     local offset = DOUBLEKICK_SPACING * scaling
-    local position = (self.tap.nth % 2 == 0 and -offset or offset)
+    local position = (self.tap.left and -offset or offset)
 
     love.graphics.draw(img, x + position - (radius * scaling), self.y, 0, scaling)
   else

@@ -29,7 +29,7 @@ function Reverberation:render()
     local offset = 0
 
     if (self.tap.kind == "doublekick") then
-      offset = (self.tap.nth % 2 == 0 and -DOUBLEKICK_SPACING or DOUBLEKICK_SPACING)
+      offset = (self.tap.left and -DOUBLEKICK_SPACING or DOUBLEKICK_SPACING)
     end
 
     love.graphics.draw(img, self.x + offset - (radius * self.scaling), self.y, 0, self.scaling)

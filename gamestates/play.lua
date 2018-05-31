@@ -44,7 +44,7 @@ function play:update()
   local score = self.tapSet.score
 
   if self.song:finished() then
-    self:transitionTo(results, {score = score, bestScore = self.songFrameset.bestScore})
+    self:transitionTo(results, {score = score, bestScore = self.songFrameset:bestScore()})
   end
 
   if not self.songFrameset:isEmptyFrame() then

@@ -13,9 +13,8 @@
 --   Tap: 129ms, health = 0.25
 
 Tap = Class{
-  init = function(self, id, nth, health)
-    self.id = id
-    self.nth = nth
+  init = function(self, health)
+    self.id = math.random(99999999) -- TODO: Ensure these are truly unique.
     self.health = health
   end,
   kind = "tap",
