@@ -1,6 +1,6 @@
 require "mapping.song"
 require "mapping.tapSet"
-require "mapping.songFrameset"
+require "mapping.frameset"
 require "gui.laneways"
 require "gui.score"
 require "gui.progress"
@@ -14,7 +14,7 @@ function play:enter(_, carry)
   self.bg = love.graphics.newImage("assets/images/background.png")
 
   self.song = Song(carry.songid)
-  self.songFrameset = SongFrameset(carry.songid, carry.speed, carry.dominant)
+  self.frameset = Frameset(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet()
   self.laneways = Laneways()
   self.score = Score()
@@ -22,11 +22,11 @@ function play:enter(_, carry)
   self.background = Background(carry.songid)
 
   self.song:play()
-  self.songFrameset:generate()
+  self.frameset:generate()
 end
 
 function play:draw()
-  local frame = self.songFrameset.framePointer
+  local frame = self.frameset.framePointer
 
   scaleGraphics()
 
@@ -44,16 +44,16 @@ function play:update()
   local score = self.tapSet.score
 
   if self.song:finished() then
-    self:transitionTo(results, {score = score, bestScore = self.songFrameset:bestScore()})
+    self:transitionTo(results, {score = score, bestScore = self.frameset:bestScore()})
   end
 
-  if not self.songFrameset:isEmptyFrame() then
+  if not self.frameset:isEmptyFrame() then
     self.score:progress(score)
   end
 
-  self.songFrameset:progress(pos)
+  self.frameset:progress(pos)
   self:showFutureTaps(pos)
-  self.laneways:progress(self.songFrameset.speed)
+  self.laneways:progress(self.frameset.speed)
   self.background:progress()
   self:updateTween()
 end
@@ -71,7 +71,7 @@ function play:keypressed(key, sc, ...)
 
   lane:highlight()
 
-  for _, tap in ipairs(self.songFrameset:currentTaps()) do
+  for _, tap in ipairs(self.frameset:currentTaps()) do
     if key == tap.char and not self.tapSet:seen(tap) then
       self.tapSet:add(tap)
       lane:hit(tap)
@@ -80,7 +80,7 @@ function play:keypressed(key, sc, ...)
 end
 
 function play:showFutureTaps(pos)
-  for _, tap in ipairs(self.songFrameset:futureTaps(pos)) do
+  for _, tap in ipairs(self.frameset:futureTaps(pos)) do
     if tap.renderable and not self.laneways:seen(tap) then
       self.laneways:add(tap)
     end

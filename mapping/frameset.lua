@@ -12,7 +12,7 @@ require "mapping.tapGenerator"
 require "mapping.doubleKickGenerator"
 require "mapping.blastbeatGenerator"
 
-SongFrameset = Class{
+Frameset = Class{
   init = function(self, songid, speed, handedness)
     self.speed = speed
     self.laneChars = BUTTON_MAPPING[handedness]
@@ -24,20 +24,20 @@ SongFrameset = Class{
   framePointer = 0,
 }
 
-function SongFrameset:progress(pos)
+function Frameset:progress(pos)
   self.framePointer = math.floor((pos * 1000) / TIME_SCALE)
 end
 
-function SongFrameset:currentTaps()
+function Frameset:currentTaps()
   return self.frames[self.framePointer] or {}
 end
 
-function SongFrameset:isEmptyFrame()
+function Frameset:isEmptyFrame()
   return #self:currentTaps() == 0
 end
 
 -- Returns the taps for the frame we will be up to in exactly N=(self.speed / 60) seconds.
-function SongFrameset:futureTaps(pos)
+function Frameset:futureTaps(pos)
   local milliseconds = (pos + (self.speed / 60)) * 1000
   local frame = math.floor(milliseconds / TIME_SCALE)
 
@@ -45,7 +45,7 @@ function SongFrameset:futureTaps(pos)
 end
 
 -- Loads a song from JSON into a list of time frames.
-function SongFrameset:generate()
+function Frameset:generate()
   self:initializeFrames()
 
   local generators = {
@@ -63,13 +63,29 @@ function SongFrameset:generate()
 end
 
 -- Populates the frames table with empty tables.
-function SongFrameset:initializeFrames()
+function Frameset:initializeFrames()
   local size = math.floor(self.data[#self.data].offset / TIME_SCALE) + DAMPENING
 
   self.frames = fun.totable(fun.take(size, fun.tabulate(function(x) return {} end)))
 end
 
 -- Returns the best possible score (if every tap was perfectly hit).
-function SongFrameset:bestScore()
-  return 999
+function Frameset:bestScore()
+  local bestScoreForFrame = function(frame)
+    return fun.foldl(
+      function (total, tap)
+        return total + (tap.renderable and tap.health or 0)
+      end,
+      0,
+      frame
+    )
+  end
+
+  return fun.foldl(
+    function (total, frame)
+      return total + bestScoreForFrame(frame)
+    end,
+    0,
+    self.frames
+  )
 end
