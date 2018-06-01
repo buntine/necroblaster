@@ -72,8 +72,7 @@ function play:keypressed(key, sc, ...)
   lane:highlight()
 
   for _, tap in ipairs(self.songFrameset:currentTaps()) do
-    if tap and key == tap.char and not self.tapSet:seen(tap) then
-
+    if key == tap.char and not self.tapSet:seen(tap) then
       self.tapSet:add(tap)
       lane:hit(tap)
     end
@@ -82,7 +81,7 @@ end
 
 function play:showFutureTaps(pos)
   for _, tap in ipairs(self.songFrameset:futureTaps(pos)) do
-    if tap and not self.laneways:seen(tap) then
+    if tap.renderable and not self.laneways:seen(tap) then
       self.laneways:add(tap)
     end
   end

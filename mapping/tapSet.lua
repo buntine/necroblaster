@@ -16,5 +16,5 @@ function TapSet:add(tap)
 end
 
 function TapSet:seen(tap)
-  return (not tap.id) or (#self.taps > 0 and self.taps[#self.taps].id == tap.id or false)
+  return (#self.taps > 0 and self.taps[#self.taps].group == tap.group or false)
 end

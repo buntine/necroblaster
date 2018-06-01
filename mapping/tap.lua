@@ -13,11 +13,13 @@
 --   Tap: 129ms, health = 0.25
 
 Tap = Class{
-  init = function(self, health, id)
-    local id = id or math.random(99999999) -- TODO: Ensure actually unique...
-    self.id = id
+  init = function(self, health, group)
+    local group = group or math.random(99999999)
+    self.group = group
     self.health = health
   end,
   kind = "tap",
   char = nil,
+  renderable = true,
+  left = false,
 }

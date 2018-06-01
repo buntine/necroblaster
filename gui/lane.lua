@@ -19,7 +19,7 @@ Lane = Class{
 }
 
 function Lane:seen(tap)
-  return fun.any(function(t) return t.tap.id == tap.id end, self.visibleTaps)
+  return fun.any(function(t) return t.tap.group == tap.group end, self.visibleTaps)
 end
 
 function Lane:progress(speed)

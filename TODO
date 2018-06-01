@@ -50,8 +50,8 @@
 *- ESC in song goes to menu.
 *- Work out logic for showing streak words
 *- Refactor SongFrameset (bug in blastbeats is due to conflicting IDs)
+*- Remove same-id-for-all-5-taps and have concept of "renderable" on tap. Middle (blurring == 1) is renderable .
 - Write bestScore() in songFrameset.
-- Remove same-id-for-all-5-taps and have concept of "hero" tap. Middle (blurring == 1) is hero.
 - Windows compatible (no forward slashes in paths)
 - Finish data for Ritual
 - Add Teitenblood - Necrosemen
