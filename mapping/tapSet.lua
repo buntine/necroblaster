@@ -20,13 +20,13 @@ end
 function TapSet:accuracy()
   local total = fun.foldl(
     function(total, tap)
-      return total + hap.health
+      return total + tap.health
     end,
     0,
     self.taps
   )
 
-  return (total / #self.taps) * 100
+  return round((total / #self.taps) * 100)
 end
 
 function TapSet:seen(tap)
