@@ -8,11 +8,13 @@ TapSet = Class{
     self.taps = {}
   end,
   score = 0,
+  accuracy = 0,
 }
 
 function TapSet:add(tap)
   table.insert(self.taps, tap)
-  self.score = self.score + tap.health
+  self.score = self.score + 1
+  self.accuracy = self.accuracy + tap.health
 end
 
 function TapSet:seen(tap)

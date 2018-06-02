@@ -4,11 +4,14 @@ require "gui.layout"
 results = Transition()
 
 function results:enter(_, carry)
-  local percentage = round((carry.score / carry.bestScore) * 100)
+  local performance = round((carry.score / carry.bestScore) * 100)
+  local accuracy = round((carry.accuracy / carry.bestScore) * 100)
+
+  print(accuracy)
 
   self.layout = Layout("Results...", "menu_bg_church.png")
-  self.score = love.graphics.newText(fonts.ridiculous, percentage .. "%")
-  self.rank = love.graphics.newText(fonts.big, self:getRank(percentage))
+  self.score = love.graphics.newText(fonts.ridiculous, performance .. "%")
+  self.rank = love.graphics.newText(fonts.big, self:getRank(performance))
 end
 
 function results:keypressed(_)
@@ -27,8 +30,8 @@ function results:draw()
   self:drawTween()
 end
 
-function results:getRank(percentage)
-  local ranks = fun.filter(function (r) return r[1] > percentage end, RANKS)
+function results:getRank(performance)
+  local ranks = fun.filter(function (r) return r[1] > performance end, RANKS)
 
   return fun.nth(1, ranks)[2]
 end
