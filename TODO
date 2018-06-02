@@ -53,7 +53,7 @@
 *- Remove same-id-for-all-5-taps and have concept of "renderable" on tap. Middle (blurring == 1) is renderable .
 *- Write bestScore() in songFrameset.
 *- Render accuracy onto results (update UI to suit)
-- Allow power meter to get full.
+*- Allow power meter to get full.
 - Windows compatible (no forward slashes in paths)
 - Finish data for Ritual
 - Add Teitenblood - Necrosemen

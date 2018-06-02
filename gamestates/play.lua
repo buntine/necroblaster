@@ -2,7 +2,7 @@ require "mapping.song"
 require "mapping.tapSet"
 require "mapping.frameset"
 require "gui.laneways"
-require "gui.score"
+require "gui.powerBar"
 require "gui.progress"
 require "gui.background"
 require "gamestates.results"
@@ -17,7 +17,7 @@ function play:enter(_, carry)
   self.frameset = Frameset(carry.songid, carry.speed, carry.dominant)
   self.tapSet = TapSet()
   self.laneways = Laneways()
-  self.score = Score()
+  self.powerBar = PowerBar()
   self.progress = Progress(self.song:length())
   self.background = Background(carry.songid)
 
@@ -33,7 +33,7 @@ function play:draw()
   self.background:render()
   love.graphics.draw(self.bg)
   self.laneways:render()
-  self.score:render()
+  self.powerBar:render()
   self.progress:render(self.song:tell())
 
   self:drawTween()
@@ -52,7 +52,7 @@ function play:update()
   end
 
   if not self.frameset:isEmptyFrame() then
-    self.score:progress(score)
+    self.powerBar:progress(score)
   end
 
   self.frameset:progress(pos)

@@ -2,7 +2,7 @@
 
 require "gui.streak"
 
-Score = Class{
+PowerBar = Class{
   init = function(self)
     self.streak = Streak()
   end,
@@ -12,7 +12,7 @@ Score = Class{
   powerbar = love.graphics.newImage("assets/images/powerbar.png"),
 }
 
-function Score:render()
+function PowerBar:render()
   self.streak:render()
 
   withoutScale(function()
@@ -24,17 +24,17 @@ function Score:render()
   end)
 end
 
-function Score:progress(score)
+function PowerBar:progress(score)
   local clip = self.clip
 
   -- Resistance is stronger as player performance gets better.
-  local resistance = (clip / SCORE_WIDTH) * SCORE_RESISTANCE
+  local resistance = (clip / MAX_SCORE_CLIP) * SCORE_RESISTANCE
   local adjustment = (score > self.lastScore) and SCORE_FORCE or -resistance
   local nextClip = math.min(clip + adjustment, MAX_SCORE_CLIP)
 
   self.streak:progress(nextClip)
 
-  if nextClip >= MIN_SCORE_CLIP and nextClip < SCORE_WIDTH then
+  if nextClip >= MIN_SCORE_CLIP then
     self.clip = nextClip
   end
 
