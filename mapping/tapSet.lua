@@ -7,14 +7,26 @@ TapSet = Class{
   init = function(self)
     self.taps = {}
   end,
-  score = 0,
-  accuracy = 0,
 }
 
 function TapSet:add(tap)
   table.insert(self.taps, tap)
-  self.score = self.score + 1
-  self.accuracy = self.accuracy + tap.health
+end
+
+function TapSet:score()
+  return #self.taps
+end
+
+function TapSet:accuracy()
+  local total = fun.foldl(
+    function(total, tap)
+      return total + hap.health
+    end,
+    0,
+    self.taps
+  )
+
+  return (total / #self.taps) * 100
 end
 
 function TapSet:seen(tap)

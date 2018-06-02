@@ -41,12 +41,12 @@ end
 
 function play:update()
   local pos = self.song:tell()
-  local score = self.tapSet.score
+  local score = self.tapSet:score()
 
   if self.song:finished() then
     self:transitionTo(results, {
       score = score,
-      accuracy = self.tapSet.accuracy,
+      accuracy = self.tapSet:accuracy(),
       bestScore = self.frameset:bestScore(),
     })
   end

@@ -9,7 +9,7 @@ function DoubleKickGenerator:generate(d, laneChars)
   local finish = math.floor(d.finish / TIME_SCALE)
 
   for _it, i in fun.range(start, finish) do
-    local tap = Tap(0.5)
+    local tap = Tap(1)
 
     tap.left = i % 2 == 0
     tap.char = laneChars[d.lane]

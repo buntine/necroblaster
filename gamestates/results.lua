@@ -7,8 +7,6 @@ function results:enter(_, carry)
   local performance = round((carry.score / carry.bestScore) * 100)
   local accuracy = round((carry.accuracy / carry.bestScore) * 100)
 
-  print(accuracy)
-
   self.layout = Layout("Results...", "menu_bg_church.png")
   self.score = love.graphics.newText(fonts.ridiculous, performance .. "%")
   self.rank = love.graphics.newText(fonts.big, self:getRank(performance))
