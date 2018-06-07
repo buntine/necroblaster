@@ -10,6 +10,7 @@ A rhythm game for the metal-obsessed.
 ![Song selection](/assets/screenshots/necro-2.png?raw=true "Necroblaster Song Selection")
 ![Gameplay #1](/assets/screenshots/necro-3.png?raw=true "Necroblaster Gameplay #1")
 ![Gameplay #2](/assets/screenshots/necro-4.png?raw=true "Necroblaster Gameplay #2")
+![Results](/assets/screenshots/necro-5.png?raw=true "Necroblaster Results Screen")
 
 ## Setup
 
