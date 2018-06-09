@@ -18,6 +18,7 @@ function TapSet:score()
 end
 
 function TapSet:accuracy()
+  local tapCount = math.max(#self.taps, 1)
   local total = fun.foldl(
     function(total, tap)
       return total + tap.health
@@ -26,7 +27,7 @@ function TapSet:accuracy()
     self.taps
   )
 
-  return round((total / #self.taps) * 100)
+  return round((total / tapCount) * 100)
 end
 
 function TapSet:seen(tap)
