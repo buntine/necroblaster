@@ -35,5 +35,6 @@ TODO
 - Thunder: https://freesound.org/people/InspectorJ/sounds/320050/ / InspectorJ (Creative Commons)
 
 ### Songs
-- Master's Hammer: Ritual (Monitor Records, 1991): http://mastershammer.com/
-- Malevolant Creation: Manic Demise (Pavement Music, 1998): https://www.facebook.com/malevolentcreation
+- Master's Hammer: Ritual (Ritual, Monitor Records, 1991): http://mastershammer.com/
+- Malevolant Creation: Manic Demise (The Fine Art of Murder, Pavement Music, 1998): https://www.facebook.com/malevolentcreation
+- Sarcófago: Satanas (I.N.R.I, Cogumelo Produções, 1987): https://en.wikipedia.org/wiki/Sarc%C3%B3fago
