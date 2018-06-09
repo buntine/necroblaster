@@ -23,8 +23,8 @@
   {"kind": "tap", "offset": 16235, "lane": 1},
   {"kind": "tap", "offset": 16460, "lane": 4},
 
-  {"kind": "blastbeat", "offset": 16910, "finish": 19700, "lane": 2},
-  {"kind": "blastbeat", "offset": 16910, "finish": 19700, "lane": 4},
+  {"kind": "blastbeat", "offset": 16910, "finish": 19500, "lane": 2},
+  {"kind": "blastbeat", "offset": 16910, "finish": 19500, "lane": 4},
 
   {"kind": "tap", "offset": 19800, "lane": 1},
   {"kind": "tap", "offset": 19800, "lane": 4},
@@ -40,6 +40,25 @@
   {"kind": "tap", "offset": 23900, "lane": 4},
   {"kind": "tap", "offset": 24130, "lane": 1},
   {"kind": "tap", "offset": 24350, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 24800, "finish": 27800, "lane": 2},
+  {"kind": "blastbeat", "offset": 24800, "finish": 27800, "lane": 4},
+
+  {"kind": "tap", "offset": 28020, "lane": 1},
+  {"kind": "tap", "offset": 28020, "lane": 4},
+  {"kind": "tap", "offset": 28280, "lane": 1},
+  {"kind": "tap", "offset": 28280, "lane": 4},
+  {"kind": "tap", "offset": 28540, "lane": 1},
+  {"kind": "tap", "offset": 28540, "lane": 4},
+  {"kind": "tap", "offset": 28785, "lane": 1},
+  {"kind": "tap", "offset": 28785, "lane": 4},
+  {"kind": "tap", "offset": 29040, "lane": 1},
+  {"kind": "tap", "offset": 29040, "lane": 4},
+  {"kind": "tap", "offset": 29295, "lane": 1},
+  {"kind": "tap", "offset": 29295, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 29600, "finish": 32650, "lane": 2},
+  {"kind": "blastbeat", "offset": 29600, "finish": 32650, "lane": 4},
 
   {"kind": "tap", "offset": 208605, "lane": 4},
 ]
