@@ -1,5 +1,6 @@
 [
   {"kind": "tap", "offset": 6612, "lane": 2},
+
   {"kind": "tap", "offset": 7920, "lane": 1},
   {"kind": "tap", "offset": 8155, "lane": 4},
   {"kind": "tap", "offset": 8380, "lane": 1},
@@ -305,6 +306,45 @@
 
   {"kind": "tap", "offset": 66680, "lane": 1},
   {"kind": "tap", "offset": 66680, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 67500, "finish": 69900, "lane": 2},
+  {"kind": "blastbeat", "offset": 67500, "finish": 69900, "lane": 4},
+
+  {"kind": "tap", "offset": 70200, "lane": 1},
+  {"kind": "tap", "offset": 70200, "lane": 4},
+  {"kind": "tap", "offset": 70580, "lane": 2},
+  {"kind": "tap", "offset": 70580, "lane": 4},
+  {"kind": "tap", "offset": 70980, "lane": 3},
+  {"kind": "tap", "offset": 70980, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 71470, "finish": 74000, "lane": 2},
+  {"kind": "blastbeat", "offset": 71470, "finish": 74000, "lane": 4},
+
+  {"kind": "tap", "offset": 74210, "lane": 1},
+  {"kind": "tap", "offset": 74470, "lane": 4},
+  {"kind": "tap", "offset": 74700, "lane": 1},
+  {"kind": "tap", "offset": 74950, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 75400, "finish": 77900, "lane": 2},
+  {"kind": "blastbeat", "offset": 75400, "finish": 77900, "lane": 4},
+
+  {"kind": "tap", "offset": 78240, "lane": 1},
+  {"kind": "tap", "offset": 78240, "lane": 4},
+  {"kind": "tap", "offset": 78610, "lane": 2},
+  {"kind": "tap", "offset": 78610, "lane": 4},
+  {"kind": "tap", "offset": 78925, "lane": 3},
+  {"kind": "tap", "offset": 78925, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 79370, "finish": 82050, "lane": 2},
+  {"kind": "blastbeat", "offset": 79370, "finish": 82050, "lane": 4},
+
+  {"kind": "tap", "offset": 82270, "lane": 1},
+  {"kind": "tap", "offset": 82530, "lane": 4},
+  {"kind": "tap", "offset": 82770, "lane": 1},
+  {"kind": "tap", "offset": 83010, "lane": 4},
+
+  {"kind": "blastbeat", "offset": 83400, "finish": 86300, "lane": 2},
+  {"kind": "blastbeat", "offset": 83400, "finish": 86300, "lane": 4},
 
   {"kind": "tap", "offset": 208605, "lane": 4},
 ]
