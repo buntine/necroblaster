@@ -22,7 +22,7 @@ function play:enter(_, carry)
   self.background = Background(carry.songid)
 
   self.song:play()
-  self.song:seek(24)
+  self.song:seek(39)
   self.frameset:generate()
 end
 
