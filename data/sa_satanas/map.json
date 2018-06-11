@@ -147,5 +147,164 @@
   {"kind": "tap", "offset": 52460, "lane": 2},
   {"kind": "tap", "offset": 52680, "lane": 2},
 
+  {"kind": "tap", "offset": 53680, "lane": 1},
+  {"kind": "tap", "offset": 53680, "lane": 4},
+
+  {"kind": "tap", "offset": 53930, "lane": 1},
+  {"kind": "tap", "offset": 53930, "lane": 4},
+
+  {"kind": "tap", "offset": 54180, "lane": 1},
+  {"kind": "tap", "offset": 54180, "lane": 4},
+
+  {"kind": "tap", "offset": 54430, "lane": 1},
+  {"kind": "tap", "offset": 54430, "lane": 4},
+
+  {"kind": "tap", "offset": 54680, "lane": 1},
+  {"kind": "tap", "offset": 54680, "lane": 4},
+
+  {"kind": "tap", "offset": 54930, "lane": 1},
+  {"kind": "tap", "offset": 54930, "lane": 4},
+
+  {"kind": "tap", "offset": 55180, "lane": 1},
+  {"kind": "tap", "offset": 55180, "lane": 4},
+
+  {"kind": "tap", "offset": 55430, "lane": 1},
+  {"kind": "tap", "offset": 55430, "lane": 4},
+
+  {"kind": "tap", "offset": 55680, "lane": 1},
+  {"kind": "tap", "offset": 55680, "lane": 4},
+
+  {"kind": "tap", "offset": 55930, "lane": 1},
+  {"kind": "tap", "offset": 55930, "lane": 4},
+
+  {"kind": "tap", "offset": 56180, "lane": 1},
+  {"kind": "tap", "offset": 56180, "lane": 4},
+
+  {"kind": "tap", "offset": 56430, "lane": 1},
+  {"kind": "tap", "offset": 56430, "lane": 4},
+
+  {"kind": "tap", "offset": 56680, "lane": 1},
+  {"kind": "tap", "offset": 56680, "lane": 4},
+
+  {"kind": "tap", "offset": 56930, "lane": 2},
+  {"kind": "tap", "offset": 56930, "lane": 4},
+
+  {"kind": "tap", "offset": 57180, "lane": 2},
+  {"kind": "tap", "offset": 57180, "lane": 4},
+
+  {"kind": "tap", "offset": 57430, "lane": 2},
+  {"kind": "tap", "offset": 57430, "lane": 4},
+
+  {"kind": "tap", "offset": 57680, "lane": 2},
+  {"kind": "tap", "offset": 57680, "lane": 4},
+
+  {"kind": "tap", "offset": 57930, "lane": 2},
+  {"kind": "tap", "offset": 57930, "lane": 4},
+
+  {"kind": "tap", "offset": 58180, "lane": 2},
+  {"kind": "tap", "offset": 58180, "lane": 4},
+
+  {"kind": "tap", "offset": 58430, "lane": 2},
+  {"kind": "tap", "offset": 58430, "lane": 4},
+
+  {"kind": "tap", "offset": 58680, "lane": 2},
+  {"kind": "tap", "offset": 58680, "lane": 4},
+
+  {"kind": "tap", "offset": 58930, "lane": 2},
+  {"kind": "tap", "offset": 58930, "lane": 4},
+
+  {"kind": "tap", "offset": 59180, "lane": 2},
+  {"kind": "tap", "offset": 59180, "lane": 4},
+
+  {"kind": "tap", "offset": 59430, "lane": 2},
+  {"kind": "tap", "offset": 59430, "lane": 4},
+
+  {"kind": "tap", "offset": 59680, "lane": 2},
+  {"kind": "tap", "offset": 59680, "lane": 4},
+
+  {"kind": "tap", "offset": 59930, "lane": 2},
+  {"kind": "tap", "offset": 59930, "lane": 4},
+
+  {"kind": "tap", "offset": 60180, "lane": 2},
+  {"kind": "tap", "offset": 60180, "lane": 4},
+
+  {"kind": "tap", "offset": 60430, "lane": 3},
+  {"kind": "tap", "offset": 60430, "lane": 4},
+
+  {"kind": "tap", "offset": 60680, "lane": 3},
+  {"kind": "tap", "offset": 60680, "lane": 4},
+
+  {"kind": "tap", "offset": 60930, "lane": 3},
+  {"kind": "tap", "offset": 60930, "lane": 4},
+
+  {"kind": "tap", "offset": 61180, "lane": 3},
+  {"kind": "tap", "offset": 61180, "lane": 4},
+
+  {"kind": "tap", "offset": 61430, "lane": 3},
+  {"kind": "tap", "offset": 61430, "lane": 4},
+
+  {"kind": "tap", "offset": 61680, "lane": 3},
+  {"kind": "tap", "offset": 61680, "lane": 4},
+
+  {"kind": "tap", "offset": 61930, "lane": 3},
+  {"kind": "tap", "offset": 61930, "lane": 4},
+
+  {"kind": "tap", "offset": 62180, "lane": 3},
+  {"kind": "tap", "offset": 62180, "lane": 4},
+
+  {"kind": "tap", "offset": 62430, "lane": 3},
+  {"kind": "tap", "offset": 62430, "lane": 4},
+
+  {"kind": "tap", "offset": 62680, "lane": 3},
+  {"kind": "tap", "offset": 62680, "lane": 4},
+
+  {"kind": "tap", "offset": 62930, "lane": 3},
+  {"kind": "tap", "offset": 62930, "lane": 4},
+
+  {"kind": "tap", "offset": 63180, "lane": 3},
+  {"kind": "tap", "offset": 63180, "lane": 4},
+
+  {"kind": "tap", "offset": 63430, "lane": 3},
+  {"kind": "tap", "offset": 63430, "lane": 4},
+
+  {"kind": "tap", "offset": 63680, "lane": 1},
+  {"kind": "tap", "offset": 63680, "lane": 4},
+
+  {"kind": "tap", "offset": 63930, "lane": 1},
+  {"kind": "tap", "offset": 63930, "lane": 4},
+
+  {"kind": "tap", "offset": 64180, "lane": 1},
+  {"kind": "tap", "offset": 64180, "lane": 4},
+
+  {"kind": "tap", "offset": 64430, "lane": 1},
+  {"kind": "tap", "offset": 64430, "lane": 4},
+
+  {"kind": "tap", "offset": 64680, "lane": 1},
+  {"kind": "tap", "offset": 64680, "lane": 4},
+
+  {"kind": "tap", "offset": 64930, "lane": 1},
+  {"kind": "tap", "offset": 64930, "lane": 4},
+
+  {"kind": "tap", "offset": 65180, "lane": 1},
+  {"kind": "tap", "offset": 65180, "lane": 4},
+
+  {"kind": "tap", "offset": 65430, "lane": 1},
+  {"kind": "tap", "offset": 65430, "lane": 4},
+
+  {"kind": "tap", "offset": 65680, "lane": 1},
+  {"kind": "tap", "offset": 65680, "lane": 4},
+
+  {"kind": "tap", "offset": 65930, "lane": 1},
+  {"kind": "tap", "offset": 65930, "lane": 4},
+
+  {"kind": "tap", "offset": 66180, "lane": 1},
+  {"kind": "tap", "offset": 66180, "lane": 4},
+
+  {"kind": "tap", "offset": 66430, "lane": 1},
+  {"kind": "tap", "offset": 66430, "lane": 4},
+
+  {"kind": "tap", "offset": 66680, "lane": 1},
+  {"kind": "tap", "offset": 66680, "lane": 4},
+
   {"kind": "tap", "offset": 208605, "lane": 4},
 ]
