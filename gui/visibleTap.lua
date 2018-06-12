@@ -9,6 +9,7 @@ VisibleTap = Class{
     self.x = x
     self.y = 0
     self.tap = tap
+    self.remove = false
   end,
 }
 
@@ -29,5 +30,9 @@ function VisibleTap:render()
 end
 
 function VisibleTap:done()
-  return self.y > DESIRED_HEIGHT - APPROACH_MAX_OFFSET
+  return (self.y > DESIRED_HEIGHT - APPROACH_MAX_OFFSET) or self.remove
+end
+
+function VisibleTap:hit()
+  self.remove = true
 end

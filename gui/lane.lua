@@ -33,10 +33,10 @@ function Lane:progress(speed)
     end
   end
 
-  for i, tap in ipairs(self.visibleTaps) do
-    tap:progress(speed)
+  for i, vt in ipairs(self.visibleTaps) do
+    vt:progress(speed)
 
-    if tap:done() then
+    if vt:done() then
       table.remove(self.visibleTaps, i)
     end
   end
@@ -52,6 +52,13 @@ end
 
 function Lane:hit(tap)
   table.insert(self.reverbs, Reverberation(tap, self.x))
+
+  for _, vt in ipairs(self.visibleTaps) do
+    if tap:is(vt.tap) then
+      vt:hit()
+      break
+    end
+  end
 end
 
 function Lane:render()

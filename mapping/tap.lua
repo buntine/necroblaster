@@ -23,3 +23,7 @@ Tap = Class{
   renderable = true,
   left = false,
 }
+
+function Tap:is(tap)
+  return self.group == tap.group
+end

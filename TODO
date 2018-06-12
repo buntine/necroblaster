@@ -54,9 +54,9 @@
 *- Write bestScore() in songFrameset.
 *- Render accuracy onto results (update UI to suit)
 *- Allow power meter to get full.
-- Remove tap from lane when it is hit
+*- Add Sarcofago - Satanas
+*- Remove tap from lane when it is hit
 - Windows compatible (no forward slashes in paths)
 - Finish data for Ritual
-- Add Teitenblood - Necrosemen
 - Preload songs before getting to selection?
 - Design arcade cabinet
