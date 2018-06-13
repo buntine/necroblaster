@@ -525,5 +525,18 @@
   {"kind": "tap", "offset": 159480, "lane": 1},
   {"kind": "tap", "offset": 159880, "lane": 3},
 
+  {"kind": "tap", "offset": 161425, "lane": 1},
+  {"kind": "tap", "offset": 161625, "lane": 1},
+
+  {"kind": "tap", "offset": 161825, "lane": 2},
+  {"kind": "tap", "offset": 162025, "lane": 2},
+
+  {"kind": "tap", "offset": 162225, "lane": 3},
+  {"kind": "tap", "offset": 162425, "lane": 3},
+
+  {"kind": "tap", "offset": 163040, "lane": 4},
+  {"kind": "tap", "offset": 163400, "lane": 3},
+  {"kind": "tap", "offset": 163780, "lane": 4},
+
   {"kind": "tap", "offset": 1148560, "lane": 2},
 ]
