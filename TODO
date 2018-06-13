@@ -56,6 +56,7 @@
 *- Allow power meter to get full.
 *- Add Sarcofago - Satanas
 *- Remove tap from lane when it is hit
+- Make visible taps animated fireballs (necessary on fast speeds?)
 - Windows compatible (no forward slashes in paths)
 - Finish data for Ritual
 - Preload songs before getting to selection?
