@@ -57,7 +57,7 @@
 *- Add Sarcofago - Satanas
 *- Remove tap from lane when it is hit
 *- Finish data for Ritual
-- Exact positioning of taps (still break into segments - but have segment offset by POS % SEGMENT_SIZE)
+* - Exact positioning of taps (still break into segments - but have segment offset by POS % SEGMENT_SIZE)
 - Make visible taps animated fireballs (necessary on fast speeds?)
 - Windows compatible (no forward slashes in paths)
 - Preload songs before getting to selection?

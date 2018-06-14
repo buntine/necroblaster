@@ -7,7 +7,7 @@ VisibleTap = Class{
   init = function(self, tap, x)
     self.z = TAP_Z
     self.x = x
-    self.y = 0
+    self.y = 0 - tap.offset
     self.tap = tap
     self.remove = false
   end,

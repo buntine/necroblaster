@@ -17,6 +17,10 @@ function TapGenerator:generate(d, laneChars)
     tap.kind = d.kind
     tap.renderable = (health == 1)
 
+    -- When rendering, this offset will be used to position the tap correctly within it's
+    -- segment so that spacing is visually correct.
+    tap.offset = d.offset % TIME_SCALE
+
     taps[i] = tap
   end
 

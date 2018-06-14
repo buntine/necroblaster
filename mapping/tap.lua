@@ -22,6 +22,7 @@ Tap = Class{
   char = nil,
   renderable = true,
   left = false,
+  offset = 0,
 }
 
 function Tap:is(tap)
