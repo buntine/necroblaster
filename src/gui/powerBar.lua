@@ -1,6 +1,6 @@
 -- Manages and renders the power bar to indicate the relative performance of the player.
 
-require "gui.streak"
+require "src.gui.streak"
 
 PowerBar = Class{
   init = function(self)

@@ -3,9 +3,9 @@
 -- A lane maintains a set of upcoming/renderable taps and a graphical display
 -- when a tap is successfully hit.
 
-require "gui.reverberation"
-require "gui.laneHighlight"
-require "gui.visibleTap"
+require "src.gui.reverberation"
+require "src.gui.laneHighlight"
+require "src.gui.visibleTap"
 
 Lane = Class{
   init = function(self, nth)

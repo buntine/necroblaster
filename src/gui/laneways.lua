@@ -2,7 +2,7 @@
 --
 -- Each lane maintains a set of upcoming/renderable taps.
 
-require "gui.lane"
+require "src.gui.lane"
 
 Laneways = Class{
   init = function(self)

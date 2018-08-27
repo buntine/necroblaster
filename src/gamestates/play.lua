@@ -1,12 +1,12 @@
-require "mapping.song"
-require "mapping.tapSet"
-require "mapping.frameset"
-require "gui.laneways"
-require "gui.powerBar"
-require "gui.progress"
-require "gui.background"
-require "gamestates.results"
-require "tweening.transition"
+require "src.mapping.song"
+require "src.mapping.tapSet"
+require "src.mapping.frameset"
+require "src.gui.laneways"
+require "src.gui.powerBar"
+require "src.gui.progress"
+require "src.gui.background"
+require "src.gamestates.results"
+require "src.tweening.transition"
 
 play = Transition()
 

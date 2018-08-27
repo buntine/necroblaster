@@ -2,7 +2,7 @@
 
 A rhythm game for the metal-obsessed.
 
-**NecroBlaster** is a "desk drumming" simulator that focuses on extreme metal genres such as death metal and black metal
+**NecroBlaster** is a "desk drumming" simulator that focuses on extreme metal genres such as death metal and black metal. It's kinda' like an abhorent, evil and cursed version of Dance Dance Revolution.
 
 ## Screenshots
 

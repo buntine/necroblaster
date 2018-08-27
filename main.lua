@@ -2,8 +2,8 @@ fun = require "lib.fun"
 Gamestate = require "lib.hump.gamestate"
 Class = require "lib.hump.class"
 
-require "constants"
-require "gamestates.title"
+require "src.constants"
+require "src.gamestates.title"
 
 function love.load()
   love.window.setMode(0, 0, {fullscreen = true})

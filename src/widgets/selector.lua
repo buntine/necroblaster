@@ -1,7 +1,7 @@
 -- A wrapper class that presents its "body" along with arrows to move back and forward through
 -- the items available in body.
 
-require "tweening.bump"
+require "src.tweening.bump"
 
 Selector = Class{
   init = function(self, body)

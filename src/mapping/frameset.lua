@@ -6,11 +6,11 @@
 -- The framePointer moves through the list as time passes while a song is playing.
 
 json = require "lib.json"
-tap = require "mapping.tap"
+tap = require "src.mapping.tap"
 
-require "mapping.tapGenerator"
-require "mapping.doubleKickGenerator"
-require "mapping.blastbeatGenerator"
+require "src.mapping.tapGenerator"
+require "src.mapping.doubleKickGenerator"
+require "src.mapping.blastbeatGenerator"
 
 Frameset = Class{
   init = function(self, songid, speed, handedness)

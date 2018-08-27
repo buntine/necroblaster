@@ -1,6 +1,6 @@
 -- A visible tap that is approaching the bottom of the screen.
 
-require "gui.approachable"
+require "src.gui.approachable"
 
 VisibleTap = Class{
   __includes = Approachable,

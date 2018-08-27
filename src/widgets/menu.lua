@@ -2,7 +2,7 @@
 --
 -- This class conforms to the Selector interface.
 
-require "widgets.menuOption"
+require "src.widgets.menuOption"
 
 Menu = Class{
   init = function(self, options, selected)

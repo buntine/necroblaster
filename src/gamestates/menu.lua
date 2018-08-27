@@ -1,8 +1,8 @@
-require "widgets.songMenu"
-require "widgets.selector"
-require "gui.layout"
-require "gamestates.difficulty"
-require "tweening.transition"
+require "src.widgets.songMenu"
+require "src.widgets.selector"
+require "src.gui.layout"
+require "src.gamestates.difficulty"
+require "src.tweening.transition"
 
 menu = Transition()
 

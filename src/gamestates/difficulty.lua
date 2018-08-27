@@ -1,8 +1,8 @@
-require "widgets.menu"
-require "widgets.selector"
-require "gui.layout"
-require "gamestates.handedness"
-require "tweening.transition"
+require "src.widgets.menu"
+require "src.widgets.selector"
+require "src.gui.layout"
+require "src.gamestates.handedness"
+require "src.tweening.transition"
 
 difficulty = Transition()
 

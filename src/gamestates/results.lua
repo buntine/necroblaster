@@ -1,5 +1,5 @@
-require "tweening.transition"
-require "gui.layout"
+require "src.tweening.transition"
+require "src.gui.layout"
 
 results = Transition()
 

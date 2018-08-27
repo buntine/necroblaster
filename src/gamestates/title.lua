@@ -1,7 +1,7 @@
-require "gamestates.menu"
-require "tweening.transition"
-require "gui.droplet"
-require "gui.lightning"
+require "src.gamestates.menu"
+require "src.tweening.transition"
+require "src.gui.droplet"
+require "src.gui.lightning"
 
 title = Transition()
 

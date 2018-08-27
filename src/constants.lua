@@ -78,7 +78,7 @@ HANDEDNESS = {
 }
 RANKS = {
   {25, "Total Poser"},
-  {50, "Sum-Human Scum"},
+  {50, "Pure Scum"},
   {65, "Die Hard"},
   {75, "Berserker!"},
   {85, "Immortal Warlord"},
