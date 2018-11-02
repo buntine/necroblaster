@@ -58,7 +58,7 @@
 *- Remove tap from lane when it is hit
 *- Finish data for Ritual
 * - Exact positioning of taps (still break into segments - but have segment offset by POS % SEGMENT_SIZE)
-- Rebound on successul tap
+*- Rebound on successul tap
 - More songs!
 - Make visible taps animated fireballs (necessary on fast speeds?)
 - Windows compatible (no forward slashes in paths)

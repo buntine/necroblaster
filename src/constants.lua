@@ -60,6 +60,11 @@ STREAK_SCALE_FACTOR = 0.09
 BACKGROUND_ZOOM_AMOUNT = 0.25
 BACKGROUND_ZOOM_THRESHOLD = 200
 BACKGROUND_FADE_SPEED = 0.002
+REBOUND_VELOCITY = -21
+REBOUND_MIN_SPEED = -12
+REBOUND_MAX_SPEED = 12
+REBOUND_SPEED_VARIANCE = 3
+GRAVITY = 0.8
 STREAKS = {
   {value = 90, word = love.graphics.newText(fonts.huge, "Unholy Warfare!")},
   {value = 80, word = love.graphics.newText(fonts.huge, "Putrefaction!")},
