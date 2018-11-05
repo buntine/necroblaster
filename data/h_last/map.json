@@ -494,7 +494,15 @@
   {"kind": "tap", "offset": 77010, "lane": 4},
   {"kind": "tap", "offset": 77110, "lane": 2},
   {"kind": "tap", "offset": 77210, "lane": 4},
-  {"kind": "tap", "offset": 77310, "lane": 2},
+
+  {"kind": "doublekick", "offset": 77300, "finish": 77670, "lane": 1},
+  {"kind": "doublekick", "offset": 77670, "finish": 78040, "lane": 2},
+  {"kind": "doublekick", "offset": 78040, "finish": 78410, "lane": 3},
+  {"kind": "doublekick", "offset": 78410, "finish": 78780, "lane": 4},
+  {"kind": "doublekick", "offset": 78780, "finish": 79150, "lane": 1},
+  {"kind": "doublekick", "offset": 79150, "finish": 79520, "lane": 2},
+  {"kind": "doublekick", "offset": 79520, "finish": 79890, "lane": 3},
+  {"kind": "doublekick", "offset": 79890, "finish": 80260, "lane": 4},
 
   {"kind": "tap", "offset": 140000, "lane": 1},
 ]
