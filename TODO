@@ -59,7 +59,7 @@
 *- Finish data for Ritual
 * - Exact positioning of taps (still break into segments - but have segment offset by POS % SEGMENT_SIZE)
 *- Rebound on successul tap
-- Finish Havohej - Final Hour of Christ
+*- Finish Havohej - Final Hour of Christ
 - Add: Mortician - Mass Mutilation (https://www.youtube.com/watch?v=tFrryegP3S0)
 - Windows compatible (no forward slashes in paths)
 - Preload songs before getting to selection?

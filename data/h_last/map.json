@@ -504,5 +504,8 @@
   {"kind": "doublekick", "offset": 79520, "finish": 79890, "lane": 3},
   {"kind": "doublekick", "offset": 79890, "finish": 80260, "lane": 4},
 
-  {"kind": "tap", "offset": 140000, "lane": 1},
+  {"kind": "blastbeat", "offset": 80600, "finish": 106300, "lane": 1},
+  {"kind": "blastbeat", "offset": 80600, "finish": 106300, "lane": 4},
+
+  {"kind": "tap", "offset": 140000, "lane": 1}
 ]
