@@ -20,7 +20,7 @@ function Song:playing()
 end
 
 function Song:play(offset)
-  local o = offset or 0
+  local o = offset or 45
   self.stream:setLooping(false)
 
   self.stream:play()
