@@ -90,6 +90,8 @@
   {"kind": "blastbeat", "offset": 24900, "finish": 28700, "lane": 2},
   {"kind": "blastbeat", "offset": 24900, "finish": 28700, "lane": 4},
 
+  {"kind": "tap", "offset": 28850, "lane": 3},
+
   {"kind": "blastbeat", "offset": 29000, "finish": 32000, "lane": 1},
   {"kind": "blastbeat", "offset": 29000, "finish": 32000, "lane": 4},
 
