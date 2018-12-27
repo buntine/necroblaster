@@ -6,6 +6,10 @@ A rhythm game for the metal-obsessed.
 
 See here for a gameplay video: https://youtu.be/-lPuwb14ZYI
 
+## Setup / Installation
+
+Clone the repo, ensure you have Love2D installed (https://love2d.org/) and then: `love .`
+
 ## Screenshots
 
 ![Title screen](/assets/screenshots/necro-1.png?raw=true "Necroblaster Title Screen")
@@ -13,10 +17,6 @@ See here for a gameplay video: https://youtu.be/-lPuwb14ZYI
 ![Gameplay #1](/assets/screenshots/necro-3.png?raw=true "Necroblaster Gameplay #1")
 ![Gameplay #2](/assets/screenshots/necro-4.png?raw=true "Necroblaster Gameplay #2")
 ![Results](/assets/screenshots/necro-5.png?raw=true "Necroblaster Results Screen")
-
-## Setup
-
-TODO
 
 ## Credits
 
